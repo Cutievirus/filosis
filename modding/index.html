@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="/image/png" href="../favicon.png">
+	<title>Super Filovirus Sisters</title>
+	<link rel='stylesheet' type='text/css' href='../style.css'>
+	<link rel='stylesheet' type='text/css' href='rainbow.css'>
+</head>
+<body>
+<div id="cover"><div></div></div>
+<div class="screen map">
+<div class="wrapper">
+
+<div class="window">
+	<h1 id='Modding'>Modding</h1>
+</div>
+<div class="window">
+	<h2 id="creation">Getting started</h2>
+	<p>To begin, you must first locate the game directory. If you downloaded a native version of the game (such as for windows), then it should be the filosis_data folder. If you downloaded the lightweight raw html version of the game, then you have only the game directory.</p>
+	<p>Open the mod folder and create a new folder with the name of your mod. Create a text file inside your mod folder named "script.js". This file will contain the script contents of your mod, but for now we just want to know if it loaded. Write the following into the file: </p>
+	<pre><code data-language=javascript>alert("Hello World");</code></pre>
+	<p>In order to load the mod, we must also edit index.html in the game directory. Find the area where mods are loaded. By default, the Draco mod should be loaded. Add a line for your mod below it, like so:</p>
+	<pre><code data-language=html><!-- MODS -->
+&lt;script src="mod/draco/script.js"></script>
+&lt;script src="mod/example/script.js"></script>
+<!-- /MODS --></code></pre>
+	Now when you run the game, you should be greeted with a message saying "Hello World".
+</div>
+<div class="window">
+	<h2 id='Naming'>Naming Your Mod</h2>
+	<p>Every mod should have a unique name. All functions, objects, and variables introduced by your mod should either be prefixed with your mod's name, or contained within a parent object named after your mod. This should prevent name collisions with the game code as well as other mods.</p>
+	<p>An example of how to properly encapsulate your mod:</p>
+<pre><code data-language=javascript>//contained in an object
+var examplemod = {};
+examplemod.value = "example";
+examplemod.func = function(){
+    console.log( examplemod.value );
+}
+//prefixing
+examplemod_value = "example";
+function examplemod_func(){
+    console.log( examplemod_value );
+}
+</code></pre>
+</div>
+<div class="window">
+	<h2 id='Loading'>Loading Assets</h2>
+	<p>Most types of mods will require new assets to be added to the game. Usually images. Assets can be loaded using the preload_mod <a href='#Hooks'>hook</a>. Some common types of assets that can be loaded are <a href='https://phaser.io/docs/2.6.2/Phaser.Loader.html#image'>images</a>, <a href='https://phaser.io/docs/2.6.2/Phaser.Loader.html#spritesheet'>spritesheets</a>, and <a href='https://phaser.io/docs/2.6.2/Phaser.Loader.html#audio'>audio</a>.</p>
+<pre><code data-language=javascript>preload_mod.push(function(){
+    game.load.image('example_image', 'mod/example/image.png');
+});</code></pre>
+</div>
+<div class="window">
+	<h2 id='NPC'>Adding new NPCs</h2>
+	<p>An NPC is made up of three main components, the <i>char</i>, the <i>port</i>, and the <i>speaker</i>. The char is the overworld sprites, the port is the portrait, and the speaker is an object which contains information about the NPC's name, portrait, and voice.</p>
+	<p>For example, let's say we want to add Legionella:</p>
+<pre><code data-language=javascript>preload_mod.push(function(){
+    game.load.spritesheet('legionella', 'mod/legionella/char.png', 20, 25);
+    game.load.image('legionella_port', 'mod/legionella/port.png');
+});
+
+speakers.legionella = {display:'Legionella', default:'legionella_port', voice: 'voice8' };
+
+scenario_mod.push(function(){
+    if (switches.map != 'earth3') { return; }
+    var legionella = new NPC(31*TS, 17*TS, 'legionella');
+    legionella.face("down");
+    legionella.interact = function(){
+        say('legionella', "Hello there!");
+    };
+});</code></pre>
+</div>
+<div class="window">
+	<h2 id='Monsters'>Adding new Monsters</h2>
+<pre><code data-language=javascript>preload_mod.push(function(){
+    game.load.image('example_scorpion', 'mod/example/scorpion.png');
+});
+
+Monster.types.example_scorpion = {
+    name: 'Scorpion',
+    key: 'example_scorpion',
+    skills:[skills.poisonstrike, skills.strike],
+    drops:[
+        {item:'bugbits', chance:100, quantity:2},
+        {item:'bugbits', chance:50, quantity:1},
+        {item:'starpuff', chance:3, quantity:1}
+    ],
+    xp: 60,
+    hp: 80,
+    atk: 80,
+    def: 50,
+    speed: 100,
+    attributes: ['poison', 'carnivore']
+}
+</code></pre>
+	<p><i>Attributes</i> do nothing on their own. Instead, they are used for special interactions in other parts of the code. For example, <i>poison</i> makes poisonous attacks less effection against the monster, and <i>carnivore</i> allows it to be distracted with <i>Meat</i>.</p>
+	<h3 id="MonsterAI">Monster AI</h3>
+	<p>A monster type can be supplied an AI function to make it choose skills more smartly. The AI function can return a skill or null. If it returns null, normal skill selection based on the skills property will be used.</p>
+<pre><code data-language=javascript>Monster.types.example_scorpion.ai = function(){
+    // uses poisonstrike if not all enemies are poisoned.
+    // otherwise uses strike.
+    var enemies = enemy_list();
+    var poisoned = 0;
+    for (var i in enemies){
+    	if ( enemies[i].has_buff ( buffs.poison ) ) {
+            ++poisoned;
+        }
+    }
+    if (poisoned < enemies.length){
+        return skills.poisonstrike;
+    }else{
+        return skills.strike;
+    }
+}</code></pre>
+	<h3 id="Encounters">Encounters</h3>
+	<p>After you've created your monster, you need to set up an encounter with it. An encounter is a group of monsters that can be battled.</p>
+<pre><code data-language=javascript>encounter.example_scorpion ={
+    monsters : [
+    	{id:'example_scorpion', x:2, y:2, l1:0, l2:Infinity},
+    	{id:'example_scorpion', x:-2, y:0, l1:0, l2:Infinity}
+    ]
+};</code></pre>
+	<p>l1 and l2 are the level range of the monster. 0 and Infinity will make the monster always scale to the player's level.</p>
+	<p>There are a few other less-used properties you can use as well.</p>
+<pre><code data-language=javascript>encounter.example_scorpion ={
+    monsters : [{id:'example_scorpion', x:0, y:1, l1:6, l2:Infinity}],
+    // modifies the level of all monsters in the encounter.
+    // In this case, increasing their level by 2.
+    lmod: 2,
+    // function called when player wins
+    onvictory: function(){
+        switches.example_victory = true;
+    },
+    // function called when player loses.
+    ondefeat: function(){
+        switches.example_victory = false;
+    },
+    // forces the encounter to use a particular background.
+    bg: 'castle'
+};</code></pre>
+<p>By default after you lose you will be sent back to the title screen. However this behavior can be overridden if needed.</p>
+<pre><code data-language=javascript>end_battle_2 = override_before(end_battle_2,function(){
+    if( battle.encounter.allowdefeat ){ battle.result="allowdefeat";}
+});
+encounter.joki.allowdefeat=true;</code></pre>
+	<p>There are a few ways to initiate battle. The simplest way is with an <a href="#NPC">NPC</a>.</p>
+<pre><code data-language=javascript>// start battle through dialogue
+chikun.interact=function(){
+    say ('chikun', "Are you ready for an epic battle?");
+    say (function(){ start_battle(encounter.chikun); });
+}
+
+// start battle by touching NPC
+chikun.battle = encounter.chikun</code></pre>
+	<h3 id='Mobs'>Mobs</h3>
+	<p>Mobs are what I call the little black and white enemies that run around the overworld.</p>
+<pre><code data-language=javascript>preload_mod.push(function(){
+    game.load.spritesheet('example_mob_scorpion', 'mod/example/mob_scorpion.png', 16, 17);
+});
+
+Mob.types.example_scorpion = {
+    pattern: 'basic',
+    encounters: ['example_scorpion'],
+    key: 'example_mob_scorpion'
+};</code></pre>
+	<p>The mob may have the following properties:</p>
+	<p><ul>
+		<li><b>pattern</b> - Determines how the mob moves. Patterns are defined on the Mob.patterns object.</li>
+		<li><b>encounters</b> - A list of strings, or a function which returns a list of strings. Each string is the name of an encounter.</li>
+		<li><b>key</b> - The key of the spritesheet used by this mob.</li>
+		<li><b>speed</b> - The movement speed of the mob.</li>
+		<li><b>aspeed</b> - The animation speed of the mob.</li>
+		<li><b>flying</b> - Whether the mob can fly over obstacles. Default false.</li>
+		<li><b>waterwalk</b> - Whether the mob can walk on water. Default false.</li>
+		<li><b>landwalk</b> - Whether the mob can walk on land. Default true.</li>
+		<li><b>oncollide</b> - A function that will be called instead of starting battle when the player touches the mob.</li>
+	</ul></p>
+	<p>After you've created a new type of mob, the easiest way to add it to an existing map is by creating a spawner.</p>
+<pre><code data-language=javascript>spawn_controller.spawners.push({
+    x:32*TS,
+    y:32*TS,
+    properties:{
+        type:"example_scorpion",
+        radius: 12 
+    }
+});</code></pre>
+</div>
+<div class="window">
+	<h2 id='Skills'>Adding new Skills</h2>
+<pre><code data-language=javascript>// load spritesheet for skill animation
+preload_mod.push(function(){
+    game.load.spritesheet('example_shadowflame_animation', 'mod/example/shadowflame.png', 42, 42);
+});
+
+// set up skill animation
+animations.example_shadowflame={
+    sprite: 'example_shadowflame_animation',
+    frames: [0,1,2,3,4,5,6],
+    anchor: [0.5,0.5]
+};
+
+// create the skill
+skills.example_shadowflame = new Skill({
+    id: 'example_shadowflame',
+    name: "Shadow Flame",
+    desc: "Deals damage and also causes damage over time.",
+    sfx: 'flame',
+    animation: 'example_shadowflame',
+    sp: 100,
+    attributes:['magic','fire','attack'],
+    target:'enemy',
+    action:function(){
+    	damage_target(75);
+        battle.target.inflict(buffs.example_shadowflame);
+    }
+});</code></pre>
+	<p>Skills can also be given a property named <i>aitarget</i> which is used for the ai to smartly select a target.</p>
+<pre><code data-language="javascript">skills.example_shadowflame.aitarget = function(){
+    var enemies=enemy_list();
+    list=[];
+    for(var i in enemies){
+        var enemy = enemylist[i];
+        if ( enemy.has_buff ( buffs.example_shadowflame ) ) {
+            list.push(enemy);
+        }
+    }
+    if (list.length===0){ list = enemies; }
+    battle.target = list[Math.floor(Math.random()*list.length)];
+};</code></pre>
+	<h3 id='Buffs'>Buffs</h3>
+	<p>Buffs are status effects, usually inflicted by skills or items. They can be both positive and negative. A battler can only have up to 5 buffs inflicted at once.</p>
+<pre><code data-language="javascript">buffs.example_shadowflame = {
+    name:'example_shadowflame', // name should be same as id.
+    start:function(){
+        this.duration=3;
+    },step:function(){
+        this.damage(20 * deltam);
+        this.duration -= deltam;
+        if(this.duration<=0){ this.remedy(); }
+    },
+    negative:true
+};</code></pre>
+</div>
+<div class="window">
+	<h2 id='Items'>Adding new Items</h2>
+</div>
+<div class="window">
+	<h2 id='Players'>Adding new player characters</h2>
+</div>
+<div class="window">
+	<h2 id='Costumes'>Adding new costumes</h2>
+<pre><code data-language=javascript>costumes.marb.pirate = { name:'Pirate', csheet:'piratemarb_char',
+    bsheet:'piratemarb_battle', bframe:[0,1,2],
+    psheet:'piratemarb_port' };</code></pre>
+	<h3 id='fsheet'>fsheet</h3>
+	<p>Changes which sprite sheet is used for the face. Useful if the costume involves an eyepatch or heterochromia which can't be accomplished through recoloring.</p>
+	<p>example:</p>
+<pre><code data-language=javascript>costumes.marb.pirate.fsheet = 'piratemarb_face';</code></pre>
+	<h3 id='frecolor'>frecolor</h3>
+	<p>Recolors the face. Useful if the costume changes the eye or skin color. This property should be a nested array, with a list of the original colors and a list of the new colors.</p>
+<pre><code data-language=javascript>costumes.ebby.blueeyes.frecolor =
+    [ [0xe64747, 0xffce3c], [0x435bfd, 0x43b1fd] ];</code></pre>
+</div>
+<div class="window">
+	<h2 id='Maps'>Adding new Maps</h2>
+	<p>Maps are made using <a href='http://www.mapeditor.org/'>Tiled Map Editor</a>. Super Filovirus Sisters was made using an old version of Tiled, so some newer features are not supported.</p>
+	<p>Rather than create a new map from scratch, You can modify an existing map so that the layers and tilesets are already set up properly.</p>
+	<p>Every map should have exactly two layers. a tile layer named "tile_layer", and an object layer named "object_layer".</p>
+	<h3 id='tilesets'>Tilesets</h3>
+	<p>The map should use embedded tilesets. After the tileset is loaded by the game, <i>_tiles</i> will be appended to its name (except for the tileset named <i>tiles</i>). You should edit the tileset properties to set up collision etc.</p>
+	<p><ul><li><b>terrain</b> <ul><li><i>wall</i> - The tile is impassable</li><li><i>water</i> - The tile is impassable without River Boots.</li><li><i>mountain</i> - Indicates raised terrain. Can access overpasses.</li><li><i>overpass</i> - The tile can be walked over if accessed from a mountain tile, or walked under otherwise.</li><li><i>fringe</i> - The tile is displayed over the player.</li></ul>Other types of terrain don't do anything special on their own, but can be used for mob spawning etc.</li>
+	<li><b>dcol</b> - Directional collision. A comma separated list of 4 values which represent the top, right, bottom, and left edges. If greater than zero, that edge will have collision.</li>
+	<li><b>fringe_key, fringe_x, fringe_y</b> - Used for overpass and fringe tiles. Indicates which tile will be drawn over the player. Normally these values should point to this tile. fringe_key is the internal name of the tileset, and fringe_x and fringe_y are the xy coordinates of the tile within the tileset.</li></ul></p>
+	<h3 id="loadmap">Loading the map</h3>
+<pre><code data-language=javascript>preload_mod.push(function(){
+    load_map('example_map', 'mod/example/map.json');
+});</code></pre>
+	<h3 id='Map_Objects'>Map Objects</h3>
+	<p>Objects placed in the map will only appear in-game if they are a type the game recognizes. Here are the types, and how to use them.</p>
+	<p><ul><li><b>node</b> - Nodes don't do anything on their own, they serve as reference points. They are stored in the <em>nodes</em> object and are accessed using their name.</li>
+	<li><b id='map_checkpoint'>checkpoint</b> - Checkpoints heal the player when walked over, and also save the player's location. They can also be teleported to using a teleport scroll. However, in order to be teleported to, the checkpoint must be added to the <i>pentagrams</i> object. The checkpoint should also have a unique name within the map, and the name shouldn't contain an underscore.</li>
+	</ul></p>
+<pre><code data-language=javascript>//Create new category.
+pentagrams["Example Zone"]={};
+/*The key must be the name of the map and checkpoint,
+separated with an underscore. Here, example_map is the name of
+the map, and cp0 is the name of the checkpoint.*/
+pentagrams["Example Zone"].example_map_cp0 = "Example Destination";</code></pre>
+	<h3 id='Map_Data'>Map Data</h3>
+	<p>Every map should also have a mapdata object that describes its properties.</p>
+	<p>Here is a simple example:</p>
+<pre><code data-language=javascript>
+mapdata.example_map = {
+    edges: 'normal',
+    outside: true,
+    spawning: Mob.types.slime,
+    bg: 'forest'
+};</code></pre>
+	<p>Here is a list of the possible properties, and what they do:</p>
+	<h4 id='mapdata_edges'>edges</h4>
+	<p>If set to 'normal', tiles beyond the edge of the map will be empty. If set to 'clamp', the tiles on the edges of the map will be repeated beyond the edge. Default is normal.</p>
+	<h4 id='mapdata_outside'>outside</h4>
+	<p>If a map is <em>outside</em>, empty tiles will be water instead of walls.</p>
+	<h4 id='mapdata_spawning'>spawning</h4>
+	<p>Determines what kinds of mobs spawn in the map. Can also be a function that returns a type of mob. The function is passed the tile the mob will be spawning over as a parameter. This can be used to make different mob types spawn over different types of tiles.</p>
+	<h4 id='mapdata_mobtime'>mobtime</h4>
+	<p>In milliseconds, determines how often mobs will spawn in the map. Default is 7000.</p>
+	<h4 id='mapdata_mobcap'>mobcap</h4>
+	<p>Determines how many mobs can be spawned at once.</p>
+	<h4 id='mapdata_sun'>sun</h4>
+	<p>A function that determines how the reflection of the soul cluster (aka the sun) should be displayed. If the function returns true, and there is a node on the map named 'sun', then the sun's reflection will dynamically move relative to the location of that node.</p>
+<pre><code data-language=javascript>
+mapdata.example_map.sun=function(){
+    //this will make the sun invisible.
+    this.scale = {x:0, y:0};
+    //places a large sun in the center of the screen.
+    this.x = game.width/2;
+    this.y = game.height/2;
+    this.scale = {x:1.5, y:1.5};
+    //this makes the sun move dynamically.
+    return true
+};</code></pre>
+	<h4 id='mapdata_bg'>bg</h4>
+	<p>The name of the battle background that will be used in this map. Can also be a function which returns this value. The function is passed the terrain of the tile the mob was over as a parameter.</p>
+<pre><code data-language=javascript>
+mapdata.example_map.bg = function(terrain){
+    if (player.water_depth>0 && terrain == 'water'){ 
+        return switches.soulcluster ? 'water' : 'water_night';
+    }
+    return switches.soulcluster ? 'forest' : 'forest_night';
+};</code></pre>
+</div>
+
+<div class="window">
+	<h2 id='Hooks'>Hooks</h2>
+	<p>I have provided a few hooks into the code to make modding the game a bit easier. These hooks are arrays of functions. By adding a new function to the array, your function will be called by the game.</p>
+	<p>Here is a list of the existing hooks:</p>
+	<h3 id='init_mod'>init_mod</h3>
+	<p>Called when initializing the game, after the initial preload has finished.</p>
+	<h3 id='update_mod'>update_mod</h3>
+	<p>Called once every frame. Please use this sparingly.</p>
+	<h3 id='preload_mod'>preload_mod</h3>
+	<p>Called in the preload phase. Used to specify files to be preloaded.</p>
+	<h3 id='gui_mod'>gui_mod</h3>
+	<p>Called after creating the gui.</p>
+	<h3 id='save_options_mod'>save_options_mod</h3>
+	<h3 id='load_options_mod'>load_options_mod</h3>
+	<p>Used for saving and loading game options.</p>
+	<h3 id='input_mod'>input_mod</h3>
+	<p>Used for specifying new input keys.</p>
+	<h3 id='scenario_mod'>scenario_mod</h3>
+	<p>Called after the map is loaded. This is where you should create NPCs and objects to populate the map.</p>
+	<br>
+	<h2 id='Menu_Hooks'>Menu Hooks</h2>
+	<p>These hooks are a bit different from the others. Instead of containing functions, they contain menu items.</p>
+	<h3 id='options_mod'>options_mod</h3>
+	<h3 id='pause_menu_mod'>pause_menu_mod</h3>
+
+</div>
+<div class="window">
+	<h2 id='Overrides'>Overrides</h2>
+</div>
+
+</div><!-- wrapper -->
+</div><!-- sceen map -->
+
+<script src="rainbow.js"></script>
+
+</body>
+</html>

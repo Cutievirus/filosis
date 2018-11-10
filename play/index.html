@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Super Filovirus Sisters!</title>
+	<script src="phaser_2.9.3.js"></script>
+	<script src="phaser_override.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+	<div id='bootloader'>Loading...</div>
+	<div id='saveman' class='overlay'>
+		<h3>Save Manager</h3>
+		<a class='close_overlay'>✖</a>
+		<div id='filebox'>No save data found.</div>
+		<input type='file' id='import_save'><label for='import_save'>Import Save...</label>
+	</div>
+	<input type='text' id='textinput'>
+	<div id='errordiv' class='overlay'>
+		<a class='close_overlay'>✖</a>
+	</div>
+	<script src='saveman.js'></script>
+	<script src="game.js"></script>
+	<!-- MODS -->
+	<script src="mod/draco/script.js"></script>
+	<script src="mod/example/script.js"></script>
+	<!--<script src="mod/madness/script.js"></script>-->
+	<!-- /MODS -->
+</body>
+</html>

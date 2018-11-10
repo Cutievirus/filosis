@@ -1,0 +1,379 @@
+{"info":{
+    "contributors":["Dread-chan", "Some other faggot", "ANOTHER faggot", "faggot who masturbates on Beno hentai commission"]
+    ,"description":"An incomplete official translation to Japanese."
+},"dictionary":{
+    "Super Filovirus Sisters":
+    "スーパーフィロウイルスシスターズ"
+ 
+,"_section": "speakers"
+ 
+    ,"Ebola-chan": "エボラちゃん"
+    ,"Marburg-sama": "マールブルグさま"
+    ,"Lloviu-tan": "ヨヴュたん"
+    ,"Lloviu": "ヨヴュ"
+    ,"Malaria-sama": "マラリアさま"
+    ,"Plague-sama": "プレーグさま"
+    ,"Lepsy-tan": "レプシーたん"
+    ,"Smallpox": "ポックスちゃん"
+    ,"Naegleria": "ネグレリア"
+    ,"Nae-tan": "ネグたん"
+    ,"Joki": "ヨキ"
+    ,"Herpes-chan": "ヘルペスちゃん"
+    ,"Agent of Herpes": "ヘルペスの代理人"
+    ,"Rabies-chan": "レイビーズちゃん"
+    ,"Rabies": "レイビーズ"
+    ,"Sars-chan": "サーズちゃん"
+    ,"Sars": "サーズ"
+    ,"Eidzu": "エイズ"
+    ,"Eidzu I": "エイズ１"
+    ,"Eidzu II": "エイズ２"
+    ,"Chikun-chan": "チクンちゃん"
+    ,"Chikungunya": "チクングニア"
+    ,"Ammit-chan":"アメミットちゃん"
+    ,"Cure-chan": "キュアちゃん"
+    ,"Zmapp-chan": "ズィーマップちゃん"
+    ,"Zmapp": "ズィーマップ"
+    ,"WHO": "ＷＨＯちゃん"
+    ,"Draco": "ＤＲＡＣＯちゃん"
+    ,"Parvo-tan": "パルヴォたん"
+    ,"Parvo": "パルヴォ"
+    ,"Zika-chan": "ジカちゃん"
+    ,"Shiro": "シロ"
+    ,"Minion": "ミニオン"
+    ,"Pestilence": "ペスティレンス"
+    ,"War": "ウォー"
+    ,"Death": "デス"
+    ,"Famine": "ファミーヌ"
+ 
+,"_section": "monsters"
+ 
+    ,"Slime": "スライム"
+    ,"Mega Slime": "メガスライム"
+    ,"Beholden": "ビホルデン"
+    ,"Skulliki": "スクルリキ"
+    ,"Skulmanter": "スクルマンター"
+    ,"Lurker": "ラーカー"
+    ,"Vampire Bat": "吸血コウモリ"
+    ,"Mantrap": "マントラップ"
+    ,"Graven": "グレーベン"
+    ,"Mimick": "ミミック"
+    ,"Sanishark": "サニシャーク"
+    ,"Rhinosaurus": "ライノサウルス"
+    ,"Wooly Rhino": "ウーリーライノ"
+    ,"Wolven": "ウルフン"
+    ,"Tengarot": "テンガロット"
+    ,"Wraith": "レイス"
+    ,"Polyduck": "ポリダック"
+    ,"Eel": "うなぎ"
+    ,"Doggie": "わんちゃん"
+    ,"Greblin": "グレブリン"
+    ,"Cancer": "キャンサー"
+    ,"Sally": "サリー"
+    ,"Throne": "ズーロヌ"
+    ,"Sarsagent": "サーズの代理人"
+ 
+,"_section": "skills"
+ 
+    ,"Attack": "攻撃"
+  ,"Default attack move.":
+    "標準攻撃する。"
+    ,"Strike": "叩く"
+  ,"Basic attack move.":
+    "基本的な攻撃をする。"
+    ,"Love Tap": "愛タップ"
+  ,"A weak attack lacking any malice. It can be used to bide for time.":
+    "A weak attack lacking any malice. It can be used to bide for time."
+    ,"Hemorrhage": "出血"
+,"Causes the enemy to lose health over time.":
+    "Causes the enemy to lose health over time."
+ 
+    ,"Vampire Bite": "血を吸う"
+    ,"Lavuri Aero": "ラブリエアロ"
+   ,"Lets loose a single arrow to quickly strike the enemy.":
+    "Lets loose a single arrow to quickly strike the enemy."
+  ,"A fast and light attack.":
+    "A fast and light attack."
+ 
+    ,"Enjel Rain": "エンジェルレイン"
+    ,"A holy rain of arrows that strikes every enemy.":
+    "A holy rain of arrows that strikes every enemy."
+    ,"Debiru Kiss": "デビルキッス"
+    ,"Charms the target, reducing its stats and making it less likely to attack Lloviu-tan. Also makes it take slightly more damage from arrow attacks. Does not stack.": "Charms the target, reducing its stats and making it less likely to attack Lloviu-tan. Also makes it take slightly more damage from arrow attacks. Does not stack."
+ 
+    ,"Charms the target, reducing its stats. Does not stack.":
+    "Charms the target, reducing its stats. Does not stack."
+ 
+    ,"Hellfire": "ヘルファイアー"
+    ,"Rains heavy fire from the sky, striking all enemies.": "Rains heavy fire from the sky, striking all enemies."
+ 
+    ,"Blood Burst": "血バースト"
+    ,"Effective against bleeding enemies.":
+    "Effective against bleeding enemies."
+ 
+   ,"Blood Run": "血走る"
+,"Extends the duration of bleeding effects. Also undoes any coagulants, making them bleed again.": "Extends the duration of bleeding effects. Also undoes any coagulants, making them bleed again."
+ 
+,"Blood Boost": "血ブースト"
+,"Blood Let": "流血"
+ 
+,"Eye Beam": "目のビーム"
+ 
+ 
+    
+ 
+    ,"Trick Punch":
+    "トリックパンチ"
+ 
+    ,"Surprises the enemy, lowering their speed for a short time.":
+    "Surprises the enemy, lowering their speed for a short time."
+ 
+    ,"Pandemic":
+    "パンデミック"
+ 
+    ,"Infects all enemies with hemorrhages.":
+    "Infects all enemies with hemorrhages."
+ 
+    ,"Spread Infection":
+    "感染スプレッド"
+ 
+    ,"Spreads a bleeding effect to other enemies.":
+    "Spreads a bleeding effect to other enemies."
+ 
+    ,"Skull Beam":
+    "どくろビーム"
+ 
+    ,"Shoots lasers from the eyes of the skull, dealing more damage for each bleed effect on the target.":
+    "Shoots lasers from the eyes of the skull, dealing more damage for each bleed effect on the target."
+ 
+    ,"ヘックス":
+    "Hex"
+ 
+    ,"Does more damage for each status effect on the enemy.":
+    "Does more damage for each status effect on the enemy."
+ 
+    ,"Swarm":
+    "スウォーム"
+ 
+    ,"Swarm Drain":
+    "スウォームドレイン"
+ 
+    ,"Vital Aero":
+    "ヴァイタル エアロ"
+ 
+    ,"Sabotage":
+    "サボタージュ"
+ 
+    ,"Sabotages the enemy, greatly lowering their attack for a short time.":
+    "Sabotages the enemy, greatly lowering their attack for a short time."
+ 
+    ,"Seizure":
+    "シーザー"
+ 
+    ,"Seizes control of the target's mind, reducing their speed. Does not stack.":
+    "Seizes control of the target's mind, reducing their speed. Does not stack."
+ 
+    ,"Flashing Lights":
+    "フラッシング ライト"
+ 
+    ,"Devastate":
+    "荒らす"
+ 
+    ,"Devastates the target's immune system, lowering defense to zero.":
+    "Devastates the target's immune system, lowering defense to zero."
+ 
+    ,"Dekopin":
+    "デコピン"
+ 
+    ,"Flicks the target in the forehead, dealing minimal damage.":
+    "Flicks the target in the forehead, dealing minimal damage."
+ 
+    ,"Share Pain":
+    "共有痛み"
+ 
+    ,"Twin Flight":
+    "ツインフライト"
+ 
+    ,"Aurum Vital":
+    "アウルム ヴァイタル"
+ 
+    ,"A strong healing skill.":
+    "大回復スペル"
+ 
+    ,"Argent Vital":
+    "アージェント ヴァイタル"
+ 
+    ,"A fast healing skill.":
+    "速い回復スキル"
+ 
+    ,"Aes Vital":
+    "エース ヴァイタル"
+ 
+    ,"A weak healing spell.":
+    "小回復スペル"
+ 
+    ,"Platina Vital":
+    "プラティナヴァイタル"
+ 
+    ,"Heals all allies.":
+    "味方全員回復する"
+ 
+    ,"Malus Vital":
+    "マルス ヴァイタル"
+ 
+    ,"Prevents the target from being healed, and redirects heals to the user instead.":
+    "Prevents the target from being healed, and redirects heals to the user instead."
+ 
+    ,"Regenerate":
+    "リジェネ"
+ 
+    ,"A slow self-heal that restores all health.":
+    "A slow self-heal that restores all health."
+ 
+    ,"Cleanse":
+    "浄化"
+ 
+    ,"Removes one random effect from an ally.":
+    "味方単体1つのランダムな効果を除去する."
+ 
+    ,"Cleanse Wave":
+    "浄化ウェーブ"
+ 
+    ,"Cures all ailments.":
+    "全病気を回復する"
+ 
+    ,"Purge":
+    "パージ"
+ 
+    ,"Removes one random effect from an enemy.":
+    "敵単体1つのランダムな効果を除去する."
+ 
+    ,"Cure": "キュア"
+ 
+    ,"Artillery Shot":
+    "砲兵ショット"
+ 
+    ,"Blasts the target with a shot from a cannon.":
+    "敵単体に大砲を撃つ"
+ 
+    ,"Rail Cannon":
+    "レールキャノン"
+ 
+    ,"Propels a projectile forward at amazing speeds using magnetic force.":
+    "Propels a projectile forward at amazing speeds using magnetic force."
+ 
+    ,"Tactical Nuke":
+    "戦術的ヌーク"
+ 
+    ,"A super powerful blast. The shockwave damages everyone on the field.":
+    "A super powerful blast. The shockwave damages everyone on the field."
+ 
+    ,"Wing Flare":
+    "ウィングフレア"
+ 
+    ,"Makes enemies more likely to attack the user.":
+    "使用者の狙われやすさを上げる。"
+ 
+    ,"Vampire Bite":
+    "Vampire Bite"
+ 
+    ,"Sucks life out of the enemy.":
+    "敵単体のライフを吸収する。"
+ 
+    ,"Haunt":
+    "ハウント"
+ 
+    ,"Sends an evil spirit to haunt the target, cutting its max HP.":
+    "Sends an evil spirit to haunt the target, cutting its max HP."
+ 
+    ,"Slowness":
+    "遅さ"
+ 
+    ,"Wanko Mayhem":
+    "わんこメイヘム"
+ 
+    ,"Isolate":
+    "分離"
+ 
+    ,"Poison":
+    "毒"
+ 
+    ,"Poison Wave":
+    "毒ウェーブ"
+ 
+    ,"Poison Strike":
+    "毒ストライク"
+ 
+    ,"Does more damage against poisoned foes.":
+    "相手が毒状態の時大ダメージする"
+ 
+    ,"Rip Current":
+    "リップ カレント"
+ 
+    ,"Lick":
+    "舐める"
+ 
+    ,"Blaze":
+    "ブレイズ"
+ 
+    ,"Char":
+    "チャー"
+ 
+    ,"Inferno":
+    "インファーノ"
+ 
+    ,"Summon":
+    "サモン"
+ 
+    ,"Martingale":
+    "マーチンゲール"
+ 
+    ,"Has a chance of being delayed, and becomes more powerful each time it is.":
+    "Has a chance of being delayed, and becomes more powerful each time it is."
+ 
+    ,"Tricker Treat":
+    "トリッカー・トリート"
+ 
+    ,"Randomly grants some effect to an ally or enemy.":
+    "味方か敵単体にランダムな効果をを与える。"
+ 
+    ,"Thief":
+    "泥棒"
+ 
+    ,"Split":
+    "分割"
+ 
+    ,"Shuffle":
+    "シャッフル"
+ 
+    ,"Shroud":
+    "シューラード"
+ 
+    ,"Reflect":
+    "リフレク"
+ 
+    ,"Reflects all status conditions onto the target.":
+    "Reflects all status conditions onto the target."
+ 
+    ,"Timer Bomb":
+    "タイマーボム"
+ 
+    ,"Causes damage to the user after a few seconds.":
+    "Causes damage to the user after a few seconds."
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    ,"The soul of {0} has been devoured. {1}":
+    "{0}の魂が食べられた。{1}"
+    ,"Level up!":
+    "レベルアップ！"
+    ,"{0} xp gained.":
+    "{0} xp 獲得。"
+ 
+    ,"Acquired {0} {1}!":
+    "{0} {1}獲得した!"
+}}

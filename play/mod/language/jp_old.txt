@@ -1,0 +1,68 @@
+﻿{"info":{
+	"contributors":["Dread-chan"]
+	,"description":"An incomplete official translation to Japanese."
+},"dictionary":{
+	"Super Filovirus Sisters":
+	"スーパーフィロウイルスシスターズ"
+
+	,"Ebola-chan": "エボラちゃん"
+	,"Marburg-sama": "マールブルグさま"
+	,"Lloviu-tan": "ヨヴュたん"
+	,"Lloviu": "ヨヴュ"
+	,"Malaria-sama": "マラリアさま"
+	,"Plague-sama": "プレーグさま"
+	,"Smallpox": "ポックスちゃん"
+	,"Naegleria": "ネグレリア"
+	,"Nae-tan": "ネグたん"
+	,"Joki": "ヨキ"
+	,"Rabies-chan": "レイビーズちゃん"
+	,"Rabies": "レイビーズ"
+	,"Sars-chan": "サーズちゃん"
+	,"Sars": "サーズ"
+	,"Eidzu": "エイズ"
+	,"Eidzu I": "エイズ１"
+	,"Eidzu II": "エイズ２"
+	,"Chikun-chan": "チクンちゃん"
+	,"Chikungunya": "チクングニア"
+	,"Ammit-chan":"アメミットちゃん"
+	,"Cure-chan": "キュアーちゃん"
+	,"Zmapp-chan": "ズィーマップちゃん"
+	,"Zmapp": "ズィーマップ"
+	,"WHO": "ＷＨＯちゃん"
+	,"Pestilence": "ペスティレンス"
+	,"War": "ウォー"
+	,"Death": "デース"
+
+	,"Slime": "スライム"
+	,"Mega Slime": "メガスライム"
+	,"Beholden": "ビホルデン"
+	,"Skulliki": "スクルリキ"
+	,"Skulmanter": "スクルマンター"
+	,"Lurker": "ラーカー"
+	,"Vampire Bat": "吸血コウモリ"
+	,"Mantrap": "マントラップ"
+	,"Graven": "グレーベン"
+	,"Mimick": "ミミック"
+	,"Sanishark": "サニシャーク"
+	,"Rhinosaurus": "ライノサウルス"
+	,"Wooly Rhino": "ウーリーライノ"
+	,"Tengarot": "テンガロット"
+	,"Wraith": "レース"
+
+
+
+
+	,"Attack": "こうげき"
+	,"Strike": "たたく"
+	,"Vampire Bite": "血を吸う"
+
+	,"The soul of {0} has been devoured. {1}":
+	"{0}の魂が食べられた。{1}"
+	,"Level up!":
+	"レベルアップ！"
+	,"{0} xp gained.":
+	"{0} xp gained."
+
+	,"Acquired {0} {1}!":
+	"Acquired {0} {1}!"
+}}

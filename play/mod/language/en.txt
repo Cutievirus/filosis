@@ -1,0 +1,3512 @@
+﻿{"info":{
+	"contributors":[],
+	"description":"The default language file."
+},"dictionary":{
+
+"_section": "speakers"
+
+	,"Marburg-sama":
+	"Marburg-sama"
+
+	,"Ebola-chan":
+	"Ebola-chan"
+
+	,"Lloviu-tan":
+	"Lloviu-tan"
+
+	,"Malaria-sama":
+	"Malaria-sama"
+
+	,"Joki":
+	"Joki"
+
+	,"Herpes-chan":
+	"Herpes-chan"
+
+	,"Agent of Herpes":
+	"Agent of Herpes"
+
+	,"Plague-sama":
+	"Plague-sama"
+
+	,"Smallpox":
+	"Smallpox"
+
+	,"Lepsy-tan":
+	"Lepsy-tan"
+
+	,"Parvo-tan":
+	"Parvo-tan"
+
+	,"Zika-chan":
+	"Zika-chan"
+
+	,"Nae-tan":
+	"Nae-tan"
+
+	,"Eidzu I":
+	"Eidzu I"
+
+	,"Eidzu II":
+	"Eidzu II"
+
+	,"Sars-chan":
+	"Sars-chan"
+
+	,"Rabies-chan":
+	"Rabies-chan"
+
+	,"Chikun-chan":
+	"Chikun-chan"
+
+	,"Ammit-chan":
+	"Ammit-chan"
+
+	,"Shiro":
+	"Shiro"
+
+	,"Wraith":
+	"Wraith"
+
+	,"Pestilence":
+	"Pestilence"
+
+	,"Famine":
+	"Famine"
+
+	,"War":
+	"War"
+
+	,"Cure-chan":
+	"Cure-chan"
+
+	,"Zmapp-chan":
+	"Zmapp-chan"
+
+	,"WHO-chan":
+	"WHO-chan"
+
+	,"Minion":
+	"Minion"
+
+	,"Slime":
+	"Slime"
+
+	,"Draco":
+	"Draco"
+
+,"_section": "formes"
+
+	,"Koakuma":
+	"Koakuma"
+
+	,"A mischievous devil that plays tricks on her foes.":
+	"A mischievous devil that plays tricks on her foes."
+
+	,"Cupid":
+	"Cupid"
+
+	,"A sleepy angel that specializes in helping her allies.":
+	"A sleepy angel that specializes in helping her allies."
+
+	,"Balance":
+	"Balance"
+
+	,"A righteous judge who delivers punishment on her foes.":
+	"A righteous judge who delivers punishment on her foes."
+
+	,"Chaos":
+	"Chaos"
+
+	,"A dark caster who rains terrible curses on her foes.":
+	"A dark caster who rains terrible curses on her foes."
+
+	,"Siege":
+	"Siege"
+
+	,"Fortified to boost attack and defense capability.":
+	"Fortified to boost attack and defense capability."
+
+	,"Assault":
+	"Assault"
+
+	,"Sheds all defense to become a swift killing machine.":
+	"Sheds all defense to become a swift killing machine."
+
+,"_section": "items"
+
+	,"Steel Pipe":
+	"Steel Pipe"
+
+	,"A crude makeshift weapon. Good for bashing people over the head.":
+	"A crude makeshift weapon. Good for bashing people over the head."
+
+	,"Kendo Stick":
+	"Kendo Stick"
+
+	,"A bamboo sword used in Kendo, a Japanese martial art. Does more damage at lower levels.":
+	"A bamboo sword used in Kendo, a Japanese martial art. Does more damage at lower levels."
+
+	,"Toy Hammer":
+	"Toy Hammer"
+
+	,"A hammer made of plastic. It doesn't do much damage, but it can be used to stun enemies.":
+	"A hammer made of plastic. It doesn't do much damage, but it can be used to stun enemies."
+
+	,"Lovely Bow":
+	"Lovely Bow"
+
+	,"Increases the damage of arrow skills. In skilled hands, unlocks a special skill.":
+	"Increases the damage of arrow skills. In skilled hands, unlocks a special skill."
+
+	,"Fan":
+	"Fan"
+
+	,"A fan given by Malaria-sama. Ever so slightly boosts every stat.":
+	"A fan given by Malaria-sama. Ever so slightly boosts every stat."
+
+	,"Sam Sword":
+	"Sam Sword"
+
+	,"A curved sword that requires a bit of skill to use. It cuts better the faster you swing it.":
+	"A curved sword that requires a bit of skill to use. It cuts better the faster you swing it."
+
+	,"Broad Sword":
+	"Broad Sword"
+
+	,"A large sword made to cleave through foes.":
+	"A large sword made to cleave through foes."
+
+	,"Vampire Blade":
+	"Vampire Blade"
+
+	,"A powerful sword that gradually drains the wielder's life.":
+	"A powerful sword that gradually drains the wielder's life."
+
+	,"Mister Sword":
+	"Mister Sword"
+
+	,"A sword with a mind of its own. Attack power varies randomly.":
+	"A sword with a mind of its own. Attack power varies randomly."
+
+	,"Pestilent":
+	"Pestilent"
+
+	,"Old Pest's trusty sword. The blade is adorned with runic lettering. Poison seeps from the blade.":
+	"Old Pest's trusty sword. The blade is adorned with runic lettering. Poison seeps from the blade."
+
+	,"Worlds Sharp":
+	"Worlds Sharp"
+
+	,"The sharpest cheddar cheese knife in the world. It's too stale to eat.":
+	"The sharpest cheddar cheese knife in the world. It's too stale to eat."
+
+	,"Flame Razer":
+	"Flame Razer"
+
+	,"The sharpest and hottest laser razor around.":
+	"The sharpest and hottest laser razor around."
+
+	,"Chainsaw":
+	"Chainsaw"
+
+	,"A very powerful weapon. Consumes 1 oil every attack to remain effective.":
+	"A very powerful weapon. Consumes 1 oil every attack to remain effective."
+
+	,"Torn Dress":
+	"Torn Dress"
+
+	,"It's torn at several parts, but it's still somehow wearable.":
+	"It's torn at several parts, but it's still somehow wearable."
+
+	,"Leather Armor":
+	"Leather Armor"
+
+	,"Armor made from hardened leather. It offers light protection.":
+	"Armor made from hardened leather. It offers light protection."
+
+	,"Thorn Armor":
+	"Thorn Armor"
+
+	,"Thorns coat this armor, causing harm to attackers.":
+	"Thorns coat this armor, causing harm to attackers."
+
+	,"Magic Armor":
+	"Magic Armor"
+
+	,"Defends well against magic, but restricts movement.":
+	"Defends well against magic, but restricts movement."
+
+	,"Plate Armor":
+	"Plate Armor"
+
+	,"Armor made from solid metal plates. It offers high protection but is heavy.":
+	"Armor made from solid metal plates. It offers high protection but is heavy."
+
+	,"Death's Mantle":
+	"Death's Mantle"
+
+	,"The shroud worn by death itself. Provides immunity to death as long as you have allies.":
+	"The shroud worn by death itself. Provides immunity to death as long as you have allies."
+
+	,"Scythe":
+	"Scythe"
+
+	,"Capable of slaying monsters with death immunity.":
+	"Capable of slaying monsters with death immunity."
+
+	,"Wood Shield":
+	"Wood Shield"
+
+	,"Provides defense, but is weak to fire.":
+	"Provides defense, but is weak to fire."
+
+	,"Tower Shield":
+	"Tower Shield"
+
+	,"Provides great defense at the cost of offense and mobility.":
+	"Provides great defense at the cost of offense and mobility."
+
+	,"Glass Shield":
+	"Glass Shield"
+
+	,"A shield that defends great against magic. It shatters easily, but regenerates after battle.":
+	"A shield that defends great against magic. It shatters easily, but regenerates after battle."
+
+	,"Swift Shoe":
+	"Swift Shoe"
+
+	,"Slightly raises speed and greatly increases chance of escape.":
+	"Slightly raises speed and greatly increases chance of escape."
+
+	,"Heart Pin":
+	"Heart Pin"
+
+	,"A cute heart-shaped pin to be worn in the hair. Its magical properties increases the wearer's health.":
+	"A cute heart-shaped pin to be worn in the hair. Its magical properties increases the wearer's health."
+
+	,"Kill":
+	"Kill"
+
+	,"Dev item. Kills target.":
+	"Dev item. Kills target."
+
+	,"River Filter":
+	"River Filter"
+
+	,"Allows collection of water from the Tuonen river without assistance from Joki.":
+	"Allows collection of water from the Tuonen river without assistance from Joki."
+
+	,"River Boots":
+	"River Boots"
+
+	,"Not an actual pair of boots, but actually a trinket. It seems this allows you to wade through the waters of the Tuonen River.":
+	"Not an actual pair of boots, but actually a trinket. It seems this allows you to wade through the waters of the Tuonen River."
+
+	,"Glass Vial":
+	"Glass Vial"
+
+	,"Can be used to collect various liquids to use as potion bases.":
+	"Can be used to collect various liquids to use as potion bases."
+
+	,"Volatile Oil":
+	"Volatile Oil"
+
+	,"Can be used as a base to create throwing potions.":
+	"Can be used as a base to create throwing potions."
+
+	,"Pine Sap":
+	"Pine Sap"
+
+	,"Can be used as a base to create basic potions. Gathered from pine trees.":
+	"Can be used as a base to create basic potions. Gathered from pine trees."
+
+	,"Sweet Nectar":
+	"Sweet Nectar"
+
+	,"Can be used as a base to create high quality potions. Gathered from flowers.":
+	"Can be used as a base to create high quality potions. Gathered from flowers."
+
+	,"Black Water":
+	"Black Water"
+
+	,"Water pulled from the Tuonen River. Used as a potion base to remove status conditions. Consuming it raw may cause severe amnesia.":
+	"Water pulled from the Tuonen River. Used as a potion base to remove status conditions. Consuming it raw may cause severe amnesia."
+
+	,"Medical Waste":
+	"Medical Waste"
+
+	,"Discarded medical supplies. It could probably be used to make healing items.":
+	"Discarded medical supplies. It could probably be used to make healing items."
+
+	,"Poison Sludge":
+	"Poison Sludge"
+
+	,"A highly toxic substance. Handle with care.":
+	"A highly toxic substance. Handle with care."
+
+	,"Grave Dust":
+	"Grave Dust"
+
+	,"Cursed residue left behind from an undead creature.":
+	"Cursed residue left behind from an undead creature."
+
+	,"Silver Dust":
+	"Silver Dust"
+
+	,"Overexposure may turn skin blue.":
+	"Overexposure may turn skin blue."
+
+	,"Star Puff":
+	"Star Puff"
+
+	,"A puffy sea star, made of dreams and magic.":
+	"A puffy sea star, made of dreams and magic."
+
+	,"Venom Gland":
+	"Venom Gland"
+
+	,"Taken from a venomous beast.":
+	"Taken from a venomous beast."
+
+	,"Aloe Vera":
+	"Aloe Vera"
+
+	,"Can be used to heal minor burns or as a medical ingredient.":
+	"Can be used to heal minor burns or as a medical ingredient."
+
+	,"Plant Fiber":
+	"Plant Fiber"
+
+	,"Fibrous plant parts. It can probably be woven into parchment":
+	"Fibrous plant parts. It can probably be woven into parchment"
+
+	,"Clumpy Fur":
+	"Clumpy Fur"
+
+	,"Matted clumps of fur taken from a beast of some sort.":
+	"Matted clumps of fur taken from a beast of some sort."
+
+	,"Cloth Scraps":
+	"Cloth Scraps"
+
+	,"Ripped scraps of cloth.":
+	"Ripped scraps of cloth."
+
+	,"Cinders":
+	"Cinders"
+
+	,"Burning bits of something. They're still very hot.":
+	"Burning bits of something. They're still very hot."
+
+	,"Frozen Flesh":
+	"Frozen Flesh"
+
+	,"Frozen bits of flesh.":
+	"Frozen bits of flesh."
+
+	,"Meat":
+	"Meat"
+
+	,"Succulent bits of meat. They can be used to distract certain enemies.":
+	"Succulent bits of meat. They can be used to distract certain enemies."
+
+	,"Portal Scroll":
+	"Portal Scroll"
+
+	,"Teleports the user to any previously activated pentagram.":
+	"Teleports the user to any previously activated pentagram."
+
+	,"Swarm Scroll":
+	"Swarm Scroll"
+
+	,"Casts Swarm on the target.":
+	"Casts Swarm on the target."
+
+	,"Plague Scroll":
+	"Plague Scroll"
+
+	,"Makes the target spread its diseases to its allies.":
+	"Makes the target spread its diseases to its allies."
+
+	,"Slow Scroll":
+	"Slow Scroll"
+
+	,"Slows the target.":
+	"Slows the target."
+
+	,"Parchment":
+	"Parchment"
+
+	,"Used for the creation of scrolls.":
+	"Used for the creation of scrolls."
+
+	,"Bug Parts":
+	"Bug Parts"
+
+	,"Broken bits of bugs.":
+	"Broken bits of bugs."
+
+	,"Ointment":
+	"Ointment"
+
+	,"Removes 1 negative status effect.":
+	"Removes 1 negative status effect."
+
+	,"Antidote":
+	"Antidote"
+
+	,"Heals poison effects when ingested.":
+	"Heals poison effects when ingested."
+
+	,"Burn Heal":
+	"Burn Heal"
+
+	,"Heals burns.":
+	"Heals burns."
+
+	,"Anticurse":
+	"Anticurse"
+
+	,"Removes all sorts of curses.":
+	"Removes all sorts of curses."
+
+	,"Antifreeze":
+	"Antifreeze"
+
+	,"Remove all cold effects.":
+	"Remove all cold effects."
+
+	,"Bleach":
+	"Bleach"
+
+	,"Remove all status effects from the target.":
+	"Remove all status effects from the target."
+
+	,"Repel":
+	"Repel"
+
+	,"Keeps monsters away for a short time.":
+	"Keeps monsters away for a short time."
+
+	,"Life Crystal":
+	"Life Crystal"
+
+	,"Restores health.":
+	"Restores health."
+
+	,"Dark Crystal":
+	"Dark Crystal"
+
+	,"Removes curses.":
+	"Removes curses."
+
+	,"Void Crystal":
+	"Void Crystal"
+
+	,"Used to operate void gates.":
+	"Used to operate void gates."
+
+	,"Bandage":
+	"Bandage"
+
+	,"Restores health and stops bleeding.":
+	"Restores health and stops bleeding."
+
+	,"Health Drink":
+	"Health Drink"
+
+	,"Restores a moderate amount of health.":
+	"Restores a moderate amount of health."
+
+	,"Health Tonic":
+	"Health Tonic"
+
+	,"Restores a lot of health.":
+	"Restores a lot of health."
+
+	,"Speed Potion":
+	"Speed Potion"
+
+	,"Raises speed for a short time.":
+	"Raises speed for a short time."
+
+	,"Burst Potion":
+	"Burst Potion"
+
+	,"Provides a quick burst of speed.":
+	"Provides a quick burst of speed."
+
+	,"Excel Potion":
+	"Excel Potion"
+
+	,"Fills the excel meter by half.":
+	"Fills the excel meter by half."
+
+	,"Excel Tonic":
+	"Excel Tonic"
+
+	,"Fills the excel meter to the top!":
+	"Fills the excel meter to the top!"
+
+	,"Poison Bomb":
+	"Poison Bomb"
+
+	,"Poisons the target.":
+	"Poisons the target."
+
+	,"Curse Bomb":
+	"Curse Bomb"
+
+	,"Curses the target.":
+	"Curses the target."
+
+	,"Fire Bomb":
+	"Fire Bomb"
+
+	,"Burns the target.":
+	"Burns the target."
+
+	,"Ice Bomb":
+	"Ice Bomb"
+
+	,"Chills the target.":
+	"Chills the target."
+
+	,"Cumberground":
+	"Cumberground"
+
+	,"A useless piece of garbage. Maybe someone else can find value in this item.":
+	"A useless piece of garbage. Maybe someone else can find value in this item."
+
+	,"Glass Shards":
+	"Glass Shards"
+
+	,"Jagged shards of glass. Can be reformed into glass vials through glass blowing.":
+	"Jagged shards of glass. Can be reformed into glass vials through glass blowing."
+
+	,"Water Bottle":
+	"Water Bottle"
+
+	,"Used to spray water at things.":
+	"Used to spray water at things."
+
+	,"Tunnel Key":
+	"Tunnel Key"
+
+	,"Opens up Smallpox's maintenance tunnel. The entrance to the tunnel is in a building south of the black tower.":
+	"Opens up Smallpox's maintenance tunnel. The entrance to the tunnel is in a building south of the black tower."
+
+	,"Trapdoor Key":
+	"Trapdoor Key"
+
+	,"Opens up the trapdoors on Earth.":
+	"Opens up the trapdoors on Earth."
+
+	,"Blood Sample":
+	"Blood Sample"
+
+	,"A sample of human blood. It is marked with a white band.":
+	"A sample of human blood. It is marked with a white band."
+
+	,"A sample of human blood. It is marked with a black band.":
+	"A sample of human blood. It is marked with a black band."
+
+	,"Necrotoxin":
+	"Necrotoxin"
+
+	,"A substance specially developed to destroy living flesh.":
+	"A substance specially developed to destroy living flesh."
+
+	,"Necrotoxin Recipe":
+	"Necrotoxin Recipe"
+
+	,"Allows War to synthesize additional necrotoxin.":
+	"Allows War to synthesize additional necrotoxin."
+
+	,"Love Tonic":
+	"Love Tonic"
+
+	,"Medicine to help Lloviu-tan feel better.":
+	"Medicine to help Lloviu-tan feel better."
+
+	,"Human Soul":
+	"Human Soul"
+
+	,"The souls of humanity.":
+	"The souls of humanity."
+
+	,"Nae's Soul":
+	"Nae's Soul"
+
+	,"Naegleria":
+	"Naegleria"
+
+	,"Naegleria's soul. If consumed it will grant experience. If kept it can be used to revive Naegleria.":
+	"Naegleria's soul. If consumed it will grant experience. If kept it can be used to revive Naegleria."
+
+	,"Chikun's Soul":
+	"Chikun's Soul"
+
+	,"Chikungunya":
+	"Chikungunya"
+
+	,"Chikungunya's soul. If consumed it will grant experience. If kept it can be used to revive Chikungunya.":
+	"Chikungunya's soul. If consumed it will grant experience. If kept it can be used to revive Chikungunya."
+
+	,"Eidzu's Soul":
+	"Eidzu's Soul"
+
+	,"Eidzu":
+	"Eidzu"
+
+	,"Eidzu's soul. If consumed it will grant experience. If kept it can be used to revive Eidzu.":
+	"Eidzu's soul. If consumed it will grant experience. If kept it can be used to revive Eidzu."
+
+	,"Sars' Soul":
+	"Sars' Soul"
+
+	,"Sars":
+	"Sars"
+
+	,"Sars' soul. If consumed it will grant experience. If kept it can be used to revive Sars.":
+	"Sars' soul. If consumed it will grant experience. If kept it can be used to revive Sars."
+
+	,"Rabies' Soul":
+	"Rabies' Soul"
+
+	,"Rabies":
+	"Rabies"
+
+	,"Rabies' soul. If consumed it will grant experience. If kept it can be used to revive Rabies.":
+	"Rabies' soul. If consumed it will grant experience. If kept it can be used to revive Rabies."
+
+	,"Lloviu's Soul":
+	"Lloviu's Soul"
+
+	,"Lloviu":
+	"Lloviu"
+
+	,"Lloviu's soul. If consumed it will grant experience. If kept it can be used to revive Lloviu.":
+	"Lloviu's soul. If consumed it will grant experience. If kept it can be used to revive Lloviu."
+
+	,"Soul Shard":
+	"Soul Shard"
+
+	,"A fragment of a broken soul. It probably contains a bit of experience.":
+	"A fragment of a broken soul. It probably contains a bit of experience."
+
+	,"Excel Orb":
+	"Excel Orb"
+
+	,"Permanently unlocks a super-powered transformation for one of your heroes.":
+	"Permanently unlocks a super-powered transformation for one of your heroes."
+
+	,"SP Orb":
+	"SP Orb"
+
+	,"Human Skull":
+	"Human Skull"
+
+	,"Property of Ebola-chan.":
+	"Property of Ebola-chan."
+
+	,"When held by Ebola-chan it can be used to shoot lasers from the eyes, dealing extra damage for each bleed effect on the enemy.":
+	"When held by Ebola-chan it can be used to shoot lasers from the eyes, dealing extra damage for each bleed effect on the enemy."
+
+	,"Shrunken Head":
+	"Shrunken Head"
+
+	,"A gift from Zika-chan. Grants a special skill that deals more damage for each status effect on the enemy.":
+	"A gift from Zika-chan. Grants a special skill that deals more damage for each status effect on the enemy."
+
+	,"Spell Book":
+	"Spell Book"
+
+	,"For testing purposes.":
+	"For testing purposes."
+
+	,"Coagulat Tome":
+	"Coagulat Tome"
+
+	,"Teaches the coagulate skill, which locks effect slots when used after Hemorrhage.":
+	"Teaches the coagulate skill, which locks effect slots when used after Hemorrhage."
+
+	,"Malus Vital Tome":
+	"Malus Vital Tome"
+
+	,"Teaches the Malus Vital skill, which prevents targets from healing.":
+	"Teaches the Malus Vital skill, which prevents targets from healing."
+
+,"_section": "skills"
+
+	,"Attack":
+	"Attack"
+
+	,"Default attack move.":
+	"Default attack move."
+
+	,"Strike":
+	"Strike"
+
+	,"Basic attack move.":
+	"Basic attack move."
+
+	,"Love Tap":
+	"Love Tap"
+
+	,"A weak attack lacking any malice. It can be used to bide for time.":
+	"A weak attack lacking any malice. It can be used to bide for time."
+
+	,"Hemorrhage":
+	"Hemorrhage"
+
+	,"Causes the enemy to lose health over time.":
+	"Causes the enemy to lose health over time."
+
+	,"Blood Burst":
+	"Blood Burst"
+
+	,"Effective against bleeding enemies.":
+	"Effective against bleeding enemies."
+
+	,"Coagulate":
+	"Coagulate"
+
+	,"Converts bleed effects into scabs, hindering the enemy.":
+	"Converts bleed effects into scabs, hindering the enemy."
+
+	,"Blood Run":
+	"Blood Run"
+
+	,"Extends the duration of bleeding effects. Also undoes any coagulants, making them bleed again.":
+	"Extends the duration of bleeding effects. Also undoes any coagulants, making them bleed again."
+
+	,"Blood Boost":
+	"Blood Boost"
+
+	,"Blood Let":
+	"Blood Let"
+
+	,"Trick Punch":
+	"Trick Punch"
+
+	,"Surprises the enemy, lowering their speed for a short time.":
+	"Surprises the enemy, lowering their speed for a short time."
+
+	,"Lavuri Aero":
+	"Lavuri Aero"
+
+	,"Lets loose a single arrow to quickly strike the enemy.":
+	"Lets loose a single arrow to quickly strike the enemy."
+
+	,"A fast and light attack.":
+	"A fast and light attack."
+
+	,"Enjel Rain":
+	"Enjel Rain"
+
+	,"A holy rain of arrows that strikes every enemy.":
+	"A holy rain of arrows that strikes every enemy."
+
+	,"Hellfire":
+	"Hellfire"
+
+	,"Rains heavy fire from the sky, striking all enemies.":
+	"Rains heavy fire from the sky, striking all enemies."
+
+	,"Debiru Kiss":
+	"Debiru Kiss"
+
+	,"Charms the target, reducing its stats and making it less likely to attack Lloviu-tan. Also makes it take slightly more damage from arrow attacks. Does not stack.":
+	"Charms the target, reducing its stats and making it less likely to attack Lloviu-tan. Also makes it take slightly more damage from arrow attacks. Does not stack."
+
+	,"Charms the target, reducing its stats. Does not stack.":
+	"Charms the target, reducing its stats. Does not stack."
+
+	,"Pandemic":
+	"Pandemic"
+
+	,"Infects all enemies with hemorrhages.":
+	"Infects all enemies with hemorrhages."
+
+	,"Spread Infection":
+	"Spread Infection"
+
+	,"Spreads a bleeding effect to other enemies.":
+	"Spreads a bleeding effect to other enemies."
+
+	,"Skull Beam":
+	"Skull Beam"
+
+	,"Shoots lasers from the eyes of the skull, dealing more damage for each bleed effect on the target.":
+	"Shoots lasers from the eyes of the skull, dealing more damage for each bleed effect on the target."
+
+	,"Eye Beam":
+	"Eye Beam"
+
+	,"Hex":
+	"Hex"
+
+	,"Does more damage for each status effect on the enemy.":
+	"Does more damage for each status effect on the enemy."
+
+	,"Swarm":
+	"Swarm"
+
+	,"Swarm Drain":
+	"Swarm Drain"
+
+	,"Vital Aero":
+	"Vital Aero"
+
+	,"Sabotage":
+	"Sabotage"
+
+	,"Sabotages the enemy, greatly lowering their attack for a short time.":
+	"Sabotages the enemy, greatly lowering their attack for a short time."
+
+	,"Seizure":
+	"Seizure"
+
+	,"Seizes control of the target's mind, reducing their speed. Does not stack.":
+	"Seizes control of the target's mind, reducing their speed. Does not stack."
+
+	,"Flashing Lights":
+	"Flashing Lights"
+
+	,"Devastate":
+	"Devastate"
+
+	,"Devastates the target's immune system, lowering defense to zero.":
+	"Devastates the target's immune system, lowering defense to zero."
+
+	,"Dekopin":
+	"Dekopin"
+
+	,"Flicks the target in the forehead, dealing minimal damage.":
+	"Flicks the target in the forehead, dealing minimal damage."
+
+	,"Share Pain":
+	"Share Pain"
+
+	,"Twin Flight":
+	"Twin Flight"
+
+	,"Aurum Vital":
+	"Aurum Vital"
+
+	,"A strong healing skill.":
+	"A strong healing skill."
+
+	,"Argent Vital":
+	"Argent Vital"
+
+	,"A fast healing skill.":
+	"A fast healing skill."
+
+	,"Aes Vital":
+	"Aes Vital"
+
+	,"A weak healing spell.":
+	"A weak healing spell."
+
+	,"Platina Vital":
+	"Platina Vital"
+
+	,"Heals all allies.":
+	"Heals all allies."
+
+	,"Malus Vital":
+	"Malus Vital"
+
+	,"Prevents the target from being healed, and redirects heals to the user instead.":
+	"Prevents the target from being healed, and redirects heals to the user instead."
+
+	,"Regenerate":
+	"Regenerate"
+
+	,"A slow self-heal that restores all health.":
+	"A slow self-heal that restores all health."
+
+	,"Cleanse":
+	"Cleanse"
+
+	,"Removes one random effect from an ally.":
+	"Removes one random effect from an ally."
+
+	,"Cleanse Wave":
+	"Cleanse Wave"
+
+	,"Cures all ailments.":
+	"Cures all ailments."
+
+	,"Purge":
+	"Purge"
+
+	,"Removes one random effect from an enemy.":
+	"Removes one random effect from an enemy."
+
+	,"Cure":
+	"Cure"
+
+	,"Artillery Shot":
+	"Artillery Shot"
+
+	,"Blasts the target with a shot from a cannon.":
+	"Blasts the target with a shot from a cannon."
+
+	,"Rail Cannon":
+	"Rail Cannon"
+
+	,"Propels a projectile forward at amazing speeds using magnetic force.":
+	"Propels a projectile forward at amazing speeds using magnetic force."
+
+	,"Tactical Nuke":
+	"Tactical Nuke"
+
+	,"A super powerful blast. The shockwave damages everyone on the field.":
+	"A super powerful blast. The shockwave damages everyone on the field."
+
+	,"Wing Flare":
+	"Wing Flare"
+
+	,"Makes enemies more likely to attack the user.":
+	"Makes enemies more likely to attack the user."
+
+	,"Vampire Bite":
+	"Vampire Bite"
+
+	,"Sucks life out of the enemy.":
+	"Sucks life out of the enemy."
+
+	,"Haunt":
+	"Haunt"
+
+	,"Sends an evil spirit to haunt the target, cutting its max HP.":
+	"Sends an evil spirit to haunt the target, cutting its max HP."
+
+	,"Slowness":
+	"Slowness"
+
+	,"Wanko Mayem":
+	"Wanko Mayhem"
+
+	,"Isolate":
+	"Isolate"
+
+	,"Poison":
+	"Poison"
+
+	,"Poison Wave":
+	"Poison Wave"
+
+	,"Poison Strike":
+	"Poison Strike"
+
+	,"Does more damage against poisoned foes.":
+	"Does more damage against poisoned foes."
+
+	,"Rip Current":
+	"Rip Current"
+
+	,"Lick":
+	"Lick"
+
+	,"Blaze":
+	"Blaze"
+
+	,"Char":
+	"Char"
+
+	,"Inferno":
+	"Inferno"
+
+	,"Summon":
+	"Summon"
+
+	,"Martingale":
+	"Martingale"
+
+	,"Has a chance of being delayed, and becomes more powerful each time it is.":
+	"Has a chance of being delayed, and becomes more powerful each time it is."
+
+	,"Tricker Treat":
+	"Tricker Treat"
+
+	,"Randomly grants some effect to an ally or enemy.":
+	"Randomly grants some effect to an ally or enemy."
+
+	,"Thief":
+	"Thief"
+
+	,"Split":
+	"Split"
+
+	,"Shuffle":
+	"Shuffle"
+
+	,"Shroud":
+	"Shroud"
+
+	,"Reflect":
+	"Reflect"
+
+	,"Reflects all status conditions onto the target.":
+	"Reflects all status conditions onto the target."
+
+	,"Timer Bomb":
+	"Timer Bomb"
+
+	,"Causes damage to the user after a few seconds.":
+	"Causes damage to the user after a few seconds."
+
+,"_section": "monsters"
+
+	,"Mega Slime":
+	"Mega Slime"
+
+	,"Beholden":
+	"Beholden"
+
+	,"Skulliki":
+	"Skulliki"
+
+	,"Skulmanter":
+	"Skulmanter"
+
+	,"Lurker":
+	"Lurker"
+
+	,"Vampire Bat":
+	"Vampire Bat"
+
+	,"Mantrap":
+	"Mantrap"
+
+	,"Graven":
+	"Graven"
+
+	,"Mimick":
+	"Mimick"
+
+	,"Sanishark":
+	"Sanishark"
+
+	,"Rhinosaurus":
+	"Rhinosaurus"
+
+	,"Wooly Rhino":
+	"Wooly Rhino"
+
+	,"Wolven":
+	"Wolven"
+
+	,"Tengarot":
+	"Tengarot"
+
+	,"Polyduck":
+	"Polyduck"
+
+	,"Eel":
+	"Eel"
+
+	,"Doggie":
+	"Doggie"
+
+	,"Greblin":
+	"Greblin"
+
+	,"Cancer":
+	"Cancer"
+
+	,"Sally":
+	"Sally"
+
+	,"Throne":
+	"Throne"
+
+	,"Sarsagent":
+	"Sarsagent"
+
+	,"Zmapp":
+	"Zmapp"
+
+	,"Epilepsy":
+	"Epilepsy"
+
+	,"Parvo":
+	"Parvo"
+
+	,"Zika":
+	"Zika"
+
+,"_section": "zones"
+
+	,"Abyss":
+	"Abyss"
+
+	,"Earth":
+	"Earth"
+
+	,"Tuonen Delta":
+	"Tuonen Delta"
+
+	,"Tuonen River":
+	"Tuonen River"
+
+	,"Black Tower":
+	"Black Tower"
+
+	,"Dead World":
+	"Dead World"
+
+,"_section": "warps"
+
+	,"Tower Village":
+	"Tower Village"
+
+	,"Tower Outskirts":
+	"Tower Outskirts"
+
+	,"Cure Camp":
+	"Cure Camp"
+
+,"_section": "pentagrams"
+
+	,"Tuonen Falls":
+	"Tuonen Falls"
+
+	,"The End":
+	"The End"
+
+	,"Ruins of Earth":
+	"Ruins of Earth"
+
+	,"Last Hope Lab":
+	"Last Hope Lab"
+
+	,"Basement":
+	"Basement"
+
+	,"Wilderness":
+	"Wilderness"
+
+	,"Black Meadow":
+	"Black Meadow"
+
+	,"Delta Landing":
+	"Delta Landing"
+
+	,"Rabies Hideout":
+	"Rabies Hideout"
+
+	,"Sars Hideout":
+	"Sars Hideout"
+
+	,"Eidzu Hideout":
+	"Eidzu Hideout"
+
+	,"Tunnel Depths":
+	"Tunnel Depths"
+
+	,"Ground Floor":
+	"Ground Floor"
+
+	,"Rooftop Cemetary":
+	"Rooftop Cemetary"
+
+	,"Dead Landing":
+	"Dead Landing"
+
+	,"Herpes Shop":
+	"Herpes Shop"
+
+	,"Concert Hill":
+	"Concert Hill"
+
+	,"Death Tunnel":
+	"Death Tunnel"
+
+	,"Death Castle":
+	"Death Castle"
+
+,"_section": "main"
+
+	,"{0} learned skill {1}!":
+	"{0} learned skill {1}!"
+
+	,"{0} forme learned Excel skill {1}!":
+	"{0} forme learned Excel skill {1}!"
+
+	,"{0} learned Excel skill {1}!":
+	"{0} learned Excel skill {1}!"
+
+	,"Learned skill {0}!":
+	"Learned skill {0}!"
+
+	,"Acquired items":
+	"Acquired items"
+
+	,"And {0} more...":
+	"And {0} more..."
+
+	,"Learned Skills":
+	"Learned Skills"
+
+	,"Level {0}":
+	"Level {0}"
+
+	,"{0} used {1}!":
+	"{0} used {1}!"
+
+	,"Max:{0}":
+	"Max:{0}"
+
+	,"Collected nothing.":
+	"Collected nothing."
+
+	,"Collected {0} Pine Sap.":
+	"Collected {0} Pine Sap."
+
+	,"Glass vials can be used to collect Nectar.":
+	"Glass vials can be used to collect Nectar."
+
+	,"Collect Nectar?":
+	"Collect Nectar?"
+
+	,"Yes":
+	"Yes"
+
+	,"Filled vial with Nectar.":
+	"Filled vial with Nectar."
+
+	,"No":
+	"No"
+
+	,"Glass vials can be used to collect Oil.":
+	"Glass vials can be used to collect Oil."
+
+	,"Filled vial with Oil.":
+	"Filled vial with Oil."
+
+	,"Void Crystals are required to use the waygate.":
+	"Void Crystals are required to use the waygate."
+
+	,"Nothing but remains.":
+	"Nothing but remains."
+
+	,"A note was found on the body.":
+	"A note was found on the body."
+
+	,"\"38014\"":
+	"\"38014\""
+
+	,"DNA confirmed. Access granted.":
+	"DNA confirmed. Access granted."
+
+	,"DNA mismatch. Access denied.":
+	"DNA mismatch. Access denied."
+
+	,"Please insert blood sample.":
+	"Please insert blood sample."
+
+	,"It won't move.":
+	"It won't move."
+
+	,"There's a diagram illustrating a book switch mechanism.":
+	"There's a diagram illustrating a book switch mechanism."
+
+	,"The switches are labeled from 1 to 5, from north to south.":
+	"The switches are labeled from 1 to 5, from north to south."
+
+	,"There are some notes scribbled on a piece of paper.":
+	"There are some notes scribbled on a piece of paper."
+
+	,"\"3214, 13542, 416532, 4371265\"":
+	"\"3214, 13542, 416532, 4371265\""
+
+	,"\"Don't forget... Don't forget!\"":
+	"\"Don't forget... Don't forget!\""
+
+	,"\"Even if the project is successful, I will be dead before she reaches maturity.\"":
+	"\"Even if the project is successful, I will be dead before she reaches maturity.\""
+
+	,"\"I can't do this on my own any more. The project is cancelled. There's no point.\"":
+	"\"I can't do this on my own any more. The project is cancelled. There's no point.\""
+
+	,"\"There's no hope.\"":
+	"\"There's no hope.\""
+
+	,"It won't open.":
+	"It won't open."
+
+	,"An unnatural growth blocks the way.":
+	"An unnatural growth blocks the way."
+
+	,"Use Necrotoxin?":
+	"Use Necrotoxin?"
+
+	,"Acquired {0} {1}!":
+	"Acquired {0} {1}!"
+
+	,"Collect Black Water?":
+	"Collect Black Water?"
+
+	,"Collected {0} Black Water.":
+	"Collected {0} Black Water."
+
+	,"Vials are needed to collect water.":
+	"Vials are needed to collect water."
+
+	,"No water to collect.":
+	"No water to collect."
+
+	,"A magical influence prevents the spell from working!":
+	"A magical influence prevents the spell from working!"
+
+	,"There are no suitable destinations.":
+	"There are no suitable destinations."
+
+	,"Cancel":
+	"Cancel"
+
+	,"Choose a destination":
+	"Choose a destination"
+
+	,"Back":
+	"Back"
+
+	,"Level up!":
+	"Level up!"
+
+	,"{0} xp gained.":
+	"{0} xp gained."
+
+	,"The soul of {0} has been devoured. {1}":
+	"The soul of {0} has been devoured. {1}"
+
+	,"{0}'s limit has raised to {1}!":
+	"{0}'s limit has raised to {1}!"
+
+	,"Raises the maximum SP a hero can charge to beyond 100%.\n\nCurrent levels:\n":
+	"Raises the maximum SP a hero can charge to beyond 100%.\n\nCurrent levels:\n"
+
+	,"Resume":
+	"Resume"
+
+	,"Items":
+	"Items"
+
+	,"Skills":
+	"Skills"
+
+	,"Status":
+	"Status"
+
+	,"Options":
+	"Options"
+
+	,"Quit":
+	"Quit"
+
+	,"Unequip":
+	"Unequip"
+
+	,"Equipment":
+	"Equipment"
+
+	,"Change Leader":
+	"Change Leader"
+
+	,"Cure-chan became triggered!":
+	"Cure-chan became triggered!"
+
+	,"Cure-chan: You are not prepared!":
+	"Cure-chan: You are not prepared!"
+
+	,"Zmapp became triggered!":
+	"Zmapp became triggered!"
+
+	,"Who-chan: I cannot die.":
+	"Who-chan: I cannot die."
+
+	,"Lloviu-tan: Who are you? Stay away...":
+	"Lloviu-tan: Who are you? Stay away..."
+
+	,"Llov? What are you doing here?":
+	"Llov? What are you doing here?"
+
+	,"Llov is here to help!":
+	"Llov is here to help!"
+
+	,"You came here all by yourself?":
+	"You came here all by yourself?"
+
+	,"Ah well, come along. We'll search together.":
+	"Ah well, come along. We'll search together."
+
+	,"We're looking for Cure. She has something that doesn't belong to her.":
+	"We're looking for Cure. She has something that doesn't belong to her."
+
+	,"I wonder how Zika-chan is doing.":
+	"I wonder how Zika-chan is doing."
+
+	,"Hello again.":
+	"Hello again."
+
+	,"Isn't she beautiful? She's growing stronger every day.":
+	"Isn't she beautiful? She's growing stronger every day."
+
+	,"I will stay here and help raise the child.":
+	"I will stay here and help raise the child."
+
+	,"I will continue my research in this lab.":
+	"I will continue my research in this lab."
+
+	,"I'm searching for alternate sources of energy.":
+	"I'm searching for alternate sources of energy."
+
+	,"Most life on earth is gone now, but there are still traces.":
+	"Most life on earth is gone now, but there are still traces."
+
+	,"If only we had a way to revive extinct species.":
+	"If only we had a way to revive extinct species."
+
+	,"Please, just do what I say.":
+	"Please, just do what I say."
+
+	,"Um... can I get something for you?":
+	"Um... can I get something for you?"
+
+	,"Let me browse your goods.":
+	"Let me browse your goods."
+
+	,"Glass Blowing":
+	"Glass Blowing"
+
+	,"Gambling":
+	"Gambling"
+
+	,"Nevermind":
+	"Nevermind"
+
+	,"Hey cutie, what brings you here?":
+	"Hey cutie, what brings you here?"
+
+	,"Do you need something?":
+	"Do you need something?"
+
+	,"All right, here's how it works. You choose how much cumberground you want to bet, and I'll flip a coin.":
+	"All right, here's how it works. You choose how much cumberground you want to bet, and I'll flip a coin."
+
+	,"If it's heads, you win double your bet. If it's tails, I keep it all.":
+	"If it's heads, you win double your bet. If it's tails, I keep it all."
+
+	,"Simple, right?":
+	"Simple, right?"
+
+	,"Come back when you have some cumberground to gamble with.":
+	"Come back when you have some cumberground to gamble with."
+
+	,"How much cumberground will you bet?":
+	"How much cumberground will you bet?"
+
+	,"Not feeling lucky? That's all right, come back any time.":
+	"Not feeling lucky? That's all right, come back any time."
+
+	,"Flipping the coin...":
+	"Flipping the coin..."
+
+	,"Heads, you win! Here's your prize, {0} cumberground!":
+	"Heads, you win! Here's your prize, {0} cumberground!"
+
+	,"Tails. Sorry, you lost {0} cumberground.":
+	"Tails. Sorry, you lost {0} cumberground."
+
+	,"...You know the rules, right?":
+	"...You know the rules, right?"
+
+	,"I flip a coin. Heads you win double your bet. Tails I keep everything.":
+	"I flip a coin. Heads you win double your bet. Tails I keep everything."
+
+	,"...But you don't have anything to bet. Come back with some cumberground.":
+	"...But you don't have anything to bet. Come back with some cumberground."
+
+	,"...That's okay.":
+	"...That's okay."
+
+	,"Heads. You win {0} cumberground.":
+	"Heads. You win {0} cumberground."
+
+	,"Sorry, it's tails. You lose {0} cumberground.":
+	"Sorry, it's tails. You lose {0} cumberground."
+
+	,"I can turn your glass shards into glass vials. It will also cost one cumberground each.":
+	"I can turn your glass shards into glass vials. It will also cost one cumberground each."
+
+	,"How many vials should I make?":
+	"How many vials should I make?"
+
+	,"Come back any time.":
+	"Come back any time."
+
+	,"One cumberground and one glass shard makes one vial.":
+	"One cumberground and one glass shard makes one vial."
+
+	,"...How many do you need?":
+	"...How many do you need?"
+
+	,"Since my agents will run my shops for me, I can just take it easy.":
+	"Since my agents will run my shops for me, I can just take it easy."
+
+	,"The tower is off-limits. Ebola-chan is not taking visitors at the moment.":
+	"The tower is off-limits. Ebola-chan is not taking visitors at the moment."
+
+	,"Hey friend, are you here for another show?":
+	"Hey friend, are you here for another show?"
+
+	,"Hey friend, what brings you here? Let's put on a show!":
+	"Hey friend, what brings you here? Let's put on a show!"
+
+	,"★SEIZURE WARNING★ This battle may trigger seizures. Continue at your own risk.":
+	"★SEIZURE WARNING★ This battle may trigger seizures. Continue at your own risk."
+
+	,"Continue":
+	"Continue"
+
+	,"All right! Let me see you dance!":
+	"All right! Let me see you dance!"
+
+	,"Abort":
+	"Abort"
+
+	,"Well thanks for dropping by.":
+	"Well thanks for dropping by."
+
+	,"Hey, thanks for dropping by.":
+	"Hey, thanks for dropping by."
+
+	,"...Oh, it's you. I don't get many visitors down here.":
+	"...Oh, it's you. I don't get many visitors down here."
+
+	,"Did you come to play?":
+	"Did you come to play?"
+
+	,"...Oh.":
+	"...Oh."
+
+	,"Thanks for playing with me... It was fun.":
+	"Thanks for playing with me... It was fun."
+
+	,"It's kind of cold out here isn't it?":
+	"It's kind of cold out here isn't it?"
+
+	,"Who turned out the lights?":
+	"Who turned out the lights?"
+
+	,"Hey, the light's on!":
+	"Hey, the light's on!"
+
+	,"I'm surprised you decided to let us live. You know I wouldn't do the same for you, right?":
+	"I'm surprised you decided to let us live. You know I wouldn't do the same for you, right?"
+
+	,"You're lucky. If it were up to me, you'd be dead now.":
+	"You're lucky. If it were up to me, you'd be dead now."
+
+	,"Why did you spare us anyway?":
+	"Why did you spare us anyway?"
+
+	,"{0} told me it was the right thing to do.":
+	"{0} told me it was the right thing to do."
+
+	,"We're definitely not working on another scheme. Don't worry about it!":
+	"We're definitely not working on another scheme. Don't worry about it!"
+
+	,"By the way, can you let me see that skull of yours again? I promise I won't do anything funny.":
+	"By the way, can you let me see that skull of yours again? I promise I won't do anything funny."
+
+	,"I don't trust you...":
+	"I don't trust you..."
+
+	,"You're finally here, Marburg. I was getting tired of waiting for you.":
+	"You're finally here, Marburg. I was getting tired of waiting for you."
+
+	,"How nice, you even brought your sister with you. Now I can cure both of you.":
+	"How nice, you even brought your sister with you. Now I can cure both of you."
+
+	,"Llov, are you ready? It's time to deliver divine punishment.":
+	"Llov, are you ready? It's time to deliver divine punishment."
+
+	,"What's a cute little virus like you doing out here all alone?":
+	"What's a cute little virus like you doing out here all alone?"
+
+	,"Are you all right? You seem ill. I see the destruction hasn't been kind to you.":
+	"Are you all right? You seem ill. I see the destruction hasn't been kind to you."
+
+	,"Don't worry, I will cure you.":
+	"Don't worry, I will cure you."
+
+	,"Love and Justice, friend.":
+	"Love and Justice, friend."
+
+	,"This washed up earlier. You can have it.":
+	"This washed up earlier. You can have it."
+
+	,"Look brother, some filthy insects have come to our doorstep.":
+	"Look brother, some filthy insects have come to our doorstep."
+
+	,"I wonder what they want?":
+	"I wonder what they want?"
+
+	,"No doubt they're here to impede our pure love.":
+	"No doubt they're here to impede our pure love."
+
+	,"Nee-chan look, we have visitors.":
+	"Nee-chan look, we have visitors."
+
+	,"Filthy insects. Go away, you're impeding our pure love.":
+	"Filthy insects. Go away, you're impeding our pure love."
+
+	,"We want to help you. Can you come with us?":
+	"We want to help you. Can you come with us?"
+
+	,"Insect? Is that your name? I can't come with you. Onee-chan told me to never follow strangers.":
+	"Insect? Is that your name? I can't come with you. Onee-chan told me to never follow strangers."
+
+	,"Good girl, I'll have to reward you later.":
+	"Good girl, I'll have to reward you later."
+
+	,"They don't even recognize us...":
+	"They don't even recognize us..."
+
+	,"Now get out of here you insects, before I stomp you out of existance!":
+	"Now get out of here you insects, before I stomp you out of existance!"
+
+	,"There's no talking sense into them. They've gone maverick. We have to fight.":
+	"There's no talking sense into them. They've gone maverick. We have to fight."
+
+	,"Are you wondering why we're off on our own, away from everyone else?":
+	"Are you wondering why we're off on our own, away from everyone else?"
+
+	,"Don't be silly. You know why.":
+	"Don't be silly. You know why."
+
+	,"I wonder what all this cold white stuff is. I've never seen it before.":
+	"I wonder what all this cold white stuff is. I've never seen it before."
+
+	,"Tell her it's water":
+	"Tell her it's water"
+
+	,"It's water.":
+	"It's water."
+
+	,"Don't be silly, I know it's not water.":
+	"Don't be silly, I know it's not water."
+
+	,"Say nothing.":
+	"Say nothing."
+
+	,"...":
+	"..."
+
+	,"My, you look tasty.":
+	"My, you look tasty."
+
+	,"Why are you saying? Don't you remember us?":
+	"Why are you saying? Don't you remember us?"
+
+	,"I think I would remember seeing such a tasty piece of meat.":
+	"I think I would remember seeing such a tasty piece of meat."
+
+	,"We need to take you somewhere. Will you follow us?":
+	"We need to take you somewhere. Will you follow us?"
+
+	,"Oh, you're not going anywhere. 'cept in my stomach.":
+	"Oh, you're not going anywhere. 'cept in my stomach."
+
+	,"All you're going to be eating is your own words.":
+	"All you're going to be eating is your own words."
+
+	,"Wasn't there supposed to be a visual novel or something? What happened to that?":
+	"Wasn't there supposed to be a visual novel or something? What happened to that?"
+
+	,"Sars-chan, do you remember me? We used to be roommates.":
+	"Sars-chan, do you remember me? We used to be roommates."
+
+	,"Sars-chan? Do you have a moment?":
+	"Sars-chan? Do you have a moment?"
+
+	,"Can you please not breathe the same air as me? It's major gross yo.":
+	"Can you please not breathe the same air as me? It's major gross yo."
+
+	,"Please, we want to help you.":
+	"Please, we want to help you."
+
+	,"Who you callin' a pipsqueak, eh? Do you want to stop breathing?":
+	"Who you callin' a pipsqueak, eh? Do you want to stop breathing?"
+
+	,"Nobody called you short yet, little bug.":
+	"Nobody called you short yet, little bug."
+
+	,"That's it! I'll make sure you never take another breath again!":
+	"That's it! I'll make sure you never take another breath again!"
+
+	,"Were you looking for a voluptuous slime girl? You found her.":
+	"Were you looking for a voluptuous slime girl? You found her."
+
+	,"Hey sweetie. You here for another battle?":
+	"Hey sweetie. You here for another battle?"
+
+	,"If you can beat me, I'll give you something special.  What do you say?":
+	"If you can beat me, I'll give you something special.  What do you say?"
+
+	,"Another time, then.":
+	"Another time, then."
+
+	,"The view is nice from here. I can almost see the end of the river.":
+	"The view is nice from here. I can almost see the end of the river."
+
+	,"Can I help you with anything?":
+	"Can I help you with anything?"
+
+	,"I can fill your vials with Black Water for you. It will cost 1 cumberground each.":
+	"I can fill your vials with Black Water for you. It will cost 1 cumberground each."
+
+	,"How many vials should I fill?":
+	"How many vials should I fill?"
+
+	,"You don't want any?":
+	"You don't want any?"
+
+	,"Help":
+	"Help"
+
+	,"If there's anything you'd like to know, I can certainly help.":
+	"If there's anything you'd like to know, I can certainly help."
+
+	,"Even if you know more skills, you can only use 5 of them in combat.":
+	"Even if you know more skills, you can only use 5 of them in combat."
+
+	,"Use the skills menu to choose which 5 skills you want to use in combat.":
+	"Use the skills menu to choose which 5 skills you want to use in combat."
+
+	,"It might be smart to reconsider your active skills before each major battle.":
+	"It might be smart to reconsider your active skills before each major battle."
+
+	,"Crafting":
+	"Crafting"
+
+	,"You can craft items in your inventory to create more useful items, such as potions.":
+	"You can craft items in your inventory to create more useful items, such as potions."
+
+	,"You should experiment with different recipes. Even if you don't make something useful, you can sell the cumberground you get.":
+	"You should experiment with different recipes. Even if you don't make something useful, you can sell the cumberground you get."
+
+	,"Cumberground is a byproduct of failed recipes, and can be used as a currency.":
+	"Cumberground is a byproduct of failed recipes, and can be used as a currency."
+
+	,"Most reagents are dropped by enemies, but you can also harvest them from trees or flowers.":
+	"Most reagents are dropped by enemies, but you can also harvest them from trees or flowers."
+
+	,"Excel":
+	"Excel"
+
+	,"Excel is a power that lets you accelerate evolution. It grants you new strength and abilites during battle.":
+	"Excel is a power that lets you accelerate evolution. It grants you new strength and abilites during battle."
+
+	,"Travel":
+	"Travel"
+
+	,"The waters here in the Tuonen are a bit hazardous, so travel can be difficult.":
+	"The waters here in the Tuonen are a bit hazardous, so travel can be difficult."
+
+	,"Luckily, it's my job to help transport people such as you between the various realms.":
+	"Luckily, it's my job to help transport people such as you between the various realms."
+
+	,"Alternatively you can use Portal Scrolls to travel on your own. They are made by inscribing Grave Dust upon parchment.":
+	"Alternatively you can use Portal Scrolls to travel on your own. They are made by inscribing Grave Dust upon parchment."
+
+	,"Parchment can be made by combining any two of cloth, fur, or plant fiber together.":
+	"Parchment can be made by combining any two of cloth, fur, or plant fiber together."
+
+	,"Here's a free sample.":
+	"Here's a free sample."
+
+	,"Transport":
+	"Transport"
+
+	,"Where do you want to go?":
+	"Where do you want to go?"
+
+	,"You really are strong. How about I teach you something?":
+	"You really are strong. How about I teach you something?"
+
+	,"That was a great show! Let me show my appreciation.":
+	"That was a great show! Let me show my appreciation."
+
+	,"That was fun! let's play again some time.":
+	"That was fun! let's play again some time."
+
+	,"As promised, here's your reward.":
+	"As promised, here's your reward."
+
+	,"What is your name?":
+	"What is your name?"
+
+	,"Your name is {0}?":
+	"Your name is {0}?"
+
+	,"A save file already exists. The new game cannot be saved without overwriting the existing save file.":
+	"A save file already exists. The new game cannot be saved without overwriting the existing save file."
+
+	,"Continue without saving":
+	"Continue without saving"
+
+	,"Delete save file":
+	"Delete save file"
+
+	,"Llov, are you awake?":
+	"Llov, are you awake?"
+
+	,"I'm sorry, I would love nothing more than to stay by your side...":
+	"I'm sorry, I would love nothing more than to stay by your side..."
+
+	,"But I must go. Don't worry, I'll be back before you realize.":
+	"But I must go. Don't worry, I'll be back before you realize."
+
+	,"Plague and Malaria will be here to take care of you. Go to them if you need anything.":
+	"Plague and Malaria will be here to take care of you. Go to them if you need anything."
+
+	,"Marburg-nee... Llov wants to go too.":
+	"Marburg-nee... Llov wants to go too."
+
+	,"Is that the medicine Plague-sama gave you?":
+	"Is that the medicine Plague-sama gave you?"
+
+	,"Plague-sama is a doctor, so you should listen to what she says.":
+	"Plague-sama is a doctor, so you should listen to what she says."
+
+	,"Plague-sama told you to get some rest right? Your bed is waiting right through this door.":
+	"Plague-sama told you to get some rest right? Your bed is waiting right through this door."
+
+	,"Why if it isn't Lloviu-tan. Are you awake already?":
+	"Why if it isn't Lloviu-tan. Are you awake already?"
+
+	,"Where is Marburg-nee?":
+	"Where is Marburg-nee?"
+
+	,"I'm afraid she's left already, you just missed her. I'm sure she'll be back soon, though.":
+	"I'm afraid she's left already, you just missed her. I'm sure she'll be back soon, though."
+
+	,"Plague-sama told me she had something for you. You should go see her.":
+	"Plague-sama told me she had something for you. You should go see her."
+
+	,"Lloviu-san, is it? What might you need?":
+	"Lloviu-san, is it? What might you need?"
+
+	,"Did Marburg-nee go this way?":
+	"Did Marburg-nee go this way?"
+
+	,"Not this way. I ferried her to the Land of the Dead.":
+	"Not this way. I ferried her to the Land of the Dead."
+
+	,"Can you take Llov too?":
+	"Can you take Llov too?"
+
+	,"Hmm, I'm afraid you wouldn't survive the journey in your condition.":
+	"Hmm, I'm afraid you wouldn't survive the journey in your condition."
+
+	,"Lloviu-tan, there you are. I have something for you.":
+	"Lloviu-tan, there you are. I have something for you."
+
+	,"This tonic should help you regain some of your strength. Try to get some rest after you take it.":
+	"This tonic should help you regain some of your strength. Try to get some rest after you take it."
+
+	,"What do you need?":
+	"What do you need?"
+
+	,"What is this medicine?":
+	"What is this medicine?"
+
+	,"The vial contains liquid vitae. It is the energy that we need to survive.":
+	"The vial contains liquid vitae. It is the energy that we need to survive."
+
+	,"It is secreted by living things, and can also be harvested from human souls.":
+	"It is secreted by living things, and can also be harvested from human souls."
+
+	,"This vitae was provided by your sister. She made this tower to harvest vitae from the souls she collected.":
+	"This vitae was provided by your sister. She made this tower to harvest vitae from the souls she collected."
+
+	,"Why am I sick?":
+	"Why am I sick?"
+
+	,"Put simply, your reservoir was destroyed.":
+	"Put simply, your reservoir was destroyed."
+
+	,"Without a reliable source of energy, you've gradually grown weak.":
+	"Without a reliable source of energy, you've gradually grown weak."
+
+	,"The medicine I gave you should help you regain your strength.":
+	"The medicine I gave you should help you regain your strength."
+
+	,"How do I take the medicine?":
+	"How do I take the medicine?"
+
+	,"Open the pause menu by hitting the escape key or right clicking with your mouse. Then, select the \"items\" option.":
+	"Open the pause menu by hitting the escape key or right clicking with your mouse. Then, select the \"items\" option."
+
+	,"You're a smart girl, so I think you should be able to figure out the rest on your own.":
+	"You're a smart girl, so I think you should be able to figure out the rest on your own."
+
+	,"You drank the medicine? good. Now you should get some rest.":
+	"You drank the medicine? good. Now you should get some rest."
+
+	,"Something is happening outside!":
+	"Something is happening outside!"
+
+	,"Not yet, I need to take the medicine first.":
+	"Not yet, I need to take the medicine first."
+
+	,"Can't sleep right now.":
+	"Can't sleep right now."
+
+	,"Please, just go inside. We can handle this.":
+	"Please, just go inside. We can handle this."
+
+	,"If something were to happen to you, Marburg would...":
+	"If something were to happen to you, Marburg would..."
+
+	,"Damn, they're everywhere.":
+	"Damn, they're everywhere."
+
+	,"What can Llov do to help?":
+	"What can Llov do to help?"
+
+	,"Listen, I know you're feeling better, but you're still ill.":
+	"Listen, I know you're feeling better, but you're still ill."
+
+	,"Go back inside and rest.":
+	"Go back inside and rest."
+
+	,"Didn't you hear me? Go and hide. It's not safe out here.":
+	"Didn't you hear me? Go and hide. It's not safe out here."
+
+	,"Wub wub wub...":
+	"Wub wub wub..."
+
+	,"...!":
+	"...!"
+
+	,"Find Smallpox. She can fix the pylon.":
+	"Find Smallpox. She can fix the pylon."
+
+	,"Lloviu-san, such a pleasure.":
+	"Lloviu-san, such a pleasure."
+
+	,"What happened?":
+	"What happened?"
+
+	,"One of the pylons that protect this area was damaged.":
+	"One of the pylons that protect this area was damaged."
+
+	,"Llov wants to help after all!":
+	"Llov wants to help after all!"
+
+	,"It will be dangerous. Are you sure?":
+	"It will be dangerous. Are you sure?"
+
+	,"Smallpox built the pylons. she can fix them. Find her.":
+	"Smallpox built the pylons. she can fix them. Find her."
+
+	,"Remember, you are the sister of Marburg and Ebola. You are stronger than you think.":
+	"Remember, you are the sister of Marburg and Ebola. You are stronger than you think."
+
+	,"Go now, cross this bridge. Have no fear, I am already waiting for you on the other side.":
+	"Go now, cross this bridge. Have no fear, I am already waiting for you on the other side."
+
+	,"Understandable.":
+	"Understandable."
+
+	,"Smallpox should be in this cabin, but there's a problem.":
+	"Smallpox should be in this cabin, but there's a problem."
+
+	,"The person standing in front of the door. Do you recognize her?":
+	"The person standing in front of the door. Do you recognize her?"
+
+	,"It's Naegleria, and it looks like she's gone mad.":
+	"It's Naegleria, and it looks like she's gone mad."
+
+	,"We have no choice but to put her down. I can't take her on my own though, not with this body.":
+	"We have no choice but to put her down. I can't take her on my own though, not with this body."
+
+	,"I left a kendo stick in one of the houses near the tower.":
+	"I left a kendo stick in one of the houses near the tower."
+
+	,"If you're going to fight her, be careful.":
+	"If you're going to fight her, be careful."
+
+	,"Hurry on back to the tower. I'll be going there soon too.":
+	"Hurry on back to the tower. I'll be going there soon too."
+
+	,"Lloviu-nya, what are you doing are you here?":
+	"Lloviu-nya, what are you doing are you here?"
+
+	,"You're hurt! What happened?":
+	"You're hurt! What happened?"
+
+	,"I was trying to fix the pylon... when I was ambushed by an old friend.":
+	"I was trying to fix the pylon... when I was ambushed by an old friend."
+
+	,"What happened to her anyway? Naeglera.":
+	"What happened to her anyway? Naeglera."
+
+	,"Nae-tan? Llov ate her.":
+	"Nae-tan? Llov ate her."
+
+	,"You ate her? I hope you don't get a stomach ache.":
+	"You ate her? I hope you don't get a stomach ache."
+
+	,"Nae-tan is... Llov had no choice.":
+	"Nae-tan is... Llov had no choice."
+
+	,"I see, that's unfortunate. She used to be such a good friend.":
+	"I see, that's unfortunate. She used to be such a good friend."
+
+	,"Well, at least now I can get back to fixing the pylon.":
+	"Well, at least now I can get back to fixing the pylon."
+
+	,"After I'm done, I hope you won't mind if I borrow your bed. I need some time to recover.":
+	"After I'm done, I hope you won't mind if I borrow your bed. I need some time to recover."
+
+	,"Lloviu! Don't come out, it's dangerous right now!":
+	"Lloviu! Don't come out, it's dangerous right now!"
+
+	,"You beat her? Good. I knew you had it in you.":
+	"You beat her? Good. I knew you had it in you."
+
+	,"You got a soul for beating her right? If you hang on to it, she can probably be saved.":
+	"You got a soul for beating her right? If you hang on to it, she can probably be saved."
+
+	,"I'll let you decide what to do with it, we have more urgent matters at hand.":
+	"I'll let you decide what to do with it, we have more urgent matters at hand."
+
+	,"Good job, it looks like the pylon is already operational again.":
+	"Good job, it looks like the pylon is already operational again."
+
+	,"Llov wants to find Marburg-nee":
+	"Llov wants to find Marburg-nee"
+
+	,"I took Marburg to the land of the dead by her request.":
+	"I took Marburg to the land of the dead by her request."
+
+	,"You seem like you've recovered your strength. All right, I'll take you to her.":
+	"You seem like you've recovered your strength. All right, I'll take you to her."
+
+	,"Meet me back at the docks near the tower.":
+	"Meet me back at the docks near the tower."
+
+	,"Sorry about that, it seems I was killed.":
+	"Sorry about that, it seems I was killed."
+
+	,"I can still take you to Marburg if you want. Are you ready?":
+	"I can still take you to Marburg if you want. Are you ready?"
+
+	,"You'll find Marburg in the land of the dead. Want me to take you there?":
+	"You'll find Marburg in the land of the dead. Want me to take you there?"
+
+	,"Marburg, did you find what you're looking for?":
+	"Marburg, did you find what you're looking for?"
+
+	,"I don't know how you slipped away, but Marburg doesn't seem angry so I suppose it's fine.":
+	"I don't know how you slipped away, but Marburg doesn't seem angry so I suppose it's fine."
+
+	,"By the way, Smallpox came by earlier. You should greet her.":
+	"By the way, Smallpox came by earlier. You should greet her."
+
+	,"She's waiting for you in your house.":
+	"She's waiting for you in your house."
+
+	,"Have you greeted Smallpox yet? She's waiting for you in your house.":
+	"Have you greeted Smallpox yet? She's waiting for you in your house."
+
+	,"Let Llov go to Marburg-nee.":
+	"Let Llov go to Marburg-nee."
+
+	,"I'm keeping you here for your own good. Don't you understand?":
+	"I'm keeping you here for your own good. Don't you understand?"
+
+	,"The one who doesn't understand is Plague-sama!":
+	"The one who doesn't understand is Plague-sama!"
+
+	,"Please, just stay put until Marburg gets back.":
+	"Please, just stay put until Marburg gets back."
+
+	,"But... Llov wants to go help Marburg-nee.":
+	"But... Llov wants to go help Marburg-nee."
+
+	,"Why won't you understand?":
+	"Why won't you understand?"
+
+	,"Marburg! You're back already?":
+	"Marburg! You're back already?"
+
+	,"Oh good, I see you found Marburg.":
+	"Oh good, I see you found Marburg."
+
+	,"Smallpox came by earlier. She's resting in your bed now.":
+	"Smallpox came by earlier. She's resting in your bed now."
+
+	,"We really were worried about you, you know?":
+	"We really were worried about you, you know?"
+
+	,"Because you were told to protect Llov?":
+	"Because you were told to protect Llov?"
+
+	,"Well, that's also true, but we're friends right? I'd protect you even if I wasn't ordered to.":
+	"Well, that's also true, but we're friends right? I'd protect you even if I wasn't ordered to."
+
+	,"Then come with Llov.":
+	"Then come with Llov."
+
+	,"I don't know, that sounds dangerous. You should just do what Plague-sama tells you.":
+	"I don't know, that sounds dangerous. You should just do what Plague-sama tells you."
+
+	,"You're really not going to listen to us are you? You always were so stubborn...":
+	"You're really not going to listen to us are you? You always were so stubborn..."
+
+	,"Since there's nothing I can do to stop you, at least take this.":
+	"Since there's nothing I can do to stop you, at least take this."
+
+	,"I think Smallpox wants to talk with you. She's inside here.":
+	"I think Smallpox wants to talk with you. She's inside here."
+
+	,"Please don't be reckless.":
+	"Please don't be reckless."
+
+	,"The door is locked.":
+	"The door is locked."
+
+	,"Smallpox's maintenance tunnel...":
+	"Smallpox's maintenance tunnel..."
+
+	,"If Llov could get in here, then Llov could go where Marburg-nee is!":
+	"If Llov could get in here, then Llov could go where Marburg-nee is!"
+
+	,"Smallpox should be in Llov's bed right now.":
+	"Smallpox should be in Llov's bed right now."
+
+	,"Oh, Lloviu-nya. Thanks again for lending me your bed.":
+	"Oh, Lloviu-nya. Thanks again for lending me your bed."
+
+	,"Don't mind me, I'll be recovered soon.":
+	"Don't mind me, I'll be recovered soon."
+
+	,"Llov needs to find Joki-tan.":
+	"Llov needs to find Joki-tan."
+
+	,"Joki? Doesn't she just hang around everywhere? I think I saw one of her outside the cabin where you found me.":
+	"Joki? Doesn't she just hang around everywhere? I think I saw one of her outside the cabin where you found me."
+
+	,"The bridge is blocked, Llov can't get there.":
+	"The bridge is blocked, Llov can't get there."
+
+	,"I guess you'll need to find another way then. Here, take this.":
+	"I guess you'll need to find another way then. Here, take this."
+
+	,"This key opens up the maintenance tunnel. The entrance is in a building to the south. It should take you where you need to go.":
+	"This key opens up the maintenance tunnel. The entrance is in a building to the south. It should take you where you need to go."
+
+	,"Order from Plague-sama. Bridge blockade.":
+	"Order from Plague-sama. Bridge blockade."
+
+	,"Please, let Llov through.":
+	"Please, let Llov through."
+
+	,"Cannot comply. Please speak with Plague-sama.":
+	"Cannot comply. Please speak with Plague-sama."
+
+	,"What were you thinking? You could have got her killed!":
+	"What were you thinking? You could have got her killed!"
+
+	,"I only did what she wished.":
+	"I only did what she wished."
+
+	,"Marburg told us to keep her safe!":
+	"Marburg told us to keep her safe!"
+
+	,"You do not fear for the girl's safety, you only fear Marburg's wrath.":
+	"You do not fear for the girl's safety, you only fear Marburg's wrath."
+
+	,"Enough of this. If you're going to get in our way, then you're not welcome here.":
+	"Enough of this. If you're going to get in our way, then you're not welcome here."
+
+	,"Cure-chan's soul escaped into the distance.":
+	"Cure-chan's soul escaped into the distance."
+
+	,"We got the skull, let's deliver it to Ebola-chan.":
+	"We got the skull, let's deliver it to Ebola-chan."
+
+	,"She's waiting for us in the Black Tower.":
+	"She's waiting for us in the Black Tower."
+
+	,"I see you found what you were looking for. Ebola-chan is probably waiting for you.":
+	"I see you found what you were looking for. Ebola-chan is probably waiting for you."
+
+	,"You're going into the tower?":
+	"You're going into the tower?"
+
+	,"I know the tower is what gives us energy, but still... It's kind of spooky.":
+	"I know the tower is what gives us energy, but still... It's kind of spooky."
+
+	,"We have important business with Ebola-chan. Let us through.":
+	"We have important business with Ebola-chan. Let us through."
+
+	,"Hostility detected. Cannot comply.":
+	"Hostility detected. Cannot comply."
+
+	,"Please mister wraith, this skull is important to Ebola-chan. Let us deliver it.":
+	"Please mister wraith, this skull is important to Ebola-chan. Let us deliver it."
+
+	,"The damn creature must be broken. I don't think it'll listen to reason, we're going to have to force our way in.":
+	"The damn creature must be broken. I don't think it'll listen to reason, we're going to have to force our way in."
+
+	,"Still haven't had enough?":
+	"Still haven't had enough?"
+
+	,"Stay down.":
+	"Stay down."
+
+	,"Care for a battle?":
+	"Care for a battle?"
+
+	,"You may have defeated me, but it's too late.":
+	"You may have defeated me, but it's too late."
+
+	,"Pathetic. Is that really all the power you can muster?":
+	"Pathetic. Is that really all the power you can muster?"
+
+	,"Oh well, it doesn't really matter.":
+	"Oh well, it doesn't really matter."
+
+	,"I've already destabilized the soul cluster.":
+	"I've already destabilized the soul cluster."
+
+	,"Ah, that feels better.":
+	"Ah, that feels better."
+
+	,"No way! She stole all the human souls!":
+	"No way! She stole all the human souls!"
+
+	,"That bitch! She won't get away with this!":
+	"That bitch! She won't get away with this!"
+
+	,"Now that I have what I came for, I'll be on my way. I have grand designs to fulfill.":
+	"Now that I have what I came for, I'll be on my way. I have grand designs to fulfill."
+
+	,"She got away!":
+	"She got away!"
+
+	,"They're so far away now. I can hear them calling for me.":
+	"They're so far away now. I can hear them calling for me."
+
+	,"Don't worry, we'll get them back.":
+	"Don't worry, we'll get them back."
+
+	,"That's right! Zmapp is a bully. When we find her we'll beat her up!":
+	"That's right! Zmapp is a bully. When we find her we'll beat her up!"
+
+	,"Do you know where she went?":
+	"Do you know where she went?"
+
+	,"She only absorbed a fraction of the souls. Most of them escaped from her.":
+	"She only absorbed a fraction of the souls. Most of them escaped from her."
+
+	,"We'll get those ones first. I'm sure Joki can take us where they landed.":
+	"We'll get those ones first. I'm sure Joki can take us where they landed."
+
+	,"What is that? A soul?":
+	"What is that? A soul?"
+
+	,"It came out from Nae-tan":
+	"It came out from Nae-tan"
+
+	,"Give it here. You have no business handling something so dangerous.":
+	"Give it here. You have no business handling something so dangerous."
+
+	,"Give her the soul":
+	"Give her the soul"
+
+	,"Good. Now stay away from dangerous things from now on.":
+	"Good. Now stay away from dangerous things from now on."
+
+	,"Do not":
+	"Do not"
+
+	,"Marburg, there you are.":
+	"Marburg, there you are."
+
+	,"I took this from Llov earlier, but I don't have any use for it.":
+	"I took this from Llov earlier, but I don't have any use for it."
+
+	,"I think you should decide what to do with it.":
+	"I think you should decide what to do with it."
+
+	,"Is this Naegleria? Where did you find this?":
+	"Is this Naegleria? Where did you find this?"
+
+	,"It came out of Nae-tan...":
+	"It came out of Nae-tan..."
+
+	,"From what I hear, Naegleria was taken by the madness.":
+	"From what I hear, Naegleria was taken by the madness."
+
+	,"Is this Naegleria? I wonder where she got it from.":
+	"Is this Naegleria? I wonder where she got it from."
+
+	,"From what I hear, Naegleria was taken by the madness. Llov is the one who stopped her.":
+	"From what I hear, Naegleria was taken by the madness. Llov is the one who stopped her."
+
+	,"The madness... How unsettling.":
+	"The madness... How unsettling."
+
+	,"Lloviu-tan, Marburg-nee! What a surprise!":
+	"Lloviu-tan, Marburg-nee! What a surprise!"
+
+	,"What brings you here? Just visiting?":
+	"What brings you here? Just visiting?"
+
+	,"We're here on a delivery!":
+	"We're here on a delivery!"
+
+	,"A delivery? What did you bring?":
+	"A delivery? What did you bring?"
+
+	,"Something lost. Can you guess what it is?":
+	"Something lost. Can you guess what it is?"
+
+	,"Hold on, yes! I can sense it!":
+	"Hold on, yes! I can sense it!"
+
+	,"It's {0}! You brought {0} back to me!":
+	"It's {0}! You brought {0} back to me!"
+
+	,"Marburg gave the human skull back to Ebola-chan.":
+	"Marburg gave the human skull back to Ebola-chan."
+
+	,"Oh, thank you so much! I love both of you!":
+	"Oh, thank you so much! I love both of you!"
+
+	,"Ebola-chan just isn't complete without her signature skull, isn't that right?":
+	"Ebola-chan just isn't complete without her signature skull, isn't that right?"
+
+	,"I missed you so much, {0}! Cure-chan didn't do anything strange to you did she?":
+	"I missed you so much, {0}! Cure-chan didn't do anything strange to you did she?"
+
+	,"Hold on, something's not right.":
+	"Hold on, something's not right."
+
+	,"What's that inside you?":
+	"What's that inside you?"
+
+	,"Surprise!":
+	"Surprise!"
+
+	,"A trojan horse. Pretty ironic right?":
+	"A trojan horse. Pretty ironic right?"
+
+	,"Zmapp!? You're still alive?":
+	"Zmapp!? You're still alive?"
+
+	,"This tower belongs to me now. All the human souls here too!":
+	"This tower belongs to me now. All the human souls here too!"
+
+	,"1 million souls required to rekindle the soul cluster.":
+	"1 million souls required to rekindle the soul cluster."
+
+	,"The soul cluster bursts back to life, illuminating the river.":
+	"The soul cluster bursts back to life, illuminating the river."
+
+	,"It's been a long time. It's good to see you again.":
+	"It's been a long time. It's good to see you again."
+
+	,"As you can see, I'm not in the best of shapes. But you seem well enough.":
+	"As you can see, I'm not in the best of shapes. But you seem well enough."
+
+	,"Since you're here, maybe you can help me with something.":
+	"Since you're here, maybe you can help me with something."
+
+	,"The viruses in this land have fallen into madness.":
+	"The viruses in this land have fallen into madness."
+
+	,"They have lost themselves. I can help them, but you must bring them to me.":
+	"They have lost themselves. I can help them, but you must bring them to me."
+
+	,"If they won't cooperate, just bringing their souls should be enough. I can reconstitute them.":
+	"If they won't cooperate, just bringing their souls should be enough. I can reconstitute them."
+
+	,"One more thing.":
+	"One more thing."
+
+	,"You cannot travel this region by land. There are no bridges to connect many of the islands.":
+	"You cannot travel this region by land. There are no bridges to connect many of the islands."
+
+	,"You must speak to Joki. She can properly equip you.":
+	"You must speak to Joki. She can properly equip you."
+
+	,"Llov is sick. Please, can you help her?":
+	"Llov is sick. Please, can you help her?"
+
+	,"It's probably just malnourishment.":
+	"It's probably just malnourishment."
+
+	,"If you provide me with human souls, I can extract the energy from them and feed it to her.":
+	"If you provide me with human souls, I can extract the energy from them and feed it to her."
+
+	,"1000 souls should be enough. That would sustain her for quite a while.":
+	"1000 souls should be enough. That would sustain her for quite a while."
+
+	,"Feed her 1000 souls":
+	"Feed her 1000 souls"
+
+	,"I asked you to help me save them, and you ate them instead.":
+	"I asked you to help me save them, and you ate them instead."
+
+	,"If I didn't know better, I would think you were going mad too.":
+	"If I didn't know better, I would think you were going mad too."
+
+	,"You've done what I asked. I think you deserve a reward.":
+	"You've done what I asked. I think you deserve a reward."
+
+	,"This is my sword. Take good care of it.":
+	"This is my sword. Take good care of it."
+
+	,"I can only revive someone if I have their soul.":
+	"I can only revive someone if I have their soul."
+
+	,"Thank you for helping me with this task.":
+	"Thank you for helping me with this task."
+
+	,"What's this? You already have a soul with you. Is that Naegleria?":
+	"What's this? You already have a soul with you. Is that Naegleria?"
+
+	,"Should I revive someone?":
+	"Should I revive someone?"
+
+	,"It feels good to be myself again. Thank you.":
+	"It feels good to be myself again. Thank you."
+
+	,"I'll be around, if you need me.":
+	"I'll be around, if you need me."
+
+	,"I'm sorry for my rudeness earlier. You know I treasure your friendship more than anything.":
+	"I'm sorry for my rudeness earlier. You know I treasure your friendship more than anything."
+
+	,"That's strange. The other ones changed after they were reconstituted, but this one looks the same.":
+	"That's strange. The other ones changed after they were reconstituted, but this one looks the same."
+
+	,"I did change! I'm 1cm taller now! I swear!":
+	"I did change! I'm 1cm taller now! I swear!"
+
+	,"Their souls have become entangled. It might be difficult to separate them...":
+	"Their souls have become entangled. It might be difficult to separate them..."
+
+	,"Oh well, I'm sure it will be fine.":
+	"Oh well, I'm sure it will be fine."
+
+	,"Onee-chan and I are stuck together. What happened?":
+	"Onee-chan and I are stuck together. What happened?"
+
+	,"Don't worry, this just means we'll be together forever.":
+	"Don't worry, this just means we'll be together forever."
+
+	,"Onee-chan... I think I could get used to this.":
+	"Onee-chan... I think I could get used to this."
+
+	,"I do know what Pestilence did, but it worked wonders. I feel so young!":
+	"I do know what Pestilence did, but it worked wonders. I feel so young!"
+
+	,"Most of my clothes don't seem to fit any more though. Did I lose weight?":
+	"Most of my clothes don't seem to fit any more though. Did I lose weight?"
+
+	,"Here, you can have this.":
+	"Here, you can have this."
+
+	,"Now if you'll excuse me, I'm going to find something to eat.":
+	"Now if you'll excuse me, I'm going to find something to eat."
+
+	,"Resurrecting me was a mistake, you know.":
+	"Resurrecting me was a mistake, you know."
+
+	,"Do you think I only killed them because I was mad?":
+	"Do you think I only killed them because I was mad?"
+
+	,"No, I willingly fell into madness.":
+	"No, I willingly fell into madness."
+
+	,"You should hope that we never meet again.":
+	"You should hope that we never meet again."
+
+	,"It's done. {0} has been reconstituted. You should speak with her.":
+	"It's done. {0} has been reconstituted. You should speak with her."
+
+	,"Welcome back to the team, little sister.":
+	"Welcome back to the team, little sister."
+
+	,"Llov is feeling great now! Pesty really knows how to treat a lady.":
+	"Llov is feeling great now! Pesty really knows how to treat a lady."
+
+	,"Where has Lloviu-tan gone? Are you not travelling together any more?":
+	"Where has Lloviu-tan gone? Are you not travelling together any more?"
+
+	,"It's good to see you. Thanks again for saving me.":
+	"It's good to see you. Thanks again for saving me."
+
+	,"Why don't we have a friendly little battle, what do you say?":
+	"Why don't we have a friendly little battle, what do you say?"
+
+	,"I don't know why, but Herpes-chan has been hanging around me a lot more than usual lately.":
+	"I don't know why, but Herpes-chan has been hanging around me a lot more than usual lately."
+
+	,"She's also given me a lot of sweet discounts, so I'm not complaining.":
+	"She's also given me a lot of sweet discounts, so I'm not complaining."
+
+	,"Ebola-chan are you still carrying that skull around?":
+	"Ebola-chan are you still carrying that skull around?"
+
+	,"You know, I never did like {0}.":
+	"You know, I never did like {0}."
+
+	,"Marburg-sama, please make me one of your sisters.":
+	"Marburg-sama, please make me one of your sisters."
+
+	,"If conjoined twins have sex, is it incest or masturbation?":
+	"If conjoined twins have sex, is it incest or masturbation?"
+
+	,"Does it matter?":
+	"Does it matter?"
+
+	,"Her soul is missing.":
+	"Her soul is missing."
+
+	,"Uuu...":
+	"Uuu..."
+
+	,"Lloviu-tan's condition shows no sign of improvement.":
+	"Lloviu-tan's condition shows no sign of improvement."
+
+	,"Something terrible has happened. You should see.":
+	"Something terrible has happened. You should see."
+
+	,"Lloviu isn't with you. You should speak with her.":
+	"Lloviu isn't with you. You should speak with her."
+
+	,"Joki, the soul cluster was scattered. We need to get the souls back!":
+	"Joki, the soul cluster was scattered. We need to get the souls back!"
+
+	,"Yes, I saw where they landed. I will take you there.":
+	"Yes, I saw where they landed. I will take you there."
+
+	,"Pesty told me to give you something? Yeah, I got the memo.":
+	"Pesty told me to give you something? Yeah, I got the memo."
+
+	,"Try not to drown in the river.":
+	"Try not to drown in the river."
+
+	,"We've collected all of the souls in this area.":
+	"We've collected all of the souls in this area."
+
+	,"We need to rekindle the soul cluster, and we need to save Llov. But we only have enough souls to do one of those right now.":
+	"We need to rekindle the soul cluster, and we need to save Llov. But we only have enough souls to do one of those right now."
+
+	,"We have enough souls to rekindle the soul cluster now. We should return to the tower.":
+	"We have enough souls to rekindle the soul cluster now. We should return to the tower."
+
+	,"Where to next?":
+	"Where to next?"
+
+	,"Zmapp is on Earth. She has many souls with her.":
+	"Zmapp is on Earth. She has many souls with her."
+
+	,"Then we're going to Earth. Joki can take us there.":
+	"Then we're going to Earth. Joki can take us there."
+
+	,"What happened? Why is the tower dark?":
+	"What happened? Why is the tower dark?"
+
+	,"The light was stolen.":
+	"The light was stolen."
+
+	,"What about the energy that used to flow from the tower?":
+	"What about the energy that used to flow from the tower?"
+
+	,"It won't flow any more.":
+	"It won't flow any more."
+
+	,"I see. Then I don't have any reason to stay here.":
+	"I see. Then I don't have any reason to stay here."
+
+	,"I'm going to search for a more sustainable source of energy.":
+	"I'm going to search for a more sustainable source of energy."
+
+	,"Plese wait, We'll restore the tower! We're going to find the souls right now!":
+	"Plese wait, We'll restore the tower! We're going to find the souls right now!"
+
+	,"It doesn't matter, I'd been meaning to leave anyway. The tower was never sustainable in the first place.":
+	"It doesn't matter, I'd been meaning to leave anyway. The tower was never sustainable in the first place."
+
+	,"Malaria, come with me.":
+	"Malaria, come with me."
+
+	,"Well...":
+	"Well..."
+
+	,"What's wrong, aren't you coming?":
+	"What's wrong, aren't you coming?"
+
+	,"I think I'm going to wait here. The sisters will restore the tower, I have faith in them.":
+	"I think I'm going to wait here. The sisters will restore the tower, I have faith in them."
+
+	,"Suit yourself.":
+	"Suit yourself."
+
+	,"Llov? What's wrong?":
+	"Llov? What's wrong?"
+
+	,"Llov... Doesn't feel very well.":
+	"Llov... Doesn't feel very well."
+
+	,"It must be her sickness. I thought she was better.":
+	"It must be her sickness. I thought she was better."
+
+	,"We should take her to Pestilence. He'll know what to do.":
+	"We should take her to Pestilence. He'll know what to do."
+
+	,"All right, I'll extract the energy from the souls and feed it to Lloviu-tan.":
+	"All right, I'll extract the energy from the souls and feed it to Lloviu-tan."
+
+	,"This is rather... Unexpected.":
+	"This is rather... Unexpected."
+
+	,"What's the matter?":
+	"What's the matter?"
+
+	,"Something is wrong. I can't heal her. Something is blocking me, some kind of barrier.":
+	"Something is wrong. I can't heal her. Something is blocking me, some kind of barrier."
+
+	,"I'm afraid it will take a lot more energy to break the barrier.":
+	"I'm afraid it will take a lot more energy to break the barrier."
+
+	,"It will take 1 million souls.":
+	"It will take 1 million souls."
+
+	,"That's so many...":
+	"That's so many..."
+
+	,"There is an alternative. Not all souls are equal. A strong soul, such as the soul from a virus. That would also work.":
+	"There is an alternative. Not all souls are equal. A strong soul, such as the soul from a virus. That would also work."
+
+	,"But that's terrible...":
+	"But that's terrible..."
+
+	,"I'm sorry, it's the only way I know to save her.":
+	"I'm sorry, it's the only way I know to save her."
+
+	,"Which cost should be paid to save Lloviu?":
+	"Which cost should be paid to save Lloviu?"
+
+	,"1 million human souls":
+	"1 million human souls"
+
+	,"It's done. The cost was great, but Lloviu's soul was healed.":
+	"It's done. The cost was great, but Lloviu's soul was healed."
+
+	,"Llov isn't moving! Pestilence, please! Please save her!":
+	"Llov isn't moving! Pestilence, please! Please save her!"
+
+	,"There's nothing I can do.":
+	"There's nothing I can do."
+
+	,"I'm sorry.":
+	"I'm sorry."
+
+	,"This can't be real.":
+	"This can't be real."
+
+	,"Booting up interface. Welcome to Last Hope.":
+	"Booting up interface. Welcome to Last Hope."
+
+	,"Enter Mainframe Password.":
+	"Enter Mainframe Password."
+
+	,"Wrong password.":
+	"Wrong password."
+
+	,"We should explore some more to find the password.":
+	"We should explore some more to find the password."
+
+	,"Please select an option.":
+	"Please select an option."
+
+	,"Entry Door":
+	"Entry Door"
+
+	,"Southwest Door":
+	"Southwest Door"
+
+	,"Southeast Door":
+	"Southeast Door"
+
+	,"Northwest Door":
+	"Northwest Door"
+
+	,"Northeast Door":
+	"Northeast Door"
+
+	,"Digital Logs":
+	"Digital Logs"
+
+	,"Entry 1":
+	"Entry 1"
+
+	,"\"To protect the facility, a mult-level security system is being phased in.\"":
+	"\"To protect the facility, a mult-level security system is being phased in.\""
+
+	,"\"With one of the new lock systems, DNA from one of the lab employees will be needed to open certain doors.\"":
+	"\"With one of the new lock systems, DNA from one of the lab employees will be needed to open certain doors.\""
+
+	,"Entry 2":
+	"Entry 2"
+
+	,"\"There are hidden switches in the morgue drawers. They must be opened in a particular order unlock the doors.\"":
+	"\"There are hidden switches in the morgue drawers. They must be opened in a particular order unlock the doors.\""
+
+	,"\"These new security systems are very impractical.\"":
+	"\"These new security systems are very impractical.\""
+
+	,"Entry 3":
+	"Entry 3"
+
+	,"\"Sally broke out of containment again. She's very violent and destructive.\"":
+	"\"Sally broke out of containment again. She's very violent and destructive.\""
+
+	,"\"A mixture of chitin and silver seems to form an effective deterrent. It makes recovery a lot easier.\"":
+	"\"A mixture of chitin and silver seems to form an effective deterrent. It makes recovery a lot easier.\""
+
+	,"Entry 4":
+	"Entry 4"
+
+	,"\"The new infected blood samples are ready for analysis.\"":
+	"\"The new infected blood samples are ready for analysis.\""
+
+	,"\"Remember that civilian blood is marked with a white band, while employee blood is marked with a black band.\"":
+	"\"Remember that civilian blood is marked with a white band, while employee blood is marked with a black band.\""
+
+	,"Entry 5":
+	"Entry 5"
+
+	,"\"The winged ones have taken an interest in this lab. I don't think anyone is left who can't see them.\"":
+	"\"The winged ones have taken an interest in this lab. I don't think anyone is left who can't see them.\""
+
+	,"\"Some of my comrades have cast aside their humanity to go with them, but not I.\"":
+	"\"Some of my comrades have cast aside their humanity to go with them, but not I.\""
+
+	,"\"When I die, it will be as a human.\"":
+	"\"When I die, it will be as a human.\""
+
+	,"Exit":
+	"Exit"
+
+	,"Door Controller":
+	"Door Controller"
+
+	,"{0} was opened.":
+	"{0} was opened."
+
+	,"To open the door, enter the passcode into the nearby terminal.":
+	"To open the door, enter the passcode into the nearby terminal."
+
+	,"Little pig, little pig, let us in.":
+	"Little pig, little pig, let us in."
+
+	,"Hey Zmapp, it looks like someone is at our door.":
+	"Hey Zmapp, it looks like someone is at our door."
+
+	,"It's fine, they'll never get in. The only person besides us who knows the password is dead.":
+	"It's fine, they'll never get in. The only person besides us who knows the password is dead."
+
+	,"You hear that intruders? You'll never find the password hidden in the graveyard.":
+	"You hear that intruders? You'll never find the password hidden in the graveyard."
+
+	,"And you'll never be able to solve the series of puzzles waiting for you in here.":
+	"And you'll never be able to solve the series of puzzles waiting for you in here."
+
+	,"Look who finally showed up! It took you long enough.":
+	"Look who finally showed up! It took you long enough."
+
+	,"They're always so slow, let me tell you.":
+	"They're always so slow, let me tell you."
+
+	,"You're just in time to witness our ultimate plan come to fruition.":
+	"You're just in time to witness our ultimate plan come to fruition."
+
+	,"Oh! Let me tell them about the plan!":
+	"Oh! Let me tell them about the plan!"
+
+	,"You see, we're going to cure all of you!":
+	"You see, we're going to cure all of you!"
+
+	,"Every single disease that has ever existed. All cured!":
+	"Every single disease that has ever existed. All cured!"
+
+	,"It's more than that. We're creating a new breed of human.":
+	"It's more than that. We're creating a new breed of human."
+
+	,"One that is immune to all disease!":
+	"One that is immune to all disease!"
+
+	,"All the energy that you need to live will be ours, and you can't have any of it!":
+	"All the energy that you need to live will be ours, and you can't have any of it!"
+
+	,"I think it's time we introduce them to our boss.":
+	"I think it's time we introduce them to our boss."
+
+	,"We just finished working on her. Those souls of yours were the final ingredient.":
+	"We just finished working on her. Those souls of yours were the final ingredient."
+
+	,"Here she comes now.":
+	"Here she comes now."
+
+	,"Meet the new and improved... WHO-chan!":
+	"Meet the new and improved... WHO-chan!"
+
+	,"At long last, I live.":
+	"At long last, I live."
+
+	,"You... I recognize you. You're the one who killed me, Ebola-chan.":
+	"You... I recognize you. You're the one who killed me, Ebola-chan."
+
+	,"Tell me, how does it feel knowing that everything you've worked for will soon be undone?":
+	"Tell me, how does it feel knowing that everything you've worked for will soon be undone?"
+
+	,"My cute subordinates have done an excellent job luring you here. Now it's time for you to die.":
+	"My cute subordinates have done an excellent job luring you here. Now it's time for you to die."
+
+	,"Bow down to your new god.":
+	"Bow down to your new god."
+
+	,"Before we destroy you, I need to ask you something.":
+	"Before we destroy you, I need to ask you something."
+
+	,"My little sister, Llov. Were you the ones who did that to her?":
+	"My little sister, Llov. Were you the ones who did that to her?"
+
+	,"Huh? Now that you mention it, I guess she isn't with you.":
+	"Huh? Now that you mention it, I guess she isn't with you."
+
+	,"Look, I don't know what happened, but we didn't have anything to do with it.":
+	"Look, I don't know what happened, but we didn't have anything to do with it."
+
+	,"So you foiled our grand designs. No hard feelings though, right? You win.":
+	"So you foiled our grand designs. No hard feelings though, right? You win."
+
+	,"Spare them.":
+	"Spare them."
+
+	,"Destroy them.":
+	"Destroy them."
+
+	,"No! This can't be happening!":
+	"No! This can't be happening!"
+
+	,"This is what I've been searching for.":
+	"This is what I've been searching for."
+
+	,"This lab holds the secret to bringing back extinct species. Do you know what that means?":
+	"This lab holds the secret to bringing back extinct species. Do you know what that means?"
+
+	,"Our energy problem has been solved. We can create new hosts and farm them for energy.":
+	"Our energy problem has been solved. We can create new hosts and farm them for energy."
+
+	,"It doesn't have to be human, but they are the most effective source.":
+	"It doesn't have to be human, but they are the most effective source."
+
+	,"I think you sisters should be the ones to decide this human's fate.":
+	"I think you sisters should be the ones to decide this human's fate."
+
+	,"After everything the humans have done, they deserve their fate.":
+	"After everything the humans have done, they deserve their fate."
+
+	,"Not all humans are bad. Remember {0}?":
+	"Not all humans are bad. Remember {0}?"
+
+	,"Llov thinks they deserve a second chance.":
+	"Llov thinks they deserve a second chance."
+
+	,"What happened to Llov was ultimately their fault.":
+	"What happened to Llov was ultimately their fault."
+
+	,"It's true that what they've done can't easily be forgiven.":
+	"It's true that what they've done can't easily be forgiven."
+
+	,"But this one wasn't part of that. She isn't even born yet.":
+	"But this one wasn't part of that. She isn't even born yet."
+
+	,"Even if this one is innocent, humanity is not. Even if she does no evil, her children certainly will.":
+	"Even if this one is innocent, humanity is not. Even if she does no evil, her children certainly will."
+
+	,"I don't know what to do. {0}, what do you think?":
+	"I don't know what to do. {0}, what do you think?"
+
+	,"Spare humanity.":
+	"Spare humanity."
+
+	,"Abort humanity.":
+	"Abort humanity."
+
+	,"...All right. I've decided.":
+	"...All right. I've decided."
+
+	,"Super Filovirus Sisters":
+	"Super Filovirus Sisters"
+
+	,"Game by Dread-chan":
+	"Game by Dread-chan"
+
+	,"Thank you for playing!":
+	"Thank you for playing!"
+
+	,"Here lies Malaria.":
+	"Here lies Malaria."
+
+	,"Here lies Smallpox.":
+	"Here lies Smallpox."
+
+	,"Here lies Lloviu-tan.":
+	"Here lies Lloviu-tan."
+
+	,"We've recovered enough souls to restore the soul cluster.":
+	"We've recovered enough souls to restore the soul cluster."
+
+	,"But some of them are still missing. I can hear them calling for me.":
+	"But some of them are still missing. I can hear them calling for me."
+
+	,"Some of the human souls are still out there. I can hear them calling for me.":
+	"Some of the human souls are still out there. I can hear them calling for me."
+
+	,"We've recovered all of the missing human souls.":
+	"We've recovered all of the missing human souls."
+
+	,"Now it's time to return them to the tower.":
+	"Now it's time to return them to the tower."
+
+	,"You're not supposed to be able to get out here.":
+	"You're not supposed to be able to get out here."
+
+	,"This is the child you chose to save. Her name is Shiro.":
+	"This is the child you chose to save. Her name is Shiro."
+
+	,"Shiro, say hello. These are your mothers.":
+	"Shiro, say hello. These are your mothers."
+
+	,"...Hello.":
+	"...Hello."
+
+	,"She's cute. I'd like to take her home with me.":
+	"She's cute. I'd like to take her home with me."
+
+	,"Yay! My new favorite human. Sorry {0}.":
+	"Yay! My new favorite human. Sorry {0}."
+
+	,"Does this mean Llov is a big sister now? Can Llov do big sister things?":
+	"Does this mean Llov is a big sister now? Can Llov do big sister things?"
+
+	,"We'll need to create more for a breeding population, but this is a good start.":
+	"We'll need to create more for a breeding population, but this is a good start."
+
+	,"What a surprise. I didn't expect you would find your way here.":
+	"What a surprise. I didn't expect you would find your way here."
+
+	,"Uncle Famine told us how to get here.":
+	"Uncle Famine told us how to get here."
+
+	,"Famine told us you took over Death's castle.":
+	"Famine told us you took over Death's castle."
+
+	,"Oh Famine, such a gossip.":
+	"Oh Famine, such a gossip."
+
+	,"Yes, this is my castle now. Nice place isn't it?":
+	"Yes, this is my castle now. Nice place isn't it?"
+
+	,"You should stay a while, I'll make some tea.":
+	"You should stay a while, I'll make some tea."
+
+	,"Joki, why are you hiding my friends from me?":
+	"Joki, why are you hiding my friends from me?"
+
+	,"...So you can sense them.":
+	"...So you can sense them."
+
+	,"Please, give them back to me.":
+	"Please, give them back to me."
+
+	,"Ebola-chan, I can understand why you would think that these are yours. After all, you're the one who killed them.":
+	"Ebola-chan, I can understand why you would think that these are yours. After all, you're the one who killed them."
+
+	,"But the dead belong to Death, and that's me.":
+	"But the dead belong to Death, and that's me."
+
+	,"I'll make you a deal though. We'll both bet all the souls we have... And whoever wins takes it all.":
+	"I'll make you a deal though. We'll both bet all the souls we have... And whoever wins takes it all."
+
+	,"Oh, I like the sound of that. How about you Ebby?":
+	"Oh, I like the sound of that. How about you Ebby?"
+
+	,"I'll do whatever it takes to get them back!":
+	"I'll do whatever it takes to get them back!"
+
+	,"John Doe was a stranger in this town. He was found dead in the river.":
+	"John Doe was a stranger in this town. He was found dead in the river."
+
+	,"Nobody knew his real name.":
+	"Nobody knew his real name."
+
+	,"Jane Doe shared a room with John. She was 20 years younger than him.":
+	"Jane Doe shared a room with John. She was 20 years younger than him."
+
+	,"Not long after John's death, she was found hanging from the ceiling.":
+	"Not long after John's death, she was found hanging from the ceiling."
+
+	,"Sherry Stillwater was married to the pastor.":
+	"Sherry Stillwater was married to the pastor."
+
+	,"Desperate for water, she drank the blood of neighborhood children.":
+	"Desperate for water, she drank the blood of neighborhood children."
+
+	,"She died of bloodborne illness.":
+	"She died of bloodborne illness."
+
+	,"Melissa Goth didn't listen to the pastor.":
+	"Melissa Goth didn't listen to the pastor."
+
+	,"She fell ill and died hunched over a toilet.":
+	"She fell ill and died hunched over a toilet."
+
+	,"Ethan Stillwater was a pastor for the local church.":
+	"Ethan Stillwater was a pastor for the local church."
+
+	,"He claimed that the water was poisoned, and died of dehydration.":
+	"He claimed that the water was poisoned, and died of dehydration."
+
+	,"Jordan Smith survived the blast, but died from fallout.":
+	"Jordan Smith survived the blast, but died from fallout."
+
+	,"Pete Park was bit by a radioactive spider.":
+	"Pete Park was bit by a radioactive spider."
+
+	,"He didn't get super powers.":
+	"He didn't get super powers."
+
+	,"Doctor White examined John Doe's body.":
+	"Doctor White examined John Doe's body."
+
+	,"It was infected with ebola. And now he was too.":
+	"It was infected with ebola. And now he was too."
+
+	,"Miss White worked in an orphanage. She was very close with the children.":
+	"Miss White worked in an orphanage. She was very close with the children."
+
+	,"The disease spread easily.":
+	"The disease spread easily."
+
+	,"Bob Markus found one of his tenants hanging.":
+	"Bob Markus found one of his tenants hanging."
+
+	,"He was later found without a head.":
+	"He was later found without a head."
+
+	,"Billy Jackson took the blast head-on.":
+	"Billy Jackson took the blast head-on."
+
+	,"Sally Sordid took shelter underground with her daddy.":
+	"Sally Sordid took shelter underground with her daddy."
+
+	,"Simon Sordid ate his daughter's body.":
+	"Simon Sordid ate his daughter's body."
+
+	,"He died soon after.":
+	"He died soon after."
+
+	,"Maxwell Goth added his sister's blood to the cafeteria food.":
+	"Maxwell Goth added his sister's blood to the cafeteria food."
+
+	,"He died behind bars.":
+	"He died behind bars."
+
+	,"Patty Park gave birth to a malformed child.":
+	"Patty Park gave birth to a malformed child."
+
+	,"She drowned it in the river, then took her own life.":
+	"She drowned it in the river, then took her own life."
+
+	,"Mark Markus was found in possession of a human skull.":
+	"Mark Markus was found in possession of a human skull."
+
+	,"The next day he had two human skulls, but no head.":
+	"The next day he had two human skulls, but no head."
+
+	,"Some mysterious robed men came through town.":
+	"Some mysterious robed men came through town."
+
+	,"They took John Doe and Jane Doe's bodies and left.":
+	"They took John Doe and Jane Doe's bodies and left."
+
+	,"One of them stayed behind, and died of ebola.":
+	"One of them stayed behind, and died of ebola."
+
+	,"Nora Gray claimed to communicate with the world beyond.":
+	"Nora Gray claimed to communicate with the world beyond."
+
+	,"She disappeared for a while, and was later discovered stuffed inside a box.":
+	"She disappeared for a while, and was later discovered stuffed inside a box."
+
+	,"Kate Park found a box filled with human parts.":
+	"Kate Park found a box filled with human parts."
+
+	,"She was quarantined, and soon died of ebola.":
+	"She was quarantined, and soon died of ebola."
+
+	,"Martin White climbed out of the wreckage and explored the ruins.":
+	"Martin White climbed out of the wreckage and explored the ruins."
+
+	,"A charred husk grabbed his leg. He fell cracked his skull.":
+	"A charred husk grabbed his leg. He fell cracked his skull."
+
+	,"Hilda Gray liked to spend time in the graveyard.":
+	"Hilda Gray liked to spend time in the graveyard."
+
+	,"She became a permanent resident when she was found decapitated there.":
+	"She became a permanent resident when she was found decapitated there."
+
+	,"Robert Baron was caught digging up graves.":
+	"Robert Baron was caught digging up graves."
+
+	,"He was lynched by the town.":
+	"He was lynched by the town."
+
+	,"Sheriff Brown was investigating a series of mysterious deaths.":
+	"Sheriff Brown was investigating a series of mysterious deaths."
+
+	,"Gazing into the eyes of the skull, he felt something strange.":
+	"Gazing into the eyes of the skull, he felt something strange."
+
+	,"He realized it was his own skull.":
+	"He realized it was his own skull."
+
+	,"A robed figure ambled through the wastleland, a string of skulls in tow.":
+	"A robed figure ambled through the wastleland, a string of skulls in tow."
+
+	,"He clasped his hands in prayer, and accepted his death.":
+	"He clasped his hands in prayer, and accepted his death."
+
+	,"Jerry Fig died of natural causes.":
+	"Jerry Fig died of natural causes."
+
+	,"Terry Wisdom willingly infected himself.":
+	"Terry Wisdom willingly infected himself."
+
+	,"Tyrone Cooper infiltrated the shelter.":
+	"Tyrone Cooper infiltrated the shelter."
+
+	,"He helped distribute the gift.":
+	"He helped distribute the gift."
+
+	,"Mary Mort refused the gift.":
+	"Mary Mort refused the gift."
+
+	,"She chose to leave the shelter, and died a painful death.":
+	"She chose to leave the shelter, and died a painful death."
+
+	,"Hector Stein collected the infected blood and stored it safely underground.":
+	"Hector Stein collected the infected blood and stored it safely underground."
+
+	,"He survived to become one of the last humans alive.":
+	"He survived to become one of the last humans alive."
+
+	,"He rebuilt as much as he could, and began a project to cure his loneliness.":
+	"He rebuilt as much as he could, and began a project to cure his loneliness."
+
+	,"He lost hope, and dug his own grave.":
+	"He lost hope, and dug his own grave."
+
+	,"The stone is weathered and unreadable.":
+	"The stone is weathered and unreadable."
+
+	,"Nothing is written.":
+	"Nothing is written."
+
+	,"I trust you've seen the cancerous lesions that cover this land.":
+	"I trust you've seen the cancerous lesions that cover this land."
+
+	,"It is the remnant of a bio-weapon created by the humans.":
+	"It is the remnant of a bio-weapon created by the humans."
+
+	,"No doubt all this goop everywhere is in your way right? So how about you lend me a hand.":
+	"No doubt all this goop everywhere is in your way right? So how about you lend me a hand."
+
+	,"The humans created a special toxin to destroy the bio-weapon. It should be aroud here somewhere.":
+	"The humans created a special toxin to destroy the bio-weapon. It should be aroud here somewhere."
+
+	,"Take this, maybe it will help.":
+	"Take this, maybe it will help."
+
+	,"We're looking for a password to enter the lab. Do you know it?":
+	"We're looking for a password to enter the lab. Do you know it?"
+
+	,"I don't know the password, but I know someone who does.":
+	"I don't know the password, but I know someone who does."
+
+	,"He used to tend that lab. Problem is, he died a while back.":
+	"He used to tend that lab. Problem is, he died a while back."
+
+	,"You should check his body. it might have what you're looking for.":
+	"You should check his body. it might have what you're looking for."
+
+	,"I see you found the Necrotoxin Recipe. Let me see it.":
+	"I see you found the Necrotoxin Recipe. Let me see it."
+
+	,"Gave the Necrotoxin Recipe to War.":
+	"Gave the Necrotoxin Recipe to War."
+
+	,"Do you need more Necrotoxin? I can make you some, but it will take 3 cumberground each.":
+	"Do you need more Necrotoxin? I can make you some, but it will take 3 cumberground each."
+
+	,"Created nothing.":
+	"Created nothing."
+
+	,"Created {0} Necrotoxin.":
+	"Created {0} Necrotoxin."
+
+	,"It's been real quiet around here.":
+	"It's been real quiet around here."
+
+	,"Now that the apocalypse is over, we don't have much of a job any more.":
+	"Now that the apocalypse is over, we don't have much of a job any more."
+
+	,"Tell old pesty that I would love to ride again some day.":
+	"Tell old pesty that I would love to ride again some day."
+
+	,"That girl Joki, she's taken over Death's old castle.":
+	"That girl Joki, she's taken over Death's old castle."
+
+	,"It's in the northern reaches of the dead world.":
+	"It's in the northern reaches of the dead world."
+
+	,"Here lies famine. He starved to death.":
+	"Here lies famine. He starved to death."
+
+	,"Hey, just between you and me... I'm not actually dead. Just sleeping.":
+	"Hey, just between you and me... I'm not actually dead. Just sleeping."
+
+	,"The only horseman that's actually dead is Death. He's been replaced by that maid of his.":
+	"The only horseman that's actually dead is Death. He's been replaced by that maid of his."
+
+	,"Oh, and Conquest is dead too. But that happened a long time ago.":
+	"Oh, and Conquest is dead too. But that happened a long time ago."
+
+	,"It's a picture of me!":
+	"It's a picture of me!"
+
+	,"The shrine fills you with love.":
+	"The shrine fills you with love."
+
+	,"What's this? Someone left a letter here!":
+	"What's this? Someone left a letter here!"
+
+	,"I wonder what that means.":
+	"I wonder what that means."
+
+	,"The door is frozen shut.":
+	"The door is frozen shut."
+
+	,"The gods are certainly mad at us. That's why this is happening.":
+	"The gods are certainly mad at us. That's why this is happening."
+
+	,"If the gods want to destroy us, then what choice do we have?":
+	"If the gods want to destroy us, then what choice do we have?"
+
+	,"We must create our own gods, and slay the gods that want to kill us.":
+	"We must create our own gods, and slay the gods that want to kill us."
+
+	,"WHO was our most recent creation. She is our last hope.":
+	"WHO was our most recent creation. She is our last hope."
+
+	,"Why did you choose her over me? Together we could have saved the world.":
+	"Why did you choose her over me? Together we could have saved the world."
+
+	,"Instead, you condemned humanity to excruciating death. I will never forgive you.":
+	"Instead, you condemned humanity to excruciating death. I will never forgive you."
+
+	,"Last night we recieved another shipment of god blood.":
+	"Last night we recieved another shipment of god blood."
+
+	,"I can't see the one who delivers it to us, but one of my collegues can. He describes her as a young woman dressed in black and white.":
+	"I can't see the one who delivers it to us, but one of my collegues can. He describes her as a young woman dressed in black and white."
+
+	,"My daughter has been chosen as the next candidate. She has shown high potential, but I've seen this go wrong too many times.":
+	"My daughter has been chosen as the next candidate. She has shown high potential, but I've seen this go wrong too many times."
+
+	,"I can only pray that everything goes well.":
+	"I can only pray that everything goes well."
+
+	,"He showed high affinity for the disease.":
+	"He showed high affinity for the disease."
+
+	,"Where most would wither and die, he only grew stronger.":
+	"Where most would wither and die, he only grew stronger."
+
+	,"There's something special about people like this. I think they have a special bond with the gods.":
+	"There's something special about people like this. I think they have a special bond with the gods."
+
+	,"They are the prime candidates for ascension.":
+	"They are the prime candidates for ascension."
+
+	,"Dear {0},":
+	"Dear {0},"
+
+	,"Thank you for choosing me.":
+	"Thank you for choosing me."
+
+	,"Love, your sister.":
+	"Love, your sister."
+
+	,"The hatch is locked.":
+	"The hatch is locked."
+	
+	,"I'll admit, you're stronger than I anticipated.":
+	"I'll admit, you're stronger than I anticipated."
+
+	,"I'm sorry to say there's no reward for beating me though.":
+	"I'm sorry to say there's no reward for beating me though."
+
+	,"Don't worry, I don't intend on picking a fight with you.":
+	"Don't worry, I don't intend on picking a fight with you."
+
+	,"What's wrong? are you scared?":
+	"What's wrong? are you scared?"
+
+	,"Don't kid yourself. I'm way stronger than Zmapp you know.":
+	"Don't kid yourself. I'm way stronger than Zmapp you know."
+
+	,"Fight":
+	"Fight"
+
+	,"Stronger than Zmapp? That's not saying much.":
+	"Stronger than Zmapp? That's not saying much."
+
+	,"Fine then. see for yourself.":
+	"Fine then. see for yourself."
+
+	,"Don't Fight":
+	"Don't Fight"
+
+	,"What are you doing out here?":
+	"What are you doing out here?"
+
+	,"War told you about the goop right?":
+	"War told you about the goop right?"
+
+	,"She said it was some kind of bio-weapon.":
+	"She said it was some kind of bio-weapon."
+
+	,"They were my sisters. I'm visiting their grave.":
+	"They were my sisters. I'm visiting their grave."
+
+	,"Llov doesn't understand. What do you mean?":
+	"Llov doesn't understand. What do you mean?"
+
+	,"What do you think is the main difference between a Cure and a Virus?":
+	"What do you think is the main difference between a Cure and a Virus?"
+
+	,"Llov knows. Cure is a meanie!":
+	"Llov knows. Cure is a meanie!"
+
+	,"Viruses kill humans. Cures save them.":
+	"Viruses kill humans. Cures save them."
+
+	,"Valid, but it's not the answer I'm looking for.":
+	"Valid, but it's not the answer I'm looking for."
+
+	,"Cures are artificial gods. We were created by humans, and were once human ourselves.":
+	"Cures are artificial gods. We were created by humans, and were once human ourselves."
+
+	,"But not all of us survived the transformation.":
+	"But not all of us survived the transformation."
+
+	,"They were consumed by the madness, and their bodies twisted into what you see now.":
+	"They were consumed by the madness, and their bodies twisted into what you see now."
+
+	,"I see... I'm so sorry.":
+	"I see... I'm so sorry."
+
+,"_section": "error messages"
+
+	,"Download a native version of this game from {0}. Run the game executable.":
+	"Download a native version of this game from {0}. Run the game executable."
+
+	,"To report this bug, the you can contact me on {0}.":
+	"To report this bug, the you can contact me on {0}."
+
+	,"The game cannot be played right now.":
+	"The game cannot be played right now."
+
+	,"This probably happened because your browser blocked a cross-origin request.":
+	"This probably happened because your browser blocked a cross-origin request."
+
+	,"Some web browsers heavily restrict what can be done in the file protocol, and don't allow access to files in sub folders.":
+	"Some web browsers heavily restrict what can be done in the file protocol, and don't allow access to files in sub folders."
+
+	,"There are a few things you can do to fix this.":
+	"There are a few things you can do to fix this."
+
+	,"Try a different browser. Chromium browsers won't work. Firefox will. If you want to play using this browser, read further.":
+	"Try a different browser. Chromium browsers won't work. Firefox will. If you want to play using this browser, read further."
+
+	,"Disable web security. This isn't reccomended unless you know what you're doing.":
+	"Disable web security. This isn't reccomended unless you know what you're doing."
+
+	,"Local Storage Error":
+	"Local Storage Error"
+
+	,"This probably happened because you're using a browser that doesn't support localStorage, or localStorage is disabled.":
+	"This probably happened because you're using a browser that doesn't support localStorage, or localStorage is disabled."
+
+	,"Get a better browser.":
+	"Get a better browser."
+
+	,"Missing item":
+	"Missing item"
+
+	,"The game tried to access an item that doesn't exist.":
+	"The game tried to access an item that doesn't exist."
+
+	,"This is definitely a bug.":
+	"This is definitely a bug."
+
+	,"An error occurred while loading the game. Here's a few things you can try to fix it:":
+	"An error occurred while loading the game. Here's a few things you can try to fix it:"
+
+	,"Try changing the renderer. Add {0} or {1} to the url to try a different renderer.":
+	"Try changing the renderer. Add {0} or {1} to the url to try a different renderer."
+
+	,"Some errors happen only on certain browsers. You can try using a different browser, or download a native version of the game from {0}.":
+	"Some errors happen only on certain browsers. You can try using a different browser, or download a native version of the game from {0}."
+
+	,"An error occurred while the game was playing. This is probably a bug.":
+	"An error occurred while the game was playing. This is probably a bug."
+
+	,"You can check the console for more information.":
+	"You can check the console for more information."
+
+}}

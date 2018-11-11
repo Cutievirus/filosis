@@ -1,10 +1,4 @@
 
-
-#-------------------------------
-# game.0initialize.ls
-#-------------------------------
-
-
 var pixel, game, pentagrams
 const WIDTH = 320
 const HEIGHT = 240
@@ -342,10 +336,6 @@ for item in document.get-elements-by-class-name \close_overlay
     item.href="javaScript:void 'Close';"
     item.onclick=!->
         this.parentNode.style.display='none';
-
-#-------------------------------
-# game.0main.ls
-#-------------------------------
 
 STARTMAP = 'shack2'
 version = "Release"
@@ -763,10 +753,6 @@ state.boot.load-render = state.preload.load-render  =!->
     #pixel.context.font = "30px Arial";
     #pixel.context.fillStyle = "red";
     #pixel.context.fillText("!!!"+Math.random!,10,50);
-
-#-------------------------------
-# game.0preload.ls
-#-------------------------------
 
 var preloader
 state.preboot.preload =!->
@@ -1369,10 +1355,6 @@ preload_mod=[];
 
     for f in preload_mod
         f?!
-
-#-------------------------------
-# game.1gui.ls
-#-------------------------------
 
 var gui
 gui_mod=[]
@@ -2728,10 +2710,6 @@ class Screen extends Phaser.Group
         i=@@list.indexOf @
         @@list.splice i, 1 if i>-1
 
-#-------------------------------
-# game.1load.ls
-#-------------------------------
-
 state.load.preload =!->
     #console.log("loading...")
     gui.bringToTop(gui.frame) #??? What?
@@ -2789,10 +2767,6 @@ musicmap=
     else
         path="../"+path
     musicmap[key]=[key,path]
-
-#-------------------------------
-# game.2actors.ls
-#-------------------------------
 
 var actors, carpet, triggers, fringe
 updatelist=[]
@@ -3152,10 +3126,6 @@ Actor::getTiles =!->
     rect = body_to_rect @body
     return getTiles.call map.named-layers.tile_layer, rect, true
 
-#-------------------------------
-# game.2formes.ls
-#-------------------------------
-
 formes =
     llov:
         default:
@@ -3461,10 +3431,6 @@ for p of costumes then for c of costumes[p] then for k in [\bsheet, \bframe]
         say '' tl("{0} learned skill {1}!", speakers[p]display, skill.name)
     else
         say '' tl("Learned skill {0}!", skill.name)
-
-#-------------------------------
-# game.2player.ls
-#-------------------------------
 
 
 class Player extends Actor
@@ -3963,10 +3929,6 @@ Player::update_follow_object =!->
     @goal = x: @follow_object.x, y: @follow_object.y
     #check if colliding with follow object. If so, stop moving.
 
-
-#-------------------------------
-# game.2skills.ls
-#-------------------------------
 
 
 class Skill
@@ -5212,10 +5174,6 @@ skillbook =
             skillbook[p.name][f] = []
         skillbook[p.name]all = []
 
-#-------------------------------
-# game.3functions.ls
-#-------------------------------
-
 
 #========================================================================
 # Math
@@ -6002,10 +5960,6 @@ nosave_switches=
 ##################################################################
 #============================ MIXINS ============================#
 ##################################################################
-
-#-------------------------------
-# game.battle.ls
-#-------------------------------
 
 var battle_encounter
 !function start_battle (enc,toughness=0,terrain)
@@ -7309,10 +7263,6 @@ class Animation extends Phaser.Sprite
         @animations.play animation
     callback: !->
 
-#-------------------------------
-# game.buff.ls
-#-------------------------------
-
 class Buff extends Phaser.Sprite
     (x,y,buff=buffs.null)->
         super game, x, y, access buff.icon
@@ -7806,10 +7756,6 @@ buffs.obscure =
         @duration -= deltam
         @remedy! if @duration<=0
     #hides the inflicted's health, sp, buffs, and item.
-
-#-------------------------------
-# game.doodads.ls
-#-------------------------------
 
 nodes={}
 doodads={}
@@ -8462,10 +8408,6 @@ holiday.christmas = holiday.month is 12
     initUpdate d
     return d
 
-#-------------------------------
-# game.input.ls
-#-------------------------------
-
 devices =
     keyboard: false
     mouse: false
@@ -8585,10 +8527,6 @@ mouse = x:0, y:0, down:false, world: {x:0, y: 0}
 
 ## SCREENSHOT CODE
 # pixel.canvas.toBlob(function(blob){console.log(window.URL.createObjectURL(blob))})
-
-#-------------------------------
-# game.item.ls
-#-------------------------------
 
 class Item
     @COMMON = 0
@@ -9773,10 +9711,6 @@ for key, item of items
     for key, q of items_initial
         items[key]quantity = q
 
-#-------------------------------
-# game.menu.ls
-#-------------------------------
-
 var pause_screen, shop_screen, refresh_shop
 
 options_mod=[]
@@ -10585,10 +10519,6 @@ var excel_screen
         #switches.sp_limit++
         save!
         excel_screen.back!
-
-#-------------------------------
-# game.monster.ls
-#-------------------------------
 
 #========================================================================
 # Overworld Mobs
@@ -12464,10 +12394,6 @@ encounter.darkllov =
     onvictory: ->
         switches.beat_llov=true
 
-#-------------------------------
-# game.music.ls
-#-------------------------------
-
 class Audio
     ->
         @volume = 0.5
@@ -12555,10 +12481,6 @@ voicesound = new Audio!
     #    music.playifnotplaying \deserttheme
     #|\earth
     #    music.playifnotplaying \hidingyourdeath
-
-#-------------------------------
-# game.npcs.ls
-#-------------------------------
 
 class NPC extends Actor
     (x,y,key, speed, nobody)->
@@ -13250,10 +13172,6 @@ for key of speakers
     say "Farewell"
     */
     show!
-
-#-------------------------------
-# game.scenario.ls
-#-------------------------------
 
 !function cinema_start
     #switches.cinema = true
@@ -15274,10 +15192,6 @@ scenario.basementlocked=!->
     say -> temp.locktimer = Date.now!
 
 
-#-------------------------------
-# game.tilemap.ls
-#-------------------------------
-
 mapdefaults =
     edges: 'normal'
     outside: false
@@ -15832,10 +15746,6 @@ Phaser.TilemapLayer::renderRegion=(scrollX,scrollY,left,top,right,bottom)!->
             x++; xmax--; tx += tw
 
         y++; ymax--; ty += th
-
-#-------------------------------
-# game.transition.ls
-#-------------------------------
 
 class Transition
     (@duration,@step,@finish,@smoothness=0,@cinematic=true,@context1=@,@context2=@)->

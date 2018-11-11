@@ -21683,12 +21683,12 @@ mapdata = {
   }
 };
 function getmapdata(map, field){
-  var that, ref$;
+  var ref$, that;
   if (field == null) {
     field = map;
     map = switches.map;
   }
-  if ((that = (ref$ = mapdata[map]) != null ? ref$[field] : void 8) != null) {
+  if ((that = ((ref$ = mapdata[map]) != null ? ref$[field] : void 8)) != null) {
     return that;
   } else {
     return mapdefaults[field];

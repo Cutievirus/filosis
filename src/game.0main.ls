@@ -1,6 +1,6 @@
 STARTMAP = 'shack2'
 version = "Release"
-version_number = '1.1.1'
+version_number = '1.1.2'
 switches = 
     sp_limit: {}
     water_walking: false

@@ -340,7 +340,7 @@ for item in document.get-elements-by-class-name \close_overlay
 
 STARTMAP = 'shack2'
 version = "Release"
-version_number = '1.1'
+version_number = '1.1.1'
 switches = 
     sp_limit: {}
     water_walking: false

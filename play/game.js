@@ -348,7 +348,7 @@ for (i$ = 0, len$ = (ref$ = document.getElementsByClassName('close_overlay')).le
 }
 STARTMAP = 'shack2';
 version = "Release";
-version_number = '1.1';
+version_number = '1.1.1';
 switches = {
   sp_limit: {},
   water_walking: false,

@@ -301,19 +301,22 @@ holiday.christmas = holiday.month is 12
             dood.crop new Phaser.Rectangle 0, TS*13, TS,TS
             dood.body.set-size TS, TS
             dood.properties = object.properties
-            temp.morgue_next = 1
+            if !session.morgue_next
+                session.morgue_next = 1
             if switches[object.properties.open]
+            or (session.morgue_next>object.properties.order and session.morgue_set is object.properties.set)
                 rect = new Phaser.Rectangle (if object.properties.last then 2 else 1)*TS, TS*13, TS,TS
                 dood.open=true
                 dood.crop rect
             dood.interact =!->
                 if @open then return
-                if @properties.order ~= temp.morgue_next
+                if @properties.order ~= session.morgue_next
+                    session.morgue_set = @properties.set
                     rect = new Phaser.Rectangle (if @properties.last then 2 else 1)*TS, TS*13, TS,TS
                     @open=true
                     @crop rect
                     if @properties.last
-                        temp.morgue_next=1
+                        session.morgue_next=1
                         for a in actors.children
                             continue unless a.properties and a.properties.labdoor and a.properties.open is @properties.open
                             a.frame=5
@@ -321,16 +324,16 @@ holiday.christmas = holiday.month is 12
                         setswitch @properties.open, true 
                         sound.play \door
                     else
-                        temp.morgue_next++
+                        session.morgue_next++
                         sound.play \candle
-                else if temp.morgue_next ~= 1
+                else if session.morgue_next ~= 1
                     say '' tl("It won't open.")
                 else
                     rect = new Phaser.Rectangle 0, TS*13, TS,TS
                     for n in carpet.children then if n.name is 'morgue' and n.properties.set is @properties.set
                         n.open=false
                         n.crop rect
-                        temp.morgue_next=1
+                        session.morgue_next=1
                         sound.play \candle
             initUpdate dood
         case \goop
@@ -577,6 +580,8 @@ holiday.christmas = holiday.month is 12
         |\bloodsamples
             doodad.interact =!->
                 return if player.y < this.y
+                if items.bloodsample.quantity or items.bloodsample2.quantity
+                    say '' tl("Returned Blood Sample.")
                 items.bloodsample.quantity=0
                 items.bloodsample2.quantity=0
                 if !session.bloodsample then session.bloodsample=1+Math.random!*5.|.0
@@ -599,8 +604,9 @@ holiday.christmas = holiday.month is 12
                     say '' tl("Please insert blood sample.")
         |\bookswitch
             doodad.loadTexture \lab_tiles
-            temp.book_next=1
-            if switches[object.properties.open]
+            if !session.book_next
+                session.book_next=1
+            if switches[object.properties.open] or session.book_next>object.properties.order
                 doodad.crop new Phaser.Rectangle TS, TS*15, TS,TS*2
                 doodad.open=true
             else
@@ -608,11 +614,11 @@ holiday.christmas = holiday.month is 12
             doodad.interact =!->
                 return if player.y < this.y
                 or @open
-                if @properties.order ~= temp.book_next
+                if @properties.order ~= session.book_next
                     @crop new Phaser.Rectangle TS, TS*15, TS,TS*2
                     @open=true
+                    session.book_next++
                     if @properties.last
-                        temp.book_next=1
                         for a in actors.children
                             continue unless a.properties and a.properties.labdoor and a.properties.open is @properties.open
                             a.frame=5
@@ -620,9 +626,8 @@ holiday.christmas = holiday.month is 12
                         setswitch @properties.open, true 
                         sound.play \door
                     else
-                        temp.book_next++
                         sound.play \candle
-                else# if temp.book_next ~= 1
+                else# if session.book_next ~= 1
                     say '' tl("It won't move.")
         |\labmessage1
             doodad.interact =!->

@@ -45,10 +45,10 @@
 	"Nae-tan"
 
 	,"Eidzu I":
-	"Eidzu I"
+	"Eidzu-chan"
 
 	,"Eidzu II":
-	"Eidzu II"
+	"Eidzu-kun"
 
 	,"Sars-chan":
 	"Sars-chan"

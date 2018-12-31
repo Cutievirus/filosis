@@ -288,12 +288,12 @@ function fatalerror(type){
   text = '';
   greater = true;
   fatalerror.advices == null && (fatalerror.advices = {
-    download: tle("Download a native version of this game from {0}. Run the game executable.", "<a href='http://filosis.cutievirus.com/#download'>filosis.cutievirus.com</a>"),
+    download: tle("Download a native version of this game from {0}. Run the game executable.", "<a href='https://cutievirus.itch.io/super-filovirus-sisters'>itch.io</a>"),
     report: tle("To report this bug, the you can contact me on {0}.", "<a href='https://discord.gg/4SJ5dFN'>Discord</a>")
   });
   switch (type) {
   case 'sameOrigin':
-    text = "<h2>" + tle("The game cannot be played right now.") + "</h2>" + "<p>" + tle("This probably happened because your browser blocked a cross-origin request.") + "<br>" + tle("Some web browsers heavily restrict what can be done in the file protocol, and don't allow access to files in sub folders.") + "<br>" + tle("There are a few things you can do to fix this.") + "</p>" + "<p>1. " + fatalerror.advices.download + "</p>" + "<p>2. " + tle("Try a different browser. Chromium browsers won't work. Firefox will. If you want to play using this browser, read further.") + "</p>" + "<p>3. " + tle("Disable web security. This isn't reccomended unless you know what you're doing.") + "</p>";
+    text = "<h2>" + tle("The game cannot be played right now.") + "</h2>" + "<p>" + tle("This probably happened because your browser blocked a cross-origin request.") + "<br>" + tle("Some web browsers heavily restrict what can be done in the file protocol, and don't allow access to files in sub folders.") + "<br>" + tle("There are a few things you can do to fix this.") + "</p>" + "<p>1. " + fatalerror.advices.download + "</p>" + "<p>2. " + tle("Try a different browser. Chromium browsers won't work. Firefox will. If you want to play using this browser, read further.") + "</p>" + "<p>3. " + tle("Disable web security. This isn't reccomended unless you know what you're doing.") + "</p>" + "<p>4. <a href='https://www.npmjs.com/package/http-server'>" + tle("Get a web server!") + "</a></p>";
     break;
   case 'localStorage':
     text = "<h2>" + tle("Local Storage Error") + "</h2>" + "<p>" + tle("This probably happened because you're using a browser that doesn't support localStorage, or localStorage is disabled.") + "<br>" + tle("There are a few things you can do to fix this.") + "</p>" + "<p>1. " + fatalerror.advices.download + "</p>" + "<p>2. " + tle("Get a better browser.") + "</p>";
@@ -10415,8 +10415,10 @@ function map_objects(){
       dood.crop(new Phaser.Rectangle(0, TS * 13, TS, TS));
       dood.body.setSize(TS, TS);
       dood.properties = object.properties;
-      temp.morgue_next = 1;
-      if (switches[object.properties.open]) {
+      if (!session.morgue_next) {
+        session.morgue_next = 1;
+      }
+      if (switches[object.properties.open] || (session.morgue_next > object.properties.order && session.morgue_set === object.properties.set)) {
         rect = new Phaser.Rectangle((object.properties.last ? 2 : 1) * TS, TS * 13, TS, TS);
         dood.open = true;
         dood.crop(rect);
@@ -10723,6 +10725,9 @@ function map_objects(){
         if (player.y < this.y) {
           return;
         }
+        if (items.bloodsample.quantity || items.bloodsample2.quantity) {
+          say('', tl("Returned Blood Sample."));
+        }
         items.bloodsample.quantity = 0;
         items.bloodsample2.quantity = 0;
         if (!session.bloodsample) {
@@ -10765,8 +10770,10 @@ function map_objects(){
       break;
     case 'bookswitch':
       doodad.loadTexture('lab_tiles');
-      temp.book_next = 1;
-      if (switches[object.properties.open]) {
+      if (!session.book_next) {
+        session.book_next = 1;
+      }
+      if (switches[object.properties.open] || session.book_next > object.properties.order) {
         doodad.crop(new Phaser.Rectangle(TS, TS * 15, TS, TS * 2));
         doodad.open = true;
       } else {
@@ -10777,11 +10784,11 @@ function map_objects(){
         if (player.y < this.y || this.open) {
           return;
         }
-        if (this.properties.order == temp.book_next) {
+        if (this.properties.order == session.book_next) {
           this.crop(new Phaser.Rectangle(TS, TS * 15, TS, TS * 2));
           this.open = true;
+          session.book_next++;
           if (this.properties.last) {
-            temp.book_next = 1;
             for (i$ = 0, len$ = (ref$ = actors.children).length; i$ < len$; ++i$) {
               a = ref$[i$];
               if (!(a.properties && a.properties.labdoor && a.properties.open === this.properties.open)) {
@@ -10793,7 +10800,6 @@ function map_objects(){
             setswitch(this.properties.open, true);
             sound.play('door');
           } else {
-            temp.book_next++;
             sound.play('candle');
           }
         } else {
@@ -10916,12 +10922,13 @@ function map_objects(){
     if (this.open) {
       return;
     }
-    if (this.properties.order == temp.morgue_next) {
+    if (this.properties.order == session.morgue_next) {
+      session.morgue_set = this.properties.set;
       rect = new Phaser.Rectangle((this.properties.last ? 2 : 1) * TS, TS * 13, TS, TS);
       this.open = true;
       this.crop(rect);
       if (this.properties.last) {
-        temp.morgue_next = 1;
+        session.morgue_next = 1;
         for (i$ = 0, len$ = (ref$ = actors.children).length; i$ < len$; ++i$) {
           a = ref$[i$];
           if (!(a.properties && a.properties.labdoor && a.properties.open === this.properties.open)) {
@@ -10933,10 +10940,10 @@ function map_objects(){
         setswitch(this.properties.open, true);
         sound.play('door');
       } else {
-        temp.morgue_next++;
+        session.morgue_next++;
         sound.play('candle');
       }
-    } else if (temp.morgue_next == 1) {
+    } else if (session.morgue_next == 1) {
       say('', tl("It won't open."));
     } else {
       rect = new Phaser.Rectangle(0, TS * 13, TS, TS);
@@ -10945,7 +10952,7 @@ function map_objects(){
         if (n.name === 'morgue' && n.properties.set === this.properties.set) {
           n.open = false;
           n.crop(rect);
-          temp.morgue_next = 1;
+          session.morgue_next = 1;
           sound.play('candle');
         }
       }
@@ -13925,6 +13932,7 @@ function create_title_menu(){
     arguments: [title_screen]
   });
   args.push('Manage Saves', function(){
+    savemanager.readFiles();
     saveman.style.display = 'block';
   });
   title_menu.set.apply(title_menu, args);
@@ -19870,7 +19878,11 @@ scenario.talk_pest = function(){
       });
     } else if (switches.progress2 < 24) {
       say('pest', tl("You must speak to Joki. She can properly equip you."));
+    } else if (switches.llovsick && !in$(llov, party) && switches.llovsick1 === true) {
+      say('pest', tl("Where is miss Llov? Wasn't she with you?"));
+      revivalmenu = false;
     } else if (switches.llovsick1 === 2) {
+      session.pestypleasehelpllov = 1;
       say('ebby', 'concern', tl("Llov is sick. Please, can you help her?"));
       say('pest', tl("It's probably just malnourishment."));
       say('pest', tl("If you provide me with human souls, I can extract the energy from them and feed it to her."));
@@ -20105,7 +20117,12 @@ scenario.states.towerfall = function(){
       llov.relocate('llovsick');
       llov.interact = function(){
         say('llov', 'sick', tl("Uuu..."));
-        say('', tl("Lloviu-tan's condition shows no sign of improvement."));
+        if (!session.pestypleasehelpllov) {
+          say('ebby', 'concern', tl("Llov is sick Marburg. What should we do?"));
+          say('marb', 'troubled', tl("I'm sure Pestilence can help us."));
+        } else {
+          say('', tl("Lloviu-tan's condition shows no sign of improvement."));
+        }
       };
     }
   }
@@ -21240,7 +21257,9 @@ scenario.war = function(){
     say('war', tl("I don't know the password, but I know someone who does."));
     say('war', tl("He used to tend that lab. Problem is, he died a while back."));
     say('war', tl("You should check his body. it might have what you're looking for."));
-    return;
+    if (!switches.necrotoxinrecipe) {
+      return;
+    }
   }
   if (items.necrotoxinrecipe.quantity) {
     items.necrotoxinrecipe.quantity = 0;

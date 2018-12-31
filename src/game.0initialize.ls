@@ -270,7 +270,7 @@ init_mod=[]
     text=''
     greater=true
     fatalerror.advices ?=
-        download: tle("Download a native version of this game from {0}. Run the game executable.","<a href='http://filosis.cutievirus.com/\#download'>filosis.cutievirus.com</a>")
+        download: tle("Download a native version of this game from {0}. Run the game executable.","<a href='https://cutievirus.itch.io/super-filovirus-sisters'>itch.io</a>")
         report: tle("To report this bug, the you can contact me on {0}.","<a href='https://discord.gg/4SJ5dFN'>Discord</a>")
     switch type 
     |\sameOrigin
@@ -280,7 +280,8 @@ init_mod=[]
         tle("There are a few things you can do to fix this.")+"</p>"+
         "<p>1. "+fatalerror.advices.download+"</p>"+
         "<p>2. "+tle("Try a different browser. Chromium browsers won't work. Firefox will. If you want to play using this browser, read further.")+"</p>"+
-        "<p>3. "+tle("Disable web security. This isn't reccomended unless you know what you're doing.")+"</p>"
+        "<p>3. "+tle("Disable web security. This isn't reccomended unless you know what you're doing.")+"</p>"+
+        "<p>4. <a href='https://www.npmjs.com/package/http-server'>"+tle("Get a web server!")+"</a></p>"
     |\localStorage
         text="<h2>"+tle("Local Storage Error")+"</h2>"+
         "<p>"+tle("This probably happened because you're using a browser that doesn't support localStorage, or localStorage is disabled.")+"<br>"+

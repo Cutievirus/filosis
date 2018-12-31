@@ -84,5 +84,7 @@ function saveHandler(key, value){
     (session.localStorageError ? console.warn : alert)("The game could not be saved!\n" + er.message);
   }
 }
-
+window.savemanager={
+	readFiles:readFiles,
+};
 })();

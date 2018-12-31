@@ -855,7 +855,11 @@ scenario.talk_pest =!->
         else if switches.progress2<24
             say \pest tl("You must speak to Joki. She can properly equip you.")
             #return
+        else if switches.llovsick and llov not in party and switches.llovsick1 is true
+            say \pest tl("Where is miss Llov? Wasn't she with you?")
+            revivalmenu=false
         else if switches.llovsick1 is 2
+            session.pestypleasehelpllov=1;
             say \ebby \concern tl("Llov is sick. Please, can you help her?")
             say \pest tl("It's probably just malnourishment.")
             say \pest tl("If you provide me with human souls, I can extract the energy from them and feed it to her.")
@@ -1066,7 +1070,11 @@ scenario.states.towerfall =!->
             llov.relocate \llovsick
             llov.interact=!->
                 say \llov \sick tl("Uuu...")
-                say '' tl("Lloviu-tan's condition shows no sign of improvement.")
+                if !session.pestypleasehelpllov
+                    say \ebby \concern tl("Llov is sick Marburg. What should we do?")
+                    say \marb \troubled tl("I'm sure Pestilence can help us.")
+                else
+                    say '' tl("Lloviu-tan's condition shows no sign of improvement.")
 
     if switches.map is \hub and switches.llovsick1 is -2
         temp.deadmal=create_prop nodes.bp, \deadmal
@@ -1929,7 +1937,7 @@ scenario.war =!->
         say \war tl("I don't know the password, but I know someone who does.")
         say \war tl("He used to tend that lab. Problem is, he died a while back.")
         say \war tl("You should check his body. it might have what you're looking for.")
-        return
+        if !switches.necrotoxinrecipe then return
     if items.necrotoxinrecipe.quantity
         items.necrotoxinrecipe.quantity=0
         setswitch \necrotoxinrecipe true

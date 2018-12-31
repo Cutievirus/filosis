@@ -2,11 +2,11 @@ preload_mod.push(function(){
     batchload([
     ['lang_en', 'en.txt'],
     ['lang_jp', 'jp.txt']
-    ], 'mod/language/', 'json')
+    ], 'mod/language/', 'json');
 });
 
 //Change default language like this:
-gameOptions.language='jp';
+gameOptions.language='en';
 
 // Everything below is for generating the default language file.
 language={};
@@ -63,11 +63,11 @@ language.write_line=function(s){
   language.dictionary[s]=s;
   language.outfile+='\n	'+(language.firstline?'':',')+'"'+s+'":\n	"'+s+'"\n';
   language.firstline=false;
-}
+};
 language.write_section=function(s){
   language.outfile+='\n'+(language.firstline?'':',')+'"_section": "'+s+'"\n';
   language.firstline=false;
-}
+};
 
 language.section_main=function(){
   language.write_section('main');
@@ -76,7 +76,7 @@ language.section_main=function(){
     var s = matches[i].slice(4,-1);
     language.write_line(s);
   }
-}
+};
 language.section_errors=function(){
   language.write_section('error messages');
   var matches = language.gamefile.match(/tle\("(?:\\"|[^"])*"/g);
@@ -84,7 +84,7 @@ language.section_errors=function(){
     var s = matches[i].slice(5,-1);
     language.write_line(s);
   }
-}
+};
 language.section_items=function(){
 	language.write_section('items');
 	for (var key in items) {
@@ -94,7 +94,7 @@ language.section_items=function(){
 		language.write_line(item.unlocalized_desc);
 		language.write_line(item.unlocalized_desc_battle);
 	}
-}
+};
 language.section_skills=function(){
 	language.write_section('skills');
 	for (var key in skills) {
@@ -103,44 +103,44 @@ language.section_skills=function(){
 		language.write_line(skill.unlocalized_desc);
 		language.write_line(skill.unlocalized_desc_battle);
 	}
-}
+};
 language.section_formes=function(){
 	language.write_section('formes');
 	for (var p in formes) for (var f in formes[p]){
 		language.write_line(formes[p][f].unlocalized_name);
 		language.write_line(formes[p][f].unlocalized_desc);
 	}
-}
+};
 language.section_speakers=function(){
 	language.write_section('speakers');
 	for (var key in speakers) {
 		language.write_line(speakers[key].unlocalized_display);
 	}
-}
+};
 language.section_monsters=function(){
 	language.write_section('monsters');
 	for (var key in Monster.types) {
 		language.write_line(Monster.types[key].unlocalized_name);
 	}
-}
+};
 language.section_warps=function(){
 	language.write_section('warps');
 	for (var i=0; i<warpzones.length; i++) {
 		language.write_line(warpzones[i].unlocalized_name);
 	}
-}
+};
 language.section_zones=function(){
 	language.write_section('zones');
 	for (var i=0; i<unlocalized_zones.length; i++) {
 		language.write_line(unlocalized_zones[i]);
 	}
-}
+};
 language.section_pentagrams=function(){
 	language.write_section('pentagrams');
 	for (var i=0; i<unlocalized_pentagrams.length; i++) {
 		language.write_line(unlocalized_pentagrams[i]);
 	}
-}
+};
 
 language.savefile=function(){
 	window.location = window.URL.createObjectURL(new Blob(["\ufeff"+language.outfile],{type:"text/plain"}));

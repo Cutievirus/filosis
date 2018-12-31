@@ -651,6 +651,7 @@ var title_screen
     #if filecount>1 #multiplesaves
     #    args.push 'Delete' callback:launch_load_menu, arguments:['delete'] if largs.length>0
     args.push 'Manage Saves' !->
+        savemanager.readFiles();
         saveman.style.display='block'
     title_menu.set.apply title_menu, args
     title_screen.show!

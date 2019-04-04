@@ -271,7 +271,7 @@ init_mod=[]
     greater=true
     fatalerror.advices ?=
         download: tle("Download a native version of this game from {0}. Run the game executable.","<a href='https://cutievirus.itch.io/super-filovirus-sisters'>itch.io</a>")
-        report: tle("To report this bug, the you can contact me on {0}.","<a href='https://discord.gg/4SJ5dFN'>Discord</a>")
+        report: tle("To report this bug, the you can contact me on {0}.","<a href='http://cutievirus.com/discord/'>Discord</a>")
     switch type 
     |\sameOrigin
         text="<h2>"+tle("The game cannot be played right now.")+"</h2>"+

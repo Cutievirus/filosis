@@ -292,6 +292,9 @@ tiledata = {}
 !function load_map (name, filename)
     game.load.tilemap name, "maps/#filename", null, Phaser.Tilemap.TILED_JSON
     
+!function mod_load_map(name,path)
+    game.load.tilemap name, path, null, Phaser.Tilemap.TILED_JSON
+
 function create_map (name)
     map = game.add.tilemap name
     map.named-layers = {}
@@ -303,8 +306,12 @@ function create_map (name)
         when layer.name is \object_layer
             map.object_cache = layer.objects
     for tileset in game.cache.getTilemapData(name).data.tilesets
-        map.add-tileset-image tileset.name, (if game.cache.checkImageKey(tileset.name) then tileset.name else "#{tileset.name}_tiles" )
+        map.add-tileset-image tileset.name, (get_tileset_key tileset.name)
     return map
+
+function get_tileset_key (name)
+    tiles="#{name}_tiles"
+    return if game.cache.checkImageKey(tiles) then tiles else name
 
 !function create_tilemap
     switches.map=STARTMAP unless game.cache.checkTilemapKey switches.map
@@ -318,8 +325,9 @@ function create_map (name)
     for null, y in map.tile_layer.layer.data
         for tile, x in map.tile_layer.layer.data[y]
             if (tp = tile.properties)terrain is \fringe or tp.terrain is \overpass
-                ftile = new Doodad(x*TS, y*TS, (fringe_swap tp.fringe_key), null false) |> fringe.add-child
-                ftile.crop new Phaser.Rectangle TS*tp.fringe_x, TS*tp.fringe_y, TS,TS
+                data=getTileData tile
+                ftile = new Doodad(x*TS, y*TS, (fringe_swap data.key), null false) |> fringe.add-child
+                ftile.crop new Phaser.Rectangle TS*data.tx, TS*data.ty, TS,TS
                 if tp.terrain is \overpass
                     updatelist.push ftile
                     ftile.update=!->
@@ -345,6 +353,7 @@ function tile_collision (o, layer=map.named-layers.tile_layer, water, land, oo=o
         y: o.body.position.y - o.body.tile-padding.y
         w: o.body.width + o.body.tile-padding.x
         h: o.body.height + o.body.tile-padding.y
+    rect = clampPosition rect
     tiles = getTiles.call layer, rect, true
 
     for tile, i in tiles
@@ -363,7 +372,11 @@ function tile_collision (o, layer=map.named-layers.tile_layer, water, land, oo=o
 function check_dcol(tile,rect, o=player)
     return false unless tile
     if tile.properties.terrain is 'fringe' or tile.properties.terrain is \overpass and o.bridgemode is \under
-        if tile.properties.dcol is '0,1,0,1'
+        if (fc=tile.properties.fringe_check)
+            fc=fc/\,
+            fc.x=+fc.0; fc.y=+fc.1
+            return  check_dcol map.getTile(tile.x+fc.x,tile.y+fc.y,map.tile_layer), x:rect.x+fc.x*TS, y:rect.y+fc.y*TS, w:rect.w,h:rect.h, o
+        else if tile.properties.dcol is '0,1,0,1'
             return  check_dcol map.getTile(tile.x+1,tile.y,map.tile_layer), x:rect.x+TS, y:rect.y, w:rect.w,h:rect.h, o
         else
             return  check_dcol map.getTile(tile.x,tile.y - 1,map.tile_layer), x:rect.x, y:rect.y - TS, w:rect.w,h:rect.h, o
@@ -393,25 +406,34 @@ function getTiles (rect, returnnull = true)
 
 override_getTile = Phaser.Tilemap::getTile
 Phaser.Tilemap::getTile=(x,y,layer,nonNull=false)!->
-    switch getmapdata \edges
-    |\loop
-        if y>=@height then y%=@height
-        else while y<0 then y += @height
-        if x>=@width then x%=@width
-        else while x<0 then x += @width
-    |\clamp
-        if y>=@height then y=@height - 1
-        else if y<0 then y=0
-        if x>=@width then x=@width - 1
-        else if x<0 then x=0
+    {x,y} = clampPosition(x:x,y:y,true)
 
     return override_getTile ...
+
+function clampPosition (p,tilemode)
+    m = if tilemode then 1 else TS
+    switch getmapdata \edges
+    |\loop
+        if p.y>=map.height*m then p.y%=map.height*m
+        else while p.y<0 then p.y += map.height*m
+        if p.x>=map.width*m then p.x%=map.width*m
+        else while p.x<0 then p.x += map.width*m
+    |\clamp
+        if p.y>=map.height*m then p.y=map.height*m - 1
+        else if p.y<0 then p.y=0
+        if p.x>=map.width*m then p.x=map.width*m - 1
+        else if p.x<0 then p.x=0
+    return p
 
 function tile_passable (tile, water=switches.water_walking, land=true, o=player)
     if not tile? or tile is false or not tile.properties.terrain?
         return water and switches.outside
     if tile.properties.terrain is 'water'
         return water
+    if tile.properties.terrain is 'overpass' and (fc=tile.properties.fringe_check) and o.bridgemode is \under
+        fc=fc/\,
+        fc.x=+fc.0; fc.y=+fc.1
+        return tile_passable(map.getTile(tile.x+fc.x, tile.y+fc.y, map.tile_layer), water, land, o)
     if tile.properties.terrain is 'overpass' and tile.properties.dcol is '0,1,0,1' and o.bridgemode is \under
         return tile_passable(map.getTile(tile.x+1, tile.y, map.tile_layer), water, land, o)
     if tile.properties.terrain is 'fringe' or tile.properties.terrain is 'overpass' and o.bridgemode is \under
@@ -426,7 +448,7 @@ function tile_passable (tile, water=switches.water_walking, land=true, o=player)
     #if (getmapdata \edges) is \loop
     #    return (getTiles.call map.tile_layer, x:o.x, y:o.y, w:0, h:0).0
     #else
-    return map.getTile(o.x/TS.|.0, o.y/TS.|.0, map.tile_layer, true)
+    return map.getTile(Math.floor(o.x/TS), Math.floor(o.y/TS), map.tile_layer, true)
 
 /* #UNUSED
 function tile_line (p1, p2)

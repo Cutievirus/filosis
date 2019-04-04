@@ -1,4 +1,4 @@
-var pixel, game, pentagrams, WIDTH, HEIGHT, HWIDTH, HHEIGHT, RADIUS, TS, HTS, WS, HWS, BS, IS, FW, FW2, FH, HPI, textinput, saveman, errordiv, bootloader, state, init_mod, i$, ref$, len$, item, STARTMAP, version, version_number, switches, session, warpzones, unlocalized_zones, unlocalized_pentagrams, temp, switch_defaults, multiplesaves, create_title_background, solidscreen, cg, previous_time, delta, deltam, update_mod, preloader, preload_mod, gui, gui_mod, dialog, Window, CGWindow, DialogWindow, Text, FloatingText, TextEntry, Menu_Base, Number_Dialog, Menu, Portrait, Screen, musicmap, actors, carpet, triggers, fringe, updatelist, Actor, formes, p, f, costumes, c, k, filling, Player, player, party, players, llov, ebby, marb, Skill, animations, skills, key, properties, skillbook, DEGtoRAD, RADtoDEG, pluckroll, saveslug, save_options_mod, load_options_mod, gameOptions, nosave_switches, battle_encounter, battle, heroes, monsters, target_message, battle_mixin, Battler, StatusCard, Monster, Animation, Buff, buffs, nodes, doodads, Doodad, Treasure, Trigger, holiday, devices, keyboard, input_mod, onDown_up, onDown_left, onDown_down, onDown_right, onDown_cancel, mouse, Item, items, crafting, recipe, recipebook, items_initial, pause_screen, shop_screen, refresh_shop, options_mod, pause_menu_mod, title_screen, costume_screen, excel_screen, Mob, Dust, mobs, dustclouds, palette, encounter, Audio, sound, music, menusound, voicesound, NPC, mal, herpes, bp, merch, nae, pox, leps, cure, zmapp, sars, rab, ammit, parvo, joki, aids, speakers, scenario, scenario_mod, mapdefaults, zones, mapdata, backdrop, map, tiledata, override_getTile, renderregionoverride, Transition, split$ = ''.split;
+var pixel, game, pentagrams, WIDTH, HEIGHT, HWIDTH, HHEIGHT, RADIUS, TS, HTS, WS, HWS, BS, IS, FW, FW2, FH, HPI, textinput, saveman, errordiv, bootloader, state, init_mod, i$, ref$, len$, item, STARTMAP, version, version_number, switches, session, warpzones, unlocalized_zones, unlocalized_pentagrams, temp, switch_defaults, multiplesaves, create_title_background, solidscreen, cg, previous_time, delta, deltam, update_mod, game_ticks, game_update_logic, preloader, preload_mod, mod_scripts, scriptloader, gui, gui_mod, dialog, Window, CGWindow, DialogWindow, Text, FloatingText, TextEntry, Menu_Base, Number_Dialog, Menu, Portrait, Screen, musicmap, actors, carpet, triggers, fringe, updatelist, Actor, formes, p, f, costumes, c, k, filling, Player, player, party, players, llov, ebby, marb, Skill, animations, skills, key, properties, skillbook, DEGtoRAD, RADtoDEG, pluckroll, saveslug, save_options_mod, load_options_mod, gameOptions, nosave_switches, battle_encounter, battle, heroes, monsters, target_message, battle_mixin, Battler, StatusCard, Monster, Animation, Buff, buffs, nodes, doodads, Doodad, Treasure, Trigger, holiday, mod_doodads, devices, keyboard, input_mod, onDown_up, onDown_left, onDown_down, onDown_right, onDown_cancel, mouse, Item, items, crafting, recipe, recipebook, items_initial, pause_screen, shop_screen, refresh_shop, options_mod, pause_menu_mod, title_screen, costume_screen, excel_screen, Mob, Dust, mobs, dustclouds, palette, encounter, Audio, sound, music, menusound, voicesound, NPC, mal, herpes, bp, merch, nae, pox, leps, cure, zmapp, sars, rab, ammit, parvo, joki, aids, speakers, scenario, scenario_mod, old_phaser_parseTiledJSON, mapdefaults, zones, mapdata, backdrop, map, tiledata, override_getTile, renderregionoverride, Transition, split$ = ''.split;
 WIDTH = 320;
 HEIGHT = 240;
 HWIDTH = WIDTH / 2;
@@ -289,7 +289,7 @@ function fatalerror(type){
   greater = true;
   fatalerror.advices == null && (fatalerror.advices = {
     download: tle("Download a native version of this game from {0}. Run the game executable.", "<a href='https://cutievirus.itch.io/super-filovirus-sisters'>itch.io</a>"),
-    report: tle("To report this bug, the you can contact me on {0}.", "<a href='https://discord.gg/4SJ5dFN'>Discord</a>")
+    report: tle("To report this bug, the you can contact me on {0}.", "<a href='http://cutievirus.com/discord/'>Discord</a>")
   });
   switch (type) {
   case 'sameOrigin':
@@ -348,7 +348,7 @@ for (i$ = 0, len$ = (ref$ = document.getElementsByClassName('close_overlay')).le
 }
 STARTMAP = 'shack2';
 version = "Release";
-version_number = '1.1.1';
+version_number = '1.2';
 switches = {
   sp_limit: {},
   water_walking: false,
@@ -829,6 +829,15 @@ state.boot.loadRender = state.preload.loadRender = function(){
 function copycanvas(){
   pixel.context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, pixel.width, pixel.height);
 }
+game_ticks = 0;
+game_update_logic = Phaser.Game.prototype.updateLogic;
+Phaser.Game.prototype.updateLogic = function(){
+  game_update_logic.apply(this, arguments);
+  ++game_ticks;
+  if (game_ticks >= Number.MAX_SAFE_INTEGER) {
+    game_ticks = 0;
+  }
+};
 state.preboot.preload = function(){
   var g;
   batchload([['preloader', 'preloader.png'], ['preloader_back', 'preloader_back.png'], ['title', 'title.png'], ['loading', 'loading.png']], 'img/gui/');
@@ -858,7 +867,9 @@ state.boot.preload = function(){
 };
 state.boot.create = function(){
   gui.frame.remove(preloader);
-  game.state.start('preload');
+  scriptloader(mod_scripts, function(){
+    game.state.start('preload');
+  });
 };
 state.preload.preload = function(){
   preloader = gui.frame.create(0, HEIGHT - TS * 2, 'preloader');
@@ -885,6 +896,19 @@ state.preload.create = function(){
   tlNames();
 };
 preload_mod = [];
+mod_scripts = [];
+scriptloader = function(arr, callback){
+  var script;
+  script = document.createElement('script');
+  script.src = arr.shift();
+  console.log("Loading mod script " + script.src);
+  if (arr.length) {
+    script.onload = state.preload.scriptloader.bind(this, arr, callback);
+  } else {
+    callback();
+  }
+  document.head.appendChild(script);
+};
 function preload_assets(){
   var i$, ref$, len$, f;
   batchload([['llov', 'llov.png', 20, 25], ['ebby', 'ebby.png', 22, 25], ['marb', 'marb.png', 22, 28], ['mal', 'mal.png', 22, 28], ['bp', 'bp.png', 22, 28], ['joki', 'joki.png', 22, 25], ['herpes', 'herpes.png', 22, 25], ['pox', 'pox.png', 22, 25], ['leps', 'leps.png', 22, 26], ['sars', 'sars.png', 22, 26], ['aids1', 'eidzu1.png', 20, 25], ['aids2', 'eidzu2.png', 20, 25], ['aids3', 'eidzu3.png', 29, 28], ['rab', 'rabies.png', 22, 26], ['chikun', 'chikun.png', 22, 26], ['ammit', 'ammit.png', 20, 25], ['parvo', 'parvo.png', 20, 25], ['zika', 'zika.png', 22, 25], ['cure', 'cure.png', 22, 28], ['zmapp', 'zmapp.png', 22, 26], ['who', 'who.png', 22, 36], ['min', 'min.png', 20, 25], ['dead', 'dead.png', 20, 25], ['merchant1', 'merchant1.png', 22, 28], ['merchant2', 'merchant2.png', 22, 28], ['shiro', 'shiro.png', 20, 25]], 'img/char/', 'spritesheet');
@@ -3174,7 +3198,7 @@ function create_actors(){
   };
   override = actors.update;
   actors.update = function(){
-    var i$, ref$, len$, t, child;
+    var i$, ref$, len$, t, child, list;
     if (game.state.current !== 'overworld') {
       return;
     }
@@ -3195,8 +3219,9 @@ function create_actors(){
       return;
     }
     mouse.down = false;
-    for (i$ = (ref$ = updatelist).length - 1; i$ >= 0; --i$) {
-      child = ref$[i$];
+    list = game_ticks % 60 ? this.children : updatelist;
+    for (i$ = list.length - 1; i$ >= 0; --i$) {
+      child = list[i$];
       if (child.nobody) {
         child.update();
       } else {
@@ -3208,6 +3233,9 @@ function create_actors(){
   };
   actors.preUpdate = function(){
     var i$, ref$, child;
+    if (game_ticks % 60 === 0) {
+      return Phaser.Group.prototype.preUpdate.apply(this, arguments);
+    }
     for (i$ = (ref$ = updatelist).length - 1; i$ >= 0; --i$) {
       child = ref$[i$];
       child.preUpdate();
@@ -3215,14 +3243,29 @@ function create_actors(){
   };
   actors.postUpdate = function(){
     var i$, ref$, child;
+    if (game_ticks % 60 === 0) {
+      return Phaser.Group.prototype.postUpdate.apply(this, arguments);
+    }
     for (i$ = (ref$ = updatelist).length - 1; i$ >= 0; --i$) {
       child = ref$[i$];
       child.postUpdate();
     }
   };
-  triggers.update = carpet.update = fringe.update = function(){};
-  triggers.preUpdate = carpet.preUpdate = fringe.preUpdate = function(){};
-  triggers.postUpdate = carpet.postUpdate = fringe.postUpdate = function(){};
+  triggers.update = carpet.update = fringe.update = function(){
+    if (game_ticks % 60 === 0) {
+      Phaser.Group.prototype.update.apply(this, arguments);
+    }
+  };
+  triggers.preUpdate = carpet.preUpdate = fringe.preUpdate = function(){
+    if (game_ticks % 60 === 0) {
+      Phaser.Group.prototype.preUpdate.apply(this, arguments);
+    }
+  };
+  triggers.postUpdate = carpet.postUpdate = fringe.postUpdate = function(){
+    if (game_ticks % 60 === 0) {
+      Phaser.Group.prototype.postUpdate.apply(this, arguments);
+    }
+  };
   create_players();
 }
 function sort_actor_groups(){
@@ -7490,6 +7533,9 @@ function load(name){
     case "Release":
       switches.version = version;
     }
+    if (switches.famine) {
+      switches.famine_cave = true;
+    }
     if (typeof switches.sp_limit === 'number') {
       old_sp_limit = switches.sp_limit;
       switches.sp_limit = {};
@@ -7547,6 +7593,46 @@ function starter_skills(p, f, force){
       break;
     }
   }
+}
+function findNPC(name){
+  var i$, ref$, len$, actor;
+  for (i$ = 0, len$ = (ref$ = actors.children).length; i$ < len$; ++i$) {
+    actor = ref$[i$];
+    if (actor.name === name) {
+      return actor;
+    }
+  }
+  return null;
+}
+function forNPC(name, callback){
+  var npc;
+  npc = findNPC(name);
+  if (npc) {
+    callback.call(npc, npc);
+  }
+}
+function parseGID(gid){
+  var ret, i$, ref$, len$, tileset, ref1$;
+  ret = {};
+  ret.flipX = !!(gid & 0x80000000);
+  ret.flipY = !!(gid & 0x40000000);
+  ret.gid = gid & 0x1FFFFFFF;
+  for (i$ = 0, len$ = (ref$ = map.tilesets).length; i$ < len$; ++i$) {
+    tileset = ref$[i$];
+    if (tileset.firstgid <= (ref1$ = ret.gid) && ref1$ < tileset.firstgid + tileset.total) {
+      ret.tileset = tileset;
+      ret.key = get_tileset_key(tileset.name);
+      ret.frame = ret.gid - tileset.firstgid;
+      ret.tx = ret.frame % tileset.columns;
+      ret.ty = Math.floor(ret.frame / tileset.columns);
+    }
+  }
+  return ret;
+}
+function getTileData(tile){
+  var gid;
+  gid = mapjson.layers[0].data[tile.y * tile.layer.width + tile.x];
+  return parseGID(gid);
 }
 function start_battle(enc, toughness, terrain){
   toughness == null && (toughness = 0);
@@ -10168,24 +10254,32 @@ holiday.easter = holiday.month === 3 && holiday.date >= 22 || holiday.month === 
 holiday.halloween = holiday.month === 10;
 holiday.turkey = holiday.month === 11;
 holiday.christmas = holiday.month === 12;
+mod_doodads = [];
 function map_objects(){
-  var flower_count, oil_count, treasure_count, mimic_count, goop_count, i$, ref$, len$, o, object, dood, ref1$, check, trig, portal, j$, len1$, key, ref2$, name, rect;
+  var flower_count, oil_count, treasure_count, mimic_count, goop_count, i$, ref$, len$, o, object, j$, ref1$, len1$, func, dood, check, trig, portal, key, ref2$, name, rect;
   flower_count = 0;
   oil_count = 0;
   treasure_count = 0;
   mimic_count = 0;
   goop_count = 0;
-  for (i$ = 0, len$ = (ref$ = map.object_cache).length; i$ < len$; ++i$) {
+  nextobject: for (i$ = 0, len$ = (ref$ = map.object_cache).length; i$ < len$; ++i$) {
     o = ref$[i$];
     object = {
       x: o.x | 0,
       y: o.y - TS | 0,
       type: o.type,
       name: o.name,
-      properties: o.properties,
+      properties: o.properties || {},
       width: o.width,
       height: o.height
     };
+    Object.assign(object, parseGID(o.gid));
+    for (j$ = 0, len1$ = (ref1$ = mod_doodads).length; j$ < len1$; ++j$) {
+      func = ref1$[j$];
+      if (typeof func == 'function' && func(object)) {
+        continue nextobject;
+      }
+    }
     switch (object.type) {
     case 'npc':
       create_npc(object, object.name);
@@ -10311,7 +10405,7 @@ function map_objects(){
         flower_count++;
       } else {
         delete switches["flower_" + switches.map + "_" + flower_count];
-        create_tree(object, (ref1$ = object.properties.sheet) != null ? ref1$ : '1x1', (ref1$ = object.properties.frame) != null ? ref1$ : 8, true, 'flower');
+        create_tree(object, object.properties.sheet, object.properties.frame, true, 'flower');
       }
       break;
     case 'oil':
@@ -10323,16 +10417,16 @@ function map_objects(){
       }
       break;
     case 'tree':
-      create_tree(object, (ref1$ = object.properties.sheet) != null ? ref1$ : '1x2', (ref1$ = object.properties.frame) != null ? ref1$ : 2, true, true);
+      create_tree(object, object.properties.sheet, object.properties.frame, true, true);
       break;
     case 'tree2':
-      create_tree(object, (ref1$ = object.properties.sheet) != null ? ref1$ : '1x2', (ref1$ = object.properties.frame) != null ? ref1$ : 2, true, false);
+      create_tree(object, object.properties.sheet, object.properties.frame, true, false);
       break;
     case 'foliage':
-      create_tree(object, (ref1$ = object.properties.sheet) != null ? ref1$ : '1x2', (ref1$ = object.properties.frame) != null ? ref1$ : 3, false);
+      create_tree(object, object.properties.sheet, object.properties.frame, false);
       break;
     case 'fringe':
-      dood = create_fringe(object, (ref1$ = object.properties.sheet) != null ? ref1$ : '2x2', (ref1$ = object.properties.frame) != null ? ref1$ : 0);
+      dood = create_fringe(object, object.properties.sheet, object.properties.frame);
       break;
     case 'pylon':
       create_tree(object, '1x2', object.name === 'pylon2' && switches.sleepytime && !switches.pylonfixed ? 1 : 0, true);
@@ -10482,6 +10576,12 @@ function map_objects(){
   function create_tree(object, sheet, frame, collide, sap){
     var tree, ref$;
     sap == null && (sap = false);
+    if (sheet == null) {
+      sheet = object.key;
+    }
+    if (frame == null) {
+      frame = object.frame;
+    }
     tree = actors.addChild(
     new Doodad(object.x, object.y + TS, sheet, null, collide));
     tree.x += tree.width / 2;
@@ -12371,6 +12471,7 @@ function eat_soul(target, name){
     ? tl("Level up!")
     : tl("{0} xp gained.", xp);
   say('', tl("The soul of {0} has been devoured. {1}", name, message));
+  setswitch(target.name + "_tainted", true);
 }
 items.naesoul = {
   name: "Nae's Soul",
@@ -18927,7 +19028,7 @@ scenario.always = function(){
       acquire(items.shrunkenhead);
     }
   }
-  if (switches.map === 'deadworld' && switches.famine) {
+  if (switches.map === 'deadworld' && switches.famine_cave) {
     dood = carpet.addChild(
     new Doodad(nodes.secretcave.x, nodes.secretcave.y, 'jungle_tiles', null, false));
     dood.crop(new Phaser.Rectangle(TS * 5, TS * 13, TS, TS));
@@ -20856,6 +20957,7 @@ scenario.beat_game2 = function(){
       : switches.llovsick1 === 4 ? 'llov' : '';
     switches.progress = 'endgame';
     switches.beat_game = Date.now();
+    switches.famine_cave = true;
     return setswitch('humanfate', 1);
   }, tl("Abort humanity."), function(){
     switches.dead = switches.llovsick1 === -2
@@ -20863,6 +20965,7 @@ scenario.beat_game2 = function(){
       : switches.llovsick1 === 4 ? 'llov' : '';
     switches.progress = 'endgame';
     switches.beat_game = Date.now();
+    switches.famine_cave = true;
     return setswitch('humanfate', -1);
   });
   say(function(){
@@ -21064,12 +21167,14 @@ scenario.shiro = function(){
 };
 scenario.joki_castle = function(){
   say('joki', tl("What a surprise. I didn't expect you would find your way here."));
-  if (in$(llov, party)) {
-    say('llov', tl("Uncle Famine told us how to get here."));
-  } else {
-    say('marb', tl("Famine told us you took over Death's castle."));
+  if (switches.famine) {
+    if (in$(llov, party)) {
+      say('llov', tl("Uncle Famine told us how to get here."));
+    } else {
+      say('marb', tl("Famine told us you took over Death's castle."));
+    }
+    say('joki', tl("Oh Famine, such a gossip."));
   }
-  say('joki', tl("Oh Famine, such a gossip."));
   say('joki', tl("Yes, this is my castle now. Nice place isn't it?"));
   say('joki', tl("You should stay a while, I'll make some tea."));
   say('ebby', 'concern', tl("Joki, why are you hiding my friends from me?"));
@@ -21301,7 +21406,8 @@ scenario.famine = function(){
   }
   say('', tl("Here lies famine. He starved to death."));
   say(function(){
-    return setswitch('famine', true);
+    setswitch('famine', true);
+    return setswitch('famine_cave', true);
   });
   say('famine', tl("Hey, just between you and me... I'm not actually dead. Just sleeping."));
   say('famine', tl("The only horseman that's actually dead is Death. He's been replaced by that maid of his."));
@@ -21367,6 +21473,28 @@ scenario.basementlocked = function(){
   say(function(){
     return temp.locktimer = Date.now();
   });
+};
+old_phaser_parseTiledJSON = Phaser.TilemapParser.parseTiledJSON;
+Phaser.TilemapParser.parseTiledJSON = function(json){
+  var i$, ref$, len$, tileset, properties, j$, ref1$, len1$, tile, k$, ref2$, len2$, property, map;
+  for (i$ = 0, len$ = (ref$ = json.tilesets).length; i$ < len$; ++i$) {
+    tileset = ref$[i$];
+    if (!(tileset.tiles instanceof Array)) {
+      continue;
+    }
+    properties = tileset.tileproperties = {};
+    for (j$ = 0, len1$ = (ref1$ = tileset.tiles).length; j$ < len1$; ++j$) {
+      tile = ref1$[j$];
+      properties[tile.id] = {};
+      for (k$ = 0, len2$ = (ref2$ = tile.properties).length; k$ < len2$; ++k$) {
+        property = ref2$[k$];
+        properties[tile.id][property.name] = property.value;
+      }
+    }
+  }
+  map = old_phaser_parseTiledJSON.apply(this, arguments);
+  window.mapjson = json;
+  return map;
 };
 mapdefaults = {
   edges: 'normal',
@@ -21841,6 +21969,9 @@ function fringe_swap(n){
 function load_map(name, filename){
   game.load.tilemap(name, "maps/" + filename, null, Phaser.Tilemap.TILED_JSON);
 }
+function mod_load_map(name, path){
+  game.load.tilemap(name, path, null, Phaser.Tilemap.TILED_JSON);
+}
 function create_map(name){
   var map, i$, ref$, len$, layer, tileset;
   map = game.add.tilemap(name);
@@ -21860,14 +21991,17 @@ function create_map(name){
   }
   for (i$ = 0, len$ = (ref$ = game.cache.getTilemapData(name).data.tilesets).length; i$ < len$; ++i$) {
     tileset = ref$[i$];
-    map.addTilesetImage(tileset.name, game.cache.checkImageKey(tileset.name)
-      ? tileset.name
-      : tileset.name + "_tiles");
+    map.addTilesetImage(tileset.name, get_tileset_key(tileset.name));
   }
   return map;
 }
+function get_tileset_key(name){
+  var tiles;
+  tiles = name + "_tiles";
+  return game.cache.checkImageKey(tiles) ? tiles : name;
+}
 function create_tilemap(){
-  var override, i$, ref$, len$, y, j$, ref1$, len1$, x, tile, tp, ftile;
+  var override, i$, ref$, len$, y, j$, ref1$, len1$, x, tile, tp, data, ftile;
   if (!game.cache.checkTilemapKey(switches.map)) {
     switches.map = STARTMAP;
   }
@@ -21886,9 +22020,10 @@ function create_tilemap(){
       x = j$;
       tile = ref1$[j$];
       if ((tp = tile.properties).terrain === 'fringe' || tp.terrain === 'overpass') {
+        data = getTileData(tile);
         ftile = fringe.addChild(
-        new Doodad(x * TS, y * TS, fringe_swap(tp.fringe_key), null, false));
-        ftile.crop(new Phaser.Rectangle(TS * tp.fringe_x, TS * tp.fringe_y, TS, TS));
+        new Doodad(x * TS, y * TS, fringe_swap(data.key), null, false));
+        ftile.crop(new Phaser.Rectangle(TS * data.tx, TS * data.ty, TS, TS));
         if (tp.terrain === 'overpass') {
           updatelist.push(ftile);
           ftile.update = fn$;
@@ -21939,6 +22074,7 @@ function tile_collision(o, layer, water, land, oo){
     w: o.body.width + o.body.tilePadding.x,
     h: o.body.height + o.body.tilePadding.y
   };
+  rect = clampPosition(rect);
   tiles = getTiles.call(layer, rect, true);
   for (i$ = 0, len$ = tiles.length; i$ < len$; ++i$) {
     i = i$;
@@ -21953,13 +22089,23 @@ function tile_collision(o, layer, water, land, oo){
   return false;
 }
 function check_dcol(tile, rect, o){
-  var dcol, i$, len$, i, d;
+  var fc, dcol, i$, len$, i, d;
   o == null && (o = player);
   if (!tile) {
     return false;
   }
   if (tile.properties.terrain === 'fringe' || tile.properties.terrain === 'overpass' && o.bridgemode === 'under') {
-    if (tile.properties.dcol === '0,1,0,1') {
+    if (fc = tile.properties.fringe_check) {
+      fc = split$.call(fc, ',');
+      fc.x = +fc[0];
+      fc.y = +fc[1];
+      return check_dcol(map.getTile(tile.x + fc.x, tile.y + fc.y, map.tile_layer), {
+        x: rect.x + fc.x * TS,
+        y: rect.y + fc.y * TS,
+        w: rect.w,
+        h: rect.h
+      }, o);
+    } else if (tile.properties.dcol === '0,1,0,1') {
       return check_dcol(map.getTile(tile.x + 1, tile.y, map.tile_layer), {
         x: rect.x + TS,
         y: rect.y,
@@ -22036,40 +22182,50 @@ function getTiles(rect, returnnull){
 }
 override_getTile = Phaser.Tilemap.prototype.getTile;
 Phaser.Tilemap.prototype.getTile = function(x, y, layer, nonNull){
+  var ref$;
   nonNull == null && (nonNull = false);
+  ref$ = clampPosition({
+    x: x,
+    y: y
+  }, true), x = ref$.x, y = ref$.y;
+  return override_getTile.apply(this, arguments);
+};
+function clampPosition(p, tilemode){
+  var m;
+  m = tilemode ? 1 : TS;
   switch (getmapdata('edges')) {
   case 'loop':
-    if (y >= this.height) {
-      y %= this.height;
+    if (p.y >= map.height * m) {
+      p.y %= map.height * m;
     } else {
-      while (y < 0) {
-        y += this.height;
+      while (p.y < 0) {
+        p.y += map.height * m;
       }
     }
-    if (x >= this.width) {
-      x %= this.width;
+    if (p.x >= map.width * m) {
+      p.x %= map.width * m;
     } else {
-      while (x < 0) {
-        x += this.width;
+      while (p.x < 0) {
+        p.x += map.width * m;
       }
     }
     break;
   case 'clamp':
-    if (y >= this.height) {
-      y = this.height - 1;
-    } else if (y < 0) {
-      y = 0;
+    if (p.y >= map.height * m) {
+      p.y = map.height * m - 1;
+    } else if (p.y < 0) {
+      p.y = 0;
     }
-    if (x >= this.width) {
-      x = this.width - 1;
-    } else if (x < 0) {
-      x = 0;
+    if (p.x >= map.width * m) {
+      p.x = map.width * m - 1;
+    } else if (p.x < 0) {
+      p.x = 0;
     }
   }
-  return override_getTile.apply(this, arguments);
-};
+  return p;
+}
 function tile_passable(tile, water, land, o){
-  var ref$;
+  var fc, ref$;
   water == null && (water = switches.water_walking);
   land == null && (land = true);
   o == null && (o = player);
@@ -22078,6 +22234,12 @@ function tile_passable(tile, water, land, o){
   }
   if (tile.properties.terrain === 'water') {
     return water;
+  }
+  if (tile.properties.terrain === 'overpass' && (fc = tile.properties.fringe_check) && o.bridgemode === 'under') {
+    fc = split$.call(fc, ',');
+    fc.x = +fc[0];
+    fc.y = +fc[1];
+    return tile_passable(map.getTile(tile.x + fc.x, tile.y + fc.y, map.tile_layer), water, land, o);
   }
   if (tile.properties.terrain === 'overpass' && tile.properties.dcol === '0,1,0,1' && o.bridgemode === 'under') {
     return tile_passable(map.getTile(tile.x + 1, tile.y, map.tile_layer), water, land, o);
@@ -22097,7 +22259,7 @@ function tile_passable(tile, water, land, o){
   return land;
 }
 function getTileUnder(o){
-  return map.getTile(o.x / TS | 0, o.y / TS | 0, map.tile_layer, true);
+  return map.getTile(Math.floor(o.x / TS), Math.floor(o.y / TS), map.tile_layer, true);
 }
 /* #UNUSED
 function tile_line (p1, p2)

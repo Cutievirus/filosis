@@ -271,7 +271,7 @@ init_mod=[]
     greater=true
     fatalerror.advices ?=
         download: tle("Download a native version of this game from {0}. Run the game executable.","<a href='https://cutievirus.itch.io/super-filovirus-sisters'>itch.io</a>")
-        report: tle("To report this bug, the you can contact me on {0}.","<a href='https://discord.gg/4SJ5dFN'>Discord</a>")
+        report: tle("To report this bug, the you can contact me on {0}.","<a href='http://cutievirus.com/discord/'>Discord</a>")
     switch type 
     |\sameOrigin
         text="<h2>"+tle("The game cannot be played right now.")+"</h2>"+
@@ -340,7 +340,7 @@ for item in document.get-elements-by-class-name \close_overlay
 
 STARTMAP = 'shack2'
 version = "Release"
-version_number = '1.1.1'
+version_number = '1.2'
 switches = 
     sp_limit: {}
     water_walking: false
@@ -755,6 +755,14 @@ state.boot.load-render = state.preload.load-render  =!->
     #pixel.context.fillStyle = "red";
     #pixel.context.fillText("!!!"+Math.random!,10,50);
 
+game_ticks=0
+game_update_logic=Phaser.Game::updateLogic
+Phaser.Game::updateLogic=!->
+    game_update_logic ...
+    ++game_ticks
+    if game_ticks>=Number.MAX_SAFE_INTEGER
+        game_ticks:=0
+
 var preloader
 state.preboot.preload =!->
     batchload [
@@ -801,7 +809,8 @@ state.boot.preload =!->#load assets needed for preloader
 state.boot.create =!-> 
     gui.frame.remove preloader
     #gui.frame.remove preloader.text
-    game.state.start 'preload'
+    scriptloader mod_scripts, !->
+        game.state.start 'preload'
 
 state.preload.preload =!->
     #gui.frame.add-child preloader
@@ -828,6 +837,18 @@ state.preload.create =!->
     tlNames!
 
 preload_mod=[];
+
+mod_scripts=[];
+
+scriptloader=!(arr,callback)->
+    script = document.createElement \script
+    script.src = arr.shift!
+    console.log "Loading mod script "+script.src
+    if arr.length
+        script.onload=state.preload.scriptloader.bind this,arr,callback
+    else
+        callback!
+    document.head.appendChild script
 
 #===========================================================================
 # PRELOAD ASSETS
@@ -2902,24 +2923,32 @@ class Actor extends Phaser.Sprite
         mouse.down=false
         #for child in @children
         #    child.update-paused?!
-        for child in updatelist by -1
+        list = if game_ticks%60 then @children else updatelist
+        for child in list by -1
             if child.nobody
                 child.update!
             else
                 child.update-paused?!
     actors.preUpdate=!->
+        if game_ticks%60 is 0 
+            return Phaser.Group::preUpdate ...
         for child in updatelist by -1
             #continue if child.isdoodad and (child.x<game.camera.x or child.x>game.camera.x+game.width or child.y<game.camera.y or child.y>game.camera.y+game.height)
             child.preUpdate!
     actors.postUpdate=!->
+        if game_ticks%60 is 0 
+            return Phaser.Group::postUpdate ...
         for child in updatelist by -1
             child.postUpdate!
     #carpet.preUpdate=!->
     #    for child in @children by -1
     #        child.preUpdate! unless child.isdoodad
     triggers.update=carpet.update=fringe.update=!->
+        if game_ticks%60 is 0 then Phaser.Group::update ...
     triggers.preUpdate=carpet.preUpdate=fringe.preUpdate=!->
+        if game_ticks%60 is 0 then Phaser.Group::preUpdate ...
     triggers.postUpdate=carpet.postUpdate=fringe.postUpdate=!->
+        if game_ticks%60 is 0 then Phaser.Group::postUpdate ...
             
     create_players!
 
@@ -5913,6 +5942,8 @@ nosave_switches=
         case "Delta 2017" ,"Final Demo", "Release"
             switches.version=version
         #case "Final Demo"
+        if switches.famine
+            switches.famine_cave=true
         if typeof switches.sp_limit is \number
             old_sp_limit=switches.sp_limit
             switches.sp_limit={}
@@ -5958,9 +5989,39 @@ nosave_switches=
     for s in skillist
         ps.unshift skills[s] if fs[s] <= players[p]level
         break if ps.length is 5
-##################################################################
-#============================ MIXINS ============================#
-##################################################################
+
+
+#========================================================================
+# Misc
+#========================================================================
+
+!function findNPC(name)
+    for actor in actors.children
+        if actor.name is name then return actor
+    return null
+
+!function forNPC(name,callback)
+    npc = findNPC name
+    if npc then callback.call npc, npc
+
+!function parseGID(gid)
+    ret={}
+    ret.flipX = !!(gid.&.0x80000000)
+    ret.flipY = !!(gid.&.0x40000000)
+    ret.gid = gid.&.0x1FFFFFFF
+    for tileset in map.tilesets
+        if tileset.firstgid <= ret.gid < tileset.firstgid+tileset.total
+            ret.tileset=tileset
+            ret.key=get_tileset_key tileset.name
+            ret.frame=ret.gid - tileset.firstgid
+            ret.tx = ret.frame%tileset.columns
+            ret.ty = Math.floor ret.frame/tileset.columns
+    return ret
+
+!function getTileData(tile)
+    gid=mapjson.layers.0.data[tile.y*tile.layer.width+tile.x]
+    return parseGID gid
+
 
 var battle_encounter
 !function start_battle (enc,toughness=0,terrain)
@@ -7850,6 +7911,8 @@ holiday.halloween = holiday.month is 10
 holiday.turkey = holiday.month is 11
 holiday.christmas = holiday.month is 12
 
+mod_doodads = [];
+
 !function map_objects
     flower_count=0
     oil_count=0
@@ -7857,8 +7920,14 @@ holiday.christmas = holiday.month is 12
     mimic_count=0
     goop_count=0
 
-    for o in map.object_cache
-        object = x:o.x.|.0, y:o.y - TS.|.0, type:o.type, name:o.name, properties:o.properties, width:o.width, height:o.height
+    :nextobject for o in map.object_cache
+        object = x:o.x.|.0, y:o.y - TS.|.0, type:o.type, name:o.name, properties:o.properties||{}, width:o.width, height:o.height
+
+        Object.assign object, (parseGID o.gid)
+
+        for func in mod_doodads
+            if func? object
+                continue nextobject
         switch object.type
         case \npc
             create_npc object, object.name
@@ -7981,7 +8050,7 @@ holiday.christmas = holiday.month is 12
                 flower_count++
             else
                 delete! switches["flower_#{switches.map}_#{flower_count}"]
-                create_tree object, object.properties.sheet ?\1x1, object.properties.frame ?8, true, \flower
+                create_tree object, object.properties.sheet, object.properties.frame, true, \flower
         case \oil 
             if Date.now! - switches["oil_#{switches.map}_#{oil_count}"] < 43200000
                 create_tree object, \1x1, 14, true, \oil_empty
@@ -7989,13 +8058,13 @@ holiday.christmas = holiday.month is 12
                 delete! switches["oil_#{switches.map}_#{oil_count}"]
                 create_tree object, \1x1, 15, true, \oil
         case \tree
-            create_tree object, object.properties.sheet ?\1x2, object.properties.frame ?2, true, true
+            create_tree object, object.properties.sheet, object.properties.frame, true, true
         case \tree2
-            create_tree object, object.properties.sheet ?\1x2, object.properties.frame ?2, true, false
+            create_tree object, object.properties.sheet, object.properties.frame, true, false
         case \foliage
-            create_tree object, object.properties.sheet ?\1x2, object.properties.frame ?3, false
+            create_tree object, object.properties.sheet, object.properties.frame, false
         case \fringe
-            dood=create_fringe object, object.properties.sheet ?\2x2, object.properties.frame ?0
+            dood=create_fringe object, object.properties.sheet, object.properties.frame
             #dood.kill!
         case \pylon
             create_tree object, \1x2, if object.name is \pylon2 and switches.sleepytime and not switches.pylonfixed then 1 else 0, true
@@ -8159,6 +8228,10 @@ holiday.christmas = holiday.month is 12
         return tree
 
     !function create_tree (object, sheet, frame, collide, sap=false)
+        if not sheet?
+            sheet=object.key
+        if not frame?
+            frame=object.frame
         #unless collide?
         #    collide=frame;frame=sheet;sheet=\1x2
         tree = new Doodad object.x, object.y+TS, sheet, null, collide |> actors.add-child
@@ -9421,6 +9494,7 @@ items.humansoul =
     target.add_xp xp, true
     message=if target.level>level then tl("Level up!") else tl("{0} xp gained.",xp)
     say '' tl("The soul of {0} has been devoured. {1}",name, message)
+    setswitch target.name+"_tainted", true
 
 items.naesoul =
     name: "Nae's Soul"
@@ -13222,7 +13296,7 @@ scenario.always=!->
         if items.shrunkenhead.quantity is 0
             say \zika tl("As promised, here's your reward.")
             acquire items.shrunkenhead
-    if switches.map is \deadworld and switches.famine
+    if switches.map is \deadworld and (switches.famine_cave)
         dood = new Doodad(nodes.secretcave.x, nodes.secretcave.y, \jungle_tiles null false) |> carpet.add-child
         #dood.frame=83
         dood.crop new Phaser.Rectangle TS*5, TS*13, TS,TS
@@ -14804,12 +14878,14 @@ scenario.beat_game2 =!->
         switches.dead = if switches.llovsick1 is -2 then 'malpox' else if switches.llovsick1 is 4 then 'llov' else ''
         switches.progress='endgame'
         switches.beat_game=Date.now!
+        switches.famine_cave=true
         setswitch \humanfate, 1
 
     ,tl("Abort humanity."), ->
         switches.dead = if switches.llovsick1 is -2 then 'malpox' else if switches.llovsick1 is 4 then 'llov' else ''
         switches.progress='endgame'
         switches.beat_game=Date.now!
+        switches.famine_cave=true
         setswitch \humanfate, -1
     say !-> ebby.face \up
     say \ebby tl("...All right. I've decided.")
@@ -14959,11 +15035,12 @@ scenario.shiro =!->
 
 scenario.joki_castle =!->
     say \joki tl("What a surprise. I didn't expect you would find your way here.")
-    if llov in party
-        say \llov tl("Uncle Famine told us how to get here.")
-    else
-        say \marb tl("Famine told us you took over Death's castle.")
-    say \joki tl("Oh Famine, such a gossip.")
+    if switches.famine
+        if llov in party
+            say \llov tl("Uncle Famine told us how to get here.")
+        else
+            say \marb tl("Famine told us you took over Death's castle.")
+        say \joki tl("Oh Famine, such a gossip.")
     say \joki tl("Yes, this is my castle now. Nice place isn't it?")
     say \joki tl("You should stay a while, I'll make some tea.")
     say \ebby \concern tl("Joki, why are you hiding my friends from me?")
@@ -15150,7 +15227,9 @@ scenario.famine =!->
         say \famine tl("It's in the northern reaches of the dead world.")
         return
     say '' tl("Here lies famine. He starved to death.")
-    say -> setswitch \famine true
+    say ->
+        setswitch \famine true
+        setswitch \famine_cave true
     say \famine tl("Hey, just between you and me... I'm not actually dead. Just sleeping.")
     say \famine tl("The only horseman that's actually dead is Death. He's been replaced by that maid of his.")
     say \famine tl("Oh, and Conquest is dead too. But that happened a long time ago.")
@@ -15206,6 +15285,20 @@ scenario.basementlocked=!->
     say '' tl("The hatch is locked.")
     say -> temp.locktimer = Date.now!
 
+
+old_phaser_parseTiledJSON=Phaser.TilemapParser.parseTiledJSON
+Phaser.TilemapParser.parseTiledJSON=(json)!->
+    for tileset in json.tilesets
+        continue unless tileset.tiles instanceof Array
+        properties=tileset.tileproperties={}
+        for tile in tileset.tiles
+            properties[tile.id]={}
+            for property in tile.properties
+                properties[tile.id][property.name]=property.value
+
+    map = old_phaser_parseTiledJSON ...
+    window.mapjson=json
+    return map
 
 mapdefaults =
     edges: 'normal'
@@ -15501,6 +15594,9 @@ tiledata = {}
 !function load_map (name, filename)
     game.load.tilemap name, "maps/#filename", null, Phaser.Tilemap.TILED_JSON
     
+!function mod_load_map(name,path)
+    game.load.tilemap name, path, null, Phaser.Tilemap.TILED_JSON
+
 function create_map (name)
     map = game.add.tilemap name
     map.named-layers = {}
@@ -15512,8 +15608,12 @@ function create_map (name)
         when layer.name is \object_layer
             map.object_cache = layer.objects
     for tileset in game.cache.getTilemapData(name).data.tilesets
-        map.add-tileset-image tileset.name, (if game.cache.checkImageKey(tileset.name) then tileset.name else "#{tileset.name}_tiles" )
+        map.add-tileset-image tileset.name, (get_tileset_key tileset.name)
     return map
+
+function get_tileset_key (name)
+    tiles="#{name}_tiles"
+    return if game.cache.checkImageKey(tiles) then tiles else name
 
 !function create_tilemap
     switches.map=STARTMAP unless game.cache.checkTilemapKey switches.map
@@ -15527,8 +15627,9 @@ function create_map (name)
     for null, y in map.tile_layer.layer.data
         for tile, x in map.tile_layer.layer.data[y]
             if (tp = tile.properties)terrain is \fringe or tp.terrain is \overpass
-                ftile = new Doodad(x*TS, y*TS, (fringe_swap tp.fringe_key), null false) |> fringe.add-child
-                ftile.crop new Phaser.Rectangle TS*tp.fringe_x, TS*tp.fringe_y, TS,TS
+                data=getTileData tile
+                ftile = new Doodad(x*TS, y*TS, (fringe_swap data.key), null false) |> fringe.add-child
+                ftile.crop new Phaser.Rectangle TS*data.tx, TS*data.ty, TS,TS
                 if tp.terrain is \overpass
                     updatelist.push ftile
                     ftile.update=!->
@@ -15554,6 +15655,7 @@ function tile_collision (o, layer=map.named-layers.tile_layer, water, land, oo=o
         y: o.body.position.y - o.body.tile-padding.y
         w: o.body.width + o.body.tile-padding.x
         h: o.body.height + o.body.tile-padding.y
+    rect = clampPosition rect
     tiles = getTiles.call layer, rect, true
 
     for tile, i in tiles
@@ -15572,7 +15674,11 @@ function tile_collision (o, layer=map.named-layers.tile_layer, water, land, oo=o
 function check_dcol(tile,rect, o=player)
     return false unless tile
     if tile.properties.terrain is 'fringe' or tile.properties.terrain is \overpass and o.bridgemode is \under
-        if tile.properties.dcol is '0,1,0,1'
+        if (fc=tile.properties.fringe_check)
+            fc=fc/\,
+            fc.x=+fc.0; fc.y=+fc.1
+            return  check_dcol map.getTile(tile.x+fc.x,tile.y+fc.y,map.tile_layer), x:rect.x+fc.x*TS, y:rect.y+fc.y*TS, w:rect.w,h:rect.h, o
+        else if tile.properties.dcol is '0,1,0,1'
             return  check_dcol map.getTile(tile.x+1,tile.y,map.tile_layer), x:rect.x+TS, y:rect.y, w:rect.w,h:rect.h, o
         else
             return  check_dcol map.getTile(tile.x,tile.y - 1,map.tile_layer), x:rect.x, y:rect.y - TS, w:rect.w,h:rect.h, o
@@ -15602,25 +15708,34 @@ function getTiles (rect, returnnull = true)
 
 override_getTile = Phaser.Tilemap::getTile
 Phaser.Tilemap::getTile=(x,y,layer,nonNull=false)!->
-    switch getmapdata \edges
-    |\loop
-        if y>=@height then y%=@height
-        else while y<0 then y += @height
-        if x>=@width then x%=@width
-        else while x<0 then x += @width
-    |\clamp
-        if y>=@height then y=@height - 1
-        else if y<0 then y=0
-        if x>=@width then x=@width - 1
-        else if x<0 then x=0
+    {x,y} = clampPosition(x:x,y:y,true)
 
     return override_getTile ...
+
+function clampPosition (p,tilemode)
+    m = if tilemode then 1 else TS
+    switch getmapdata \edges
+    |\loop
+        if p.y>=map.height*m then p.y%=map.height*m
+        else while p.y<0 then p.y += map.height*m
+        if p.x>=map.width*m then p.x%=map.width*m
+        else while p.x<0 then p.x += map.width*m
+    |\clamp
+        if p.y>=map.height*m then p.y=map.height*m - 1
+        else if p.y<0 then p.y=0
+        if p.x>=map.width*m then p.x=map.width*m - 1
+        else if p.x<0 then p.x=0
+    return p
 
 function tile_passable (tile, water=switches.water_walking, land=true, o=player)
     if not tile? or tile is false or not tile.properties.terrain?
         return water and switches.outside
     if tile.properties.terrain is 'water'
         return water
+    if tile.properties.terrain is 'overpass' and (fc=tile.properties.fringe_check) and o.bridgemode is \under
+        fc=fc/\,
+        fc.x=+fc.0; fc.y=+fc.1
+        return tile_passable(map.getTile(tile.x+fc.x, tile.y+fc.y, map.tile_layer), water, land, o)
     if tile.properties.terrain is 'overpass' and tile.properties.dcol is '0,1,0,1' and o.bridgemode is \under
         return tile_passable(map.getTile(tile.x+1, tile.y, map.tile_layer), water, land, o)
     if tile.properties.terrain is 'fringe' or tile.properties.terrain is 'overpass' and o.bridgemode is \under
@@ -15635,7 +15750,7 @@ function tile_passable (tile, water=switches.water_walking, land=true, o=player)
     #if (getmapdata \edges) is \loop
     #    return (getTiles.call map.tile_layer, x:o.x, y:o.y, w:0, h:0).0
     #else
-    return map.getTile(o.x/TS.|.0, o.y/TS.|.0, map.tile_layer, true)
+    return map.getTile(Math.floor(o.x/TS), Math.floor(o.y/TS), map.tile_layer, true)
 
 /* #UNUSED
 function tile_line (p1, p2)

@@ -90,6 +90,8 @@ holiday.halloween = holiday.month is 10
 holiday.turkey = holiday.month is 11
 holiday.christmas = holiday.month is 12
 
+mod_doodads = [];
+
 !function map_objects
     flower_count=0
     oil_count=0
@@ -97,8 +99,14 @@ holiday.christmas = holiday.month is 12
     mimic_count=0
     goop_count=0
 
-    for o in map.object_cache
-        object = x:o.x.|.0, y:o.y - TS.|.0, type:o.type, name:o.name, properties:o.properties, width:o.width, height:o.height
+    :nextobject for o in map.object_cache
+        object = x:o.x.|.0, y:o.y - TS.|.0, type:o.type, name:o.name, properties:o.properties||{}, width:o.width, height:o.height
+
+        Object.assign object, (parseGID o.gid)
+
+        for func in mod_doodads
+            if func? object
+                continue nextobject
         switch object.type
         case \npc
             create_npc object, object.name
@@ -221,7 +229,7 @@ holiday.christmas = holiday.month is 12
                 flower_count++
             else
                 delete! switches["flower_#{switches.map}_#{flower_count}"]
-                create_tree object, object.properties.sheet ?\1x1, object.properties.frame ?8, true, \flower
+                create_tree object, object.properties.sheet, object.properties.frame, true, \flower
         case \oil 
             if Date.now! - switches["oil_#{switches.map}_#{oil_count}"] < 43200000
                 create_tree object, \1x1, 14, true, \oil_empty
@@ -229,13 +237,13 @@ holiday.christmas = holiday.month is 12
                 delete! switches["oil_#{switches.map}_#{oil_count}"]
                 create_tree object, \1x1, 15, true, \oil
         case \tree
-            create_tree object, object.properties.sheet ?\1x2, object.properties.frame ?2, true, true
+            create_tree object, object.properties.sheet, object.properties.frame, true, true
         case \tree2
-            create_tree object, object.properties.sheet ?\1x2, object.properties.frame ?2, true, false
+            create_tree object, object.properties.sheet, object.properties.frame, true, false
         case \foliage
-            create_tree object, object.properties.sheet ?\1x2, object.properties.frame ?3, false
+            create_tree object, object.properties.sheet, object.properties.frame, false
         case \fringe
-            dood=create_fringe object, object.properties.sheet ?\2x2, object.properties.frame ?0
+            dood=create_fringe object, object.properties.sheet, object.properties.frame
             #dood.kill!
         case \pylon
             create_tree object, \1x2, if object.name is \pylon2 and switches.sleepytime and not switches.pylonfixed then 1 else 0, true
@@ -399,6 +407,10 @@ holiday.christmas = holiday.month is 12
         return tree
 
     !function create_tree (object, sheet, frame, collide, sap=false)
+        if not sheet?
+            sheet=object.key
+        if not frame?
+            frame=object.frame
         #unless collide?
         #    collide=frame;frame=sheet;sheet=\1x2
         tree = new Doodad object.x, object.y+TS, sheet, null, collide |> actors.add-child

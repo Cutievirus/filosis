@@ -1,6 +1,6 @@
 STARTMAP = 'shack2'
 version = "Release"
-version_number = '1.1.2'
+version_number = '1.2'
 switches = 
     sp_limit: {}
     water_walking: false
@@ -414,3 +414,11 @@ state.boot.load-render = state.preload.load-render  =!->
     #pixel.context.font = "30px Arial";
     #pixel.context.fillStyle = "red";
     #pixel.context.fillText("!!!"+Math.random!,10,50);
+
+game_ticks=0
+game_update_logic=Phaser.Game::updateLogic
+Phaser.Game::updateLogic=!->
+    game_update_logic ...
+    ++game_ticks
+    if game_ticks>=Number.MAX_SAFE_INTEGER
+        game_ticks:=0

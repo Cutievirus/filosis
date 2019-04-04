@@ -40,7 +40,7 @@ scenario.always=!->
         if items.shrunkenhead.quantity is 0
             say \zika tl("As promised, here's your reward.")
             acquire items.shrunkenhead
-    if switches.map is \deadworld and switches.famine
+    if switches.map is \deadworld and (switches.famine_cave)
         dood = new Doodad(nodes.secretcave.x, nodes.secretcave.y, \jungle_tiles null false) |> carpet.add-child
         #dood.frame=83
         dood.crop new Phaser.Rectangle TS*5, TS*13, TS,TS
@@ -1622,12 +1622,14 @@ scenario.beat_game2 =!->
         switches.dead = if switches.llovsick1 is -2 then 'malpox' else if switches.llovsick1 is 4 then 'llov' else ''
         switches.progress='endgame'
         switches.beat_game=Date.now!
+        switches.famine_cave=true
         setswitch \humanfate, 1
 
     ,tl("Abort humanity."), ->
         switches.dead = if switches.llovsick1 is -2 then 'malpox' else if switches.llovsick1 is 4 then 'llov' else ''
         switches.progress='endgame'
         switches.beat_game=Date.now!
+        switches.famine_cave=true
         setswitch \humanfate, -1
     say !-> ebby.face \up
     say \ebby tl("...All right. I've decided.")
@@ -1777,11 +1779,12 @@ scenario.shiro =!->
 
 scenario.joki_castle =!->
     say \joki tl("What a surprise. I didn't expect you would find your way here.")
-    if llov in party
-        say \llov tl("Uncle Famine told us how to get here.")
-    else
-        say \marb tl("Famine told us you took over Death's castle.")
-    say \joki tl("Oh Famine, such a gossip.")
+    if switches.famine
+        if llov in party
+            say \llov tl("Uncle Famine told us how to get here.")
+        else
+            say \marb tl("Famine told us you took over Death's castle.")
+        say \joki tl("Oh Famine, such a gossip.")
     say \joki tl("Yes, this is my castle now. Nice place isn't it?")
     say \joki tl("You should stay a while, I'll make some tea.")
     say \ebby \concern tl("Joki, why are you hiding my friends from me?")
@@ -1968,7 +1971,9 @@ scenario.famine =!->
         say \famine tl("It's in the northern reaches of the dead world.")
         return
     say '' tl("Here lies famine. He starved to death.")
-    say -> setswitch \famine true
+    say ->
+        setswitch \famine true
+        setswitch \famine_cave true
     say \famine tl("Hey, just between you and me... I'm not actually dead. Just sleeping.")
     say \famine tl("The only horseman that's actually dead is Death. He's been replaced by that maid of his.")
     say \famine tl("Oh, and Conquest is dead too. But that happened a long time ago.")

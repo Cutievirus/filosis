@@ -131,24 +131,32 @@ class Actor extends Phaser.Sprite
         mouse.down=false
         #for child in @children
         #    child.update-paused?!
-        for child in updatelist by -1
+        list = if game_ticks%60 then @children else updatelist
+        for child in list by -1
             if child.nobody
                 child.update!
             else
                 child.update-paused?!
     actors.preUpdate=!->
+        if game_ticks%60 is 0 
+            return Phaser.Group::preUpdate ...
         for child in updatelist by -1
             #continue if child.isdoodad and (child.x<game.camera.x or child.x>game.camera.x+game.width or child.y<game.camera.y or child.y>game.camera.y+game.height)
             child.preUpdate!
     actors.postUpdate=!->
+        if game_ticks%60 is 0 
+            return Phaser.Group::postUpdate ...
         for child in updatelist by -1
             child.postUpdate!
     #carpet.preUpdate=!->
     #    for child in @children by -1
     #        child.preUpdate! unless child.isdoodad
     triggers.update=carpet.update=fringe.update=!->
+        if game_ticks%60 is 0 then Phaser.Group::update ...
     triggers.preUpdate=carpet.preUpdate=fringe.preUpdate=!->
+        if game_ticks%60 is 0 then Phaser.Group::preUpdate ...
     triggers.postUpdate=carpet.postUpdate=fringe.postUpdate=!->
+        if game_ticks%60 is 0 then Phaser.Group::postUpdate ...
             
     create_players!
 

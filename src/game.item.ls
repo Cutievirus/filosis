@@ -885,6 +885,7 @@ items.humansoul =
     target.add_xp xp, true
     message=if target.level>level then tl("Level up!") else tl("{0} xp gained.",xp)
     say '' tl("The soul of {0} has been devoured. {1}",name, message)
+    setswitch target.name+"_tainted", true
 
 items.naesoul =
     name: "Nae's Soul"

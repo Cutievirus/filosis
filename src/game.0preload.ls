@@ -44,7 +44,8 @@ state.boot.preload =!->#load assets needed for preloader
 state.boot.create =!-> 
     gui.frame.remove preloader
     #gui.frame.remove preloader.text
-    game.state.start 'preload'
+    scriptloader mod_scripts, !->
+        game.state.start 'preload'
 
 state.preload.preload =!->
     #gui.frame.add-child preloader
@@ -71,6 +72,18 @@ state.preload.create =!->
     tlNames!
 
 preload_mod=[];
+
+mod_scripts=[];
+
+scriptloader=!(arr,callback)->
+    script = document.createElement \script
+    script.src = arr.shift!
+    console.log "Loading mod script "+script.src
+    if arr.length
+        script.onload=state.preload.scriptloader.bind this,arr,callback
+    else
+        callback!
+    document.head.appendChild script
 
 #===========================================================================
 # PRELOAD ASSETS

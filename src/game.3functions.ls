@@ -736,6 +736,8 @@ nosave_switches=
         case "Delta 2017" ,"Final Demo", "Release"
             switches.version=version
         #case "Final Demo"
+        if switches.famine
+            switches.famine_cave=true
         if typeof switches.sp_limit is \number
             old_sp_limit=switches.sp_limit
             switches.sp_limit={}
@@ -781,6 +783,35 @@ nosave_switches=
     for s in skillist
         ps.unshift skills[s] if fs[s] <= players[p]level
         break if ps.length is 5
-##################################################################
-#============================ MIXINS ============================#
-##################################################################
+
+
+#========================================================================
+# Misc
+#========================================================================
+
+!function findNPC(name)
+    for actor in actors.children
+        if actor.name is name then return actor
+    return null
+
+!function forNPC(name,callback)
+    npc = findNPC name
+    if npc then callback.call npc, npc
+
+!function parseGID(gid)
+    ret={}
+    ret.flipX = !!(gid.&.0x80000000)
+    ret.flipY = !!(gid.&.0x40000000)
+    ret.gid = gid.&.0x1FFFFFFF
+    for tileset in map.tilesets
+        if tileset.firstgid <= ret.gid < tileset.firstgid+tileset.total
+            ret.tileset=tileset
+            ret.key=get_tileset_key tileset.name
+            ret.frame=ret.gid - tileset.firstgid
+            ret.tx = ret.frame%tileset.columns
+            ret.ty = Math.floor ret.frame/tileset.columns
+    return ret
+
+!function getTileData(tile)
+    gid=mapjson.layers.0.data[tile.y*tile.layer.width+tile.x]
+    return parseGID gid

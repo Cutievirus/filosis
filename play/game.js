@@ -10256,7 +10256,7 @@ holiday.turkey = holiday.month === 11;
 holiday.christmas = holiday.month === 12;
 mod_doodads = [];
 function map_objects(){
-  var flower_count, oil_count, treasure_count, mimic_count, goop_count, i$, ref$, len$, o, object, j$, ref1$, len1$, func, dood, check, trig, portal, key, ref2$, name, rect;
+  var flower_count, oil_count, treasure_count, mimic_count, goop_count, i$, ref$, len$, o, object, j$, ref1$, len1$, func, dood, check, trig, portal, key, collides, ref2$, name, rect;
   flower_count = 0;
   oil_count = 0;
   treasure_count = 0;
@@ -10405,7 +10405,8 @@ function map_objects(){
         flower_count++;
       } else {
         delete switches["flower_" + switches.map + "_" + flower_count];
-        create_tree(object, object.properties.sheet, object.properties.frame, true, 'flower');
+        collides = !object.properties.foliage;
+        create_tree(object, object.properties.sheet, object.properties.frame, collides, 'flower');
       }
       break;
     case 'oil':

@@ -1,6 +1,7 @@
 
 mod_scripts.push(
-    'mod/madness/items.js'
+    'mod/madness/items.js',
+    'mod/madness/characters.js'
 );
 
 mod_music('madness_citytheme','mod/madness/music/nogoldenrules.ogg');
@@ -25,14 +26,13 @@ mapdata.madness_void=Object.assign({},mapdata.void,{
 pentagrams["Mad Realm"]={
     madness_void_cp0: "Bleating Chasm",
     madness_city_cp0: "The City",
-    madness_desert_cp0: "Desert",
-    madness_tundra_cp0: "Tundra",
-    madness_deadworld_cp0: "Blighted Marsh",
+    madness_desert_cp0: "Desert Plains",
+    madness_desert_cp1: "Desert Pit",
+    madness_undersea_cp0: "Desert Oasis",
+    //madness_tundra_cp0: "Tundra",
     madness_earth_cp0: "Earth Haven",
+    madness_undersea_cp1: "Earth Sea",
 };
-pentagrams["Abyss"].madness_void_cp0="Bleating Chasm";
-pentagrams["Earth"].madness_earth_cp0="Earth Haven";
-pentagrams["Dead World"].madness_deadworld_cp0="Blighted Marsh";
 
 // warp_node('madness_city','cp0');
 
@@ -41,12 +41,19 @@ preload_mod.push(function(){
     batchload([
         ['madness_city_tiles', 'city.png'],
         ['madness_void_tiles', 'void.png'],
+        ['madness_desert_tiles', 'desert.png'],
+        ['madness_undersea_tiles', 'undersea.png'],
     ], 'mod/madness/map/');
     batchload([
+        ['madness_1x1_tiles', '1x1.png', 16, 16],
         ['madness_1x2_tiles', '1x2.png', 16, 32],
+        ['madness_3x3_tiles', '3x3.png', 48, 48],
     ], 'mod/madness/map/', 'spritesheet');
     mod_load_map("madness_city", "mod/madness/map/city.json");
     mod_load_map("madness_void", "mod/madness/map/void.json");
+    mod_load_map("madness_desert", "mod/madness/map/desert.json");
+    mod_load_map("madness_undersea", "mod/madness/map/undersea.json");
+    mod_load_map("madness_earth", "mod/madness/map/earth.json");
 });
 
 scenario_mod.push(function(){

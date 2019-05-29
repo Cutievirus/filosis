@@ -8050,7 +8050,8 @@ mod_doodads = [];
                 flower_count++
             else
                 delete! switches["flower_#{switches.map}_#{flower_count}"]
-                create_tree object, object.properties.sheet, object.properties.frame, true, \flower
+                collides = !object.properties.foliage
+                create_tree object, object.properties.sheet, object.properties.frame, collides, \flower
         case \oil 
             if Date.now! - switches["oil_#{switches.map}_#{oil_count}"] < 43200000
                 create_tree object, \1x1, 14, true, \oil_empty

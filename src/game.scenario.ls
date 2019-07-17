@@ -1227,7 +1227,7 @@ scenario.llovsick3 =!->
     souls.push items.sarssoul if items.sarssoul.quantity
     souls.push items.aidssoul if items.aidssoul.quantity
     souls.push items.rabiessoul if items.rabiessoul.quantity
-    if souls.length>0 or items.humansoul.quantity>=1000000
+    if souls.length>0 or items.humansoul.quantity>=1000000 or starmium_unlocked!
         s.call @, \pest tl("Which cost should be paid to save Lloviu?")
         menuset=[\Cancel ->]
         if items.humansoul.quantity>=1000000 then menuset.push tl("1 million human souls"), !->
@@ -1235,6 +1235,14 @@ scenario.llovsick3 =!->
             scenario.llovheal.call @
         else menuset.push tl("1 million human souls"), 0
         for soul in souls then menuset.push soul.soulname, callback:scenario.llovheal, arguments:[soul]
+        if starmium_unlocked!
+            menuset.push tl("50 Starmium Shards"),if items.starmium.quantity>=50 then !->
+                @say \ebby tl("Will this work?")
+                @say \pest tl("Shimmering fragments of a star? I've never seen anything like them. They seem to exude an extradimensional energy.")
+                @say \pest tl("Yes, I think I can make it work.")
+                items.starmium.quantity -= 50
+                scenario.llovheal.call @
+            else 0
         menu.apply @, menuset
 
 scenario.llovheal =(soul)!->
@@ -1246,8 +1254,9 @@ scenario.llovheal =(soul)!->
     switches.llovsick1=-3 if soul
     save!
     @say \pest tl("It's done. The cost was great, but Lloviu's soul was healed.")
-    if switches.beat_aids and switches.beat_rab and switches.beat_sars
-        temp.oncghide = scenario.llovheal2
+    #if switches.beat_aids and switches.beat_rab and switches.beat_sars
+    #    temp.oncghide = scenario.llovheal2
+    temp.oncghide = scenario.llovheal2
 scenario.llovheal2 =!->
     cinema_start!
     for p in party
@@ -1262,7 +1271,9 @@ scenario.llovheal2 =!->
                 p.face_point llov
         say \marb \smile tl("Welcome back to the team, little sister.")
         say \llov \smile tl("Llov is feeling great now! Pesty really knows how to treat a lady.")
-        scenario.delta_finished2!
+        #scenario.delta_finished2!
+        if switches.beat_aids and switches.beat_rab and switches.beat_sars
+            scenario.delta_finished!
     , 1000
     
 scenario.llovsick4 =!->

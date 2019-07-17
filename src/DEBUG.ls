@@ -845,7 +845,7 @@ scriptloader=!(arr,callback)->
     script.src = arr.shift!
     console.log "Loading mod script "+script.src
     if arr.length
-        script.onload=state.preload.scriptloader.bind this,arr,callback
+        script.onload=scriptloader.bind this,arr,callback
     else
         callback!
     document.head.appendChild script
@@ -6022,6 +6022,8 @@ nosave_switches=
     gid=mapjson.layers.0.data[tile.y*tile.layer.width+tile.x]
     return parseGID gid
 
+function starmium_unlocked
+    items.starmium and (window.starmium or items.starmium.quantity)
 
 var battle_encounter
 !function start_battle (enc,toughness=0,terrain)
@@ -12838,26 +12840,28 @@ for key of speakers
 
     merch_agent =!->
         say \merch tl("Um... can I get something for you?")
-        menu tl("Let me browse your goods."), start_shop_menu
-        , tl("Glass Blowing"), merch_glassblowing
-        , tl("Gambling"), merch_gambling
-        , tl("Nevermind"), ->
+        menuset =
+            tl("Let me browse your goods."), start_shop_menu
+            tl("Glass Blowing"), merch_glassblowing
+            tl("Gambling"), merch_gambling
+        if starmium_unlocked!
+            menuset.push tl("Convert Starmium"), merch_convert_starmium
+        menuset.push tl("Nevermind"), ->
+        menu.apply @, menuset
 
     merch_herpes =!->
-        #if switches.map is \hub and !switches.setupshop
-        #    say \herpes "Hey, I've decided to set up shop over here now."
-        #    say -> setswitch \setupshop true
         if player is llov or player is ebby
-            #say \herpes "I'm not supposed to be here until later in the game}"
             say \herpes tl("Hey cutie, what brings you here?")
         else
             say \herpes tl("Do you need something?")
-        menu tl("Let me browse your goods."), start_shop_menu
-        , tl("Glass Blowing"), herpes_glassblowing
-        , tl("Gambling"), herpes_gambling
-        #, "Let's chat." herpes_chat
-        , tl("Nevermind"), ->
-        #say "Have a nice day."
+        menuset =
+            tl("Let me browse your goods."), start_shop_menu
+            tl("Glass Blowing"), herpes_glassblowing
+            tl("Gambling"), herpes_gambling
+        if starmium_unlocked!
+            menuset.push tl("Convert Starmium"), herpes_convert_starmium
+        menuset.push tl("Nevermind"), ->
+        menu.apply @, menuset
 
     herpes_gambling =!->
         unless session.gamble_rules
@@ -12891,7 +12895,7 @@ for key of speakers
             @say tl("I flip a coin. Heads you win double your bet. Tails I keep everything.")
             session.gamble_rules=true
         unless items.cumberground.quantity>0
-            return @say \herpes tl("...But you don't have anything to bet. Come back with some cumberground.")
+            return @say \merch tl("...But you don't have anything to bet. Come back with some cumberground.")
         @say \merch tl("How much cumberground will you bet?")
         @number tl("Max:{0}",items.cumberground.quantity), 0 items.cumberground.quantity
         @say ->
@@ -12911,39 +12915,61 @@ for key of speakers
             save!
 
     herpes_glassblowing =!->
-        @say \herpes tl("I can turn your glass shards into glass vials. It will also cost one cumberground each.")
-        return unless items.shards.quantity>0 and items.cumberground.quantity>0
-        @say tl("How many vials should I make?")
-        q= items.cumberground.quantity <? items.shards.quantity
-        @number tl("Max:{0}",q), 0 q
-        @say ->
-            q= dialog.number.num
-            unless q>0
-                return say \herpes tl("Come back any time.")
-            items.cumberground.quantity -= q; exchange q, items.shards, items.vial
-            #say \herpes "Here you go, #q glass vial#{if q>1 then 's' else ''}."
-            say '' tl("Acquired {0} {1}!",stattext(q,5),items.vial.name)
-        #args=["Nevermind", (->),"Create 1", (!->items.cumberground.quantity-=1;exchange items.shards, items.vial)]
-        #args.push "Create 3", (!->items.cumberground.quantity-=3;exchange 3, items.shards, items.vial) if items.shards.quantity>=3 and items.cumberground.quantity>=3
-        #args.push "Create 10", (!->items.cumberground.quantity-=10;exchange 10, items.shards, items.vial) if items.shards.quantity>=10 and items.cumberground.quantity>=10
-        #args.push "Create 33", (!->items.cumberground.quantity-=33;exchange 33, items.shards, items.vial) if items.shards.quantity>=33 and items.cumberground.quantity>=33
-        #args.push "Create 100", (!->items.cumberground.quantity-=100;exchange 100, items.shards, items.vial) if items.shards.quantity>=100 and items.cumberground.quantity>=100
-        #@menu.apply @,args
+        merch_trade_items.call @, \herpes,
+            items.cumberground.quantity <? items.shards.quantity
+            "I can turn your glass shards into glass vials. It will also cost one cumberground each."
+            "How many vials should I make?"
+            "Come back any time."
+            (num)!->
+                items.cumberground.quantity -= num
+                exchange num, items.shards, items.vial
+                #say \herpes "Here you go, #q glass vial#{if q>1 then 's' else ''}."
+                sound.play \itemget
+                say '' tl("Acquired {0} {1}!",stattext(num,5),items.vial.name)
+
 
     merch_glassblowing =!->
-        @say \merch tl("One cumberground and one glass shard makes one vial.")
-        return unless items.shards.quantity>0 and items.cumberground.quantity>0
-        @say tl("...How many do you need?")
-        q= items.cumberground.quantity <? items.shards.quantity
+        merch_trade_items.call @, \merch,
+            items.cumberground.quantity <? items.shards.quantity
+            "One cumberground and one glass shard makes one vial."
+            "...How many do you need?"
+            "...That's okay."
+            (num)!->
+                items.cumberground.quantity -= num
+                exchange num, items.shards, items.vial
+                #say \merch "#q glass vial#{if q>1 then 's' else ''}... For you."
+                sound.play \itemget
+                say '' tl("Acquired {0} {1}!",stattext(num,5),items.vial.name)
+
+    merch_convert_starmium =!->
+        merch_trade_items.call @, \merch, items.starmium.quantity,
+            "One Starmium Shard is worth 10 cumberground."
+            "How many Sharmium Shards will you convert?"
+            "...That's okay."
+            (num)!->
+                acquire items.starmium, -num, true, true
+                acquire items.cumberground, num*10
+
+    herpes_convert_starmium =!->
+        merch_trade_items.call @, \herpes, items.starmium.quantity,
+            "One Starmium Shard is worth 10 cumberground."
+            "How many Sharmium Shards will you convert?"
+            "Come back any time."
+            (num)!->
+                acquire items.starmium, -num, true, true
+                acquire items.cumberground, num*10
+                
+    merch_trade_items =(speaker,q,welcomemessage,quantitymessage,cancelmessage,successcallback)!->
+        @say speaker, tl(welcomemessage)
+        return unless q>0
+        @say tl(quantitymessage)
         @number tl("Max:{0}",q), 0 q
         @say ->
-            q= dialog.number.num
-            unless q>0
-                return say \merch tl("...That's okay.")
-            items.cumberground.quantity -= q; exchange q, items.shards, items.vial
-            #say \merch "#q glass vial#{if q>1 then 's' else ''}... For you."
-            say '' tl("Acquired {0} {1}!",stattext(q,5),items.vial.name)
-        
+            num = dialog.number.num
+            unless num>0
+                return say speaker, tl(cancelmessage)
+            successcallback.call @, num
+
     herpes_intro =!->
 
     herpes_chat =!->
@@ -14484,7 +14510,7 @@ scenario.llovsick3 =!->
     souls.push items.sarssoul if items.sarssoul.quantity
     souls.push items.aidssoul if items.aidssoul.quantity
     souls.push items.rabiessoul if items.rabiessoul.quantity
-    if souls.length>0 or items.humansoul.quantity>=1000000
+    if souls.length>0 or items.humansoul.quantity>=1000000 or starmium_unlocked!
         s.call @, \pest tl("Which cost should be paid to save Lloviu?")
         menuset=[\Cancel ->]
         if items.humansoul.quantity>=1000000 then menuset.push tl("1 million human souls"), !->
@@ -14492,6 +14518,14 @@ scenario.llovsick3 =!->
             scenario.llovheal.call @
         else menuset.push tl("1 million human souls"), 0
         for soul in souls then menuset.push soul.soulname, callback:scenario.llovheal, arguments:[soul]
+        if starmium_unlocked!
+            menuset.push tl("50 Starmium Shards"),if items.starmium.quantity>=50 then !->
+                @say \ebby tl("Will this work?")
+                @say \pest tl("Shimmering fragments of a star? I've never seen anything like them. They seem to exude an extradimensional energy.")
+                @say \pest tl("Yes, I think I can make it work.")
+                items.starmium.quantity -= 50
+                scenario.llovheal.call @
+            else 0
         menu.apply @, menuset
 
 scenario.llovheal =(soul)!->
@@ -14503,8 +14537,9 @@ scenario.llovheal =(soul)!->
     switches.llovsick1=-3 if soul
     save!
     @say \pest tl("It's done. The cost was great, but Lloviu's soul was healed.")
-    if switches.beat_aids and switches.beat_rab and switches.beat_sars
-        temp.oncghide = scenario.llovheal2
+    #if switches.beat_aids and switches.beat_rab and switches.beat_sars
+    #    temp.oncghide = scenario.llovheal2
+    temp.oncghide = scenario.llovheal2
 scenario.llovheal2 =!->
     cinema_start!
     for p in party
@@ -14519,7 +14554,9 @@ scenario.llovheal2 =!->
                 p.face_point llov
         say \marb \smile tl("Welcome back to the team, little sister.")
         say \llov \smile tl("Llov is feeling great now! Pesty really knows how to treat a lady.")
-        scenario.delta_finished2!
+        #scenario.delta_finished2!
+        if switches.beat_aids and switches.beat_rab and switches.beat_sars
+            scenario.delta_finished!
     , 1000
     
 scenario.llovsick4 =!->

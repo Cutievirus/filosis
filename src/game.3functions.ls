@@ -815,3 +815,6 @@ nosave_switches=
 !function getTileData(tile)
     gid=mapjson.layers.0.data[tile.y*tile.layer.width+tile.x]
     return parseGID gid
+
+function starmium_unlocked
+    items.starmium and (window.starmium or items.starmium.quantity)

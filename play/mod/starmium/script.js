@@ -3,7 +3,7 @@ preload_mod.push(function(){
 });
 
 if(!window.starmium){
-	var starmium = Number(localStorage.getItem("starmium"));
+	var starmium = Number(localStorage.getItem("starmium"))||0;
 }
 
 scenario_mod.push(function(){
@@ -12,8 +12,10 @@ scenario_mod.push(function(){
 		switches.starmium=0;
 	}
 	var amount = Math.floor((starmium - switches.starmium)*10)/10;
-	items.starmium.quantity += amount*10;
-	switches.starmium 		+= amount;
+	if(amount>0){
+		items.starmium.quantity += amount*10;
+		switches.starmium 		+= amount;
+	}
 });
 
 items.starmium = {

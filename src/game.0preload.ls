@@ -80,7 +80,7 @@ scriptloader=!(arr,callback)->
     script.src = arr.shift!
     console.log "Loading mod script "+script.src
     if arr.length
-        script.onload=state.preload.scriptloader.bind this,arr,callback
+        script.onload=scriptloader.bind this,arr,callback
     else
         callback!
     document.head.appendChild script

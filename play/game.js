@@ -903,7 +903,7 @@ scriptloader = function(arr, callback){
   script.src = arr.shift();
   console.log("Loading mod script " + script.src);
   if (arr.length) {
-    script.onload = state.preload.scriptloader.bind(this, arr, callback);
+    script.onload = scriptloader.bind(this, arr, callback);
   } else {
     callback();
   }
@@ -7633,6 +7633,9 @@ function getTileData(tile){
   var gid;
   gid = mapjson.layers[0].data[tile.y * tile.layer.width + tile.x];
   return parseGID(gid);
+}
+function starmium_unlocked(){
+  return items.starmium && (window.starmium || items.starmium.quantity);
 }
 function start_battle(enc, toughness, terrain){
   toughness == null && (toughness = 0);
@@ -18432,7 +18435,7 @@ for (key in speakers) {
   }
 }
 function npc_events(){
-  var i$, ref$, len$, j, merch_agent, merch_herpes, herpes_gambling, merch_gambling, herpes_glassblowing, merch_glassblowing, herpes_intro, herpes_chat, ref1$, ref2$, ref3$, zika, ss, ref4$, f;
+  var i$, ref$, len$, j, merch_agent, merch_herpes, herpes_gambling, merch_gambling, herpes_glassblowing, merch_glassblowing, merch_convert_starmium, herpes_convert_starmium, merch_trade_items, herpes_intro, herpes_chat, ref1$, ref2$, ref3$, zika, ss, ref4$, f;
   if (marb != null) {
     marb.interact = function(){
       say('marb', 'troubled', tl("Llov? What are you doing here?"));
@@ -18502,16 +18505,28 @@ function npc_events(){
     };
   }
   merch_agent = function(){
+    var menuset;
     say('merch', tl("Um... can I get something for you?"));
-    menu(tl("Let me browse your goods."), start_shop_menu, tl("Glass Blowing"), merch_glassblowing, tl("Gambling"), merch_gambling, tl("Nevermind"), function(){});
+    menuset = [tl("Let me browse your goods."), start_shop_menu, tl("Glass Blowing"), merch_glassblowing, tl("Gambling"), merch_gambling];
+    if (starmium_unlocked()) {
+      menuset.push(tl("Convert Starmium"), merch_convert_starmium);
+    }
+    menuset.push(tl("Nevermind"), function(){});
+    menu.apply(this, menuset);
   };
   merch_herpes = function(){
+    var menuset;
     if (player === llov || player === ebby) {
       say('herpes', tl("Hey cutie, what brings you here?"));
     } else {
       say('herpes', tl("Do you need something?"));
     }
-    menu(tl("Let me browse your goods."), start_shop_menu, tl("Glass Blowing"), herpes_glassblowing, tl("Gambling"), herpes_gambling, tl("Nevermind"), function(){});
+    menuset = [tl("Let me browse your goods."), start_shop_menu, tl("Glass Blowing"), herpes_glassblowing, tl("Gambling"), herpes_gambling];
+    if (starmium_unlocked()) {
+      menuset.push(tl("Convert Starmium"), herpes_convert_starmium);
+    }
+    menuset.push(tl("Nevermind"), function(){});
+    menu.apply(this, menuset);
   };
   herpes_gambling = function(){
     if (!session.gamble_rules) {
@@ -18549,7 +18564,7 @@ function npc_events(){
       session.gamble_rules = true;
     }
     if (!(items.cumberground.quantity > 0)) {
-      return this.say('herpes', tl("...But you don't have anything to bet. Come back with some cumberground."));
+      return this.say('merch', tl("...But you don't have anything to bet. Come back with some cumberground."));
     }
     this.say('merch', tl("How much cumberground will you bet?"));
     this.number(tl("Max:{0}", items.cumberground.quantity), 0, items.cumberground.quantity);
@@ -18571,43 +18586,49 @@ function npc_events(){
     });
   };
   herpes_glassblowing = function(){
-    var q, ref$, ref1$;
-    this.say('herpes', tl("I can turn your glass shards into glass vials. It will also cost one cumberground each."));
-    if (!(items.shards.quantity > 0 && items.cumberground.quantity > 0)) {
-      return;
-    }
-    this.say(tl("How many vials should I make?"));
-    q = (ref$ = items.cumberground.quantity) < (ref1$ = items.shards.quantity) ? ref$ : ref1$;
-    this.number(tl("Max:{0}", q), 0, q);
-    this.say(function(){
-      var q;
-      q = dialog.number.num;
-      if (!(q > 0)) {
-        return say('herpes', tl("Come back any time."));
-      }
-      items.cumberground.quantity -= q;
-      exchange(q, items.shards, items.vial);
-      return say('', tl("Acquired {0} {1}!", stattext(q, 5), items.vial.name));
+    var ref$, ref1$;
+    merch_trade_items.call(this, 'herpes', (ref$ = items.cumberground.quantity) < (ref1$ = items.shards.quantity) ? ref$ : ref1$, "I can turn your glass shards into glass vials. It will also cost one cumberground each.", "How many vials should I make?", "Come back any time.", function(num){
+      items.cumberground.quantity -= num;
+      exchange(num, items.shards, items.vial);
+      sound.play('itemget');
+      say('', tl("Acquired {0} {1}!", stattext(num, 5), items.vial.name));
     });
   };
   merch_glassblowing = function(){
-    var q, ref$, ref1$;
-    this.say('merch', tl("One cumberground and one glass shard makes one vial."));
-    if (!(items.shards.quantity > 0 && items.cumberground.quantity > 0)) {
+    var ref$, ref1$;
+    merch_trade_items.call(this, 'merch', (ref$ = items.cumberground.quantity) < (ref1$ = items.shards.quantity) ? ref$ : ref1$, "One cumberground and one glass shard makes one vial.", "...How many do you need?", "...That's okay.", function(num){
+      items.cumberground.quantity -= num;
+      exchange(num, items.shards, items.vial);
+      sound.play('itemget');
+      say('', tl("Acquired {0} {1}!", stattext(num, 5), items.vial.name));
+    });
+  };
+  merch_convert_starmium = function(){
+    merch_trade_items.call(this, 'merch', items.starmium.quantity, "One Starmium Shard is worth 10 cumberground.", "How many Sharmium Shards will you convert?", "...That's okay.", function(num){
+      acquire(items.starmium, -num, true, true);
+      acquire(items.cumberground, num * 10);
+    });
+  };
+  herpes_convert_starmium = function(){
+    merch_trade_items.call(this, 'herpes', items.starmium.quantity, "One Starmium Shard is worth 10 cumberground.", "How many Sharmium Shards will you convert?", "Come back any time.", function(num){
+      acquire(items.starmium, -num, true, true);
+      acquire(items.cumberground, num * 10);
+    });
+  };
+  merch_trade_items = function(speaker, q, welcomemessage, quantitymessage, cancelmessage, successcallback){
+    this.say(speaker, tl(welcomemessage));
+    if (!(q > 0)) {
       return;
     }
-    this.say(tl("...How many do you need?"));
-    q = (ref$ = items.cumberground.quantity) < (ref1$ = items.shards.quantity) ? ref$ : ref1$;
+    this.say(tl(quantitymessage));
     this.number(tl("Max:{0}", q), 0, q);
     this.say(function(){
-      var q;
-      q = dialog.number.num;
-      if (!(q > 0)) {
-        return say('merch', tl("...That's okay."));
+      var num;
+      num = dialog.number.num;
+      if (!(num > 0)) {
+        return say(speaker, tl(cancelmessage));
       }
-      items.cumberground.quantity -= q;
-      exchange(q, items.shards, items.vial);
-      return say('', tl("Acquired {0} {1}!", stattext(q, 5), items.vial.name));
+      return successcallback.call(this, num);
     });
   };
   herpes_intro = function(){};
@@ -20433,7 +20454,7 @@ scenario.llovsick3 = function(){
   if (items.rabiessoul.quantity) {
     souls.push(items.rabiessoul);
   }
-  if (souls.length > 0 || items.humansoul.quantity >= 1000000) {
+  if (souls.length > 0 || items.humansoul.quantity >= 1000000 || starmium_unlocked()) {
     s.call(this, 'pest', tl("Which cost should be paid to save Lloviu?"));
     menuset = ['Cancel', function(){}];
     if (items.humansoul.quantity >= 1000000) {
@@ -20451,6 +20472,15 @@ scenario.llovsick3 = function(){
         arguments: [soul]
       });
     }
+    if (starmium_unlocked()) {
+      menuset.push(tl("50 Starmium Shards"), items.starmium.quantity >= 50 ? function(){
+        this.say('ebby', tl("Will this work?"));
+        this.say('pest', tl("Shimmering fragments of a star? I've never seen anything like them. They seem to exude an extradimensional energy."));
+        this.say('pest', tl("Yes, I think I can make it work."));
+        items.starmium.quantity -= 50;
+        scenario.llovheal.call(this);
+      } : 0);
+    }
     menu.apply(this, menuset);
   }
 };
@@ -20466,9 +20496,7 @@ scenario.llovheal = function(soul){
   }
   save();
   this.say('pest', tl("It's done. The cost was great, but Lloviu's soul was healed."));
-  if (switches.beat_aids && switches.beat_rab && switches.beat_sars) {
-    temp.oncghide = scenario.llovheal2;
-  }
+  temp.oncghide = scenario.llovheal2;
 };
 scenario.llovheal2 = function(){
   var i$, ref$, len$, p;
@@ -20493,7 +20521,9 @@ scenario.llovheal2 = function(){
     }
     say('marb', 'smile', tl("Welcome back to the team, little sister."));
     say('llov', 'smile', tl("Llov is feeling great now! Pesty really knows how to treat a lady."));
-    scenario.delta_finished2();
+    if (switches.beat_aids && switches.beat_rab && switches.beat_sars) {
+      scenario.delta_finished();
+    }
   }, 1000);
 };
 scenario.llovsick4 = function(){

@@ -397,6 +397,10 @@ state.overworld.update =!->
 
     for f in update_mod
         f?!
+
+    if game.world.filters then for filter in game.world.filters
+        filter.update!
+        filter.setResolution game.width, game.height
     
 state.load.render = state.load.load-render = \
 state.overworld.render = state.battle.render = state.title.render =!->

@@ -641,6 +641,8 @@ for key of speakers
 
     for f in scenario_mod
         f?!
+
+    game.world.filters = access getmapdata \filters
 /*
 !function joki_guidance
     #Joki will remind you what you should be doing

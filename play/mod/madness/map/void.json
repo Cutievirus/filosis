@@ -1223,6 +1223,12 @@
                  "height":32,
                  "id":108,
                  "name":"city",
+                 "properties":[
+                        {
+                         "name":"map",
+                         "type":"string",
+                         "value":"madness_city"
+                        }],
                  "rotation":0,
                  "type":"madness_portal",
                  "visible":true,
@@ -1235,6 +1241,12 @@
                  "height":32,
                  "id":109,
                  "name":"earth",
+                 "properties":[
+                        {
+                         "name":"map",
+                         "type":"string",
+                         "value":"earth2"
+                        }],
                  "rotation":0,
                  "type":"madness_portal",
                  "visible":true,
@@ -1247,6 +1259,12 @@
                  "height":32,
                  "id":110,
                  "name":"deadworld",
+                 "properties":[
+                        {
+                         "name":"map",
+                         "type":"string",
+                         "value":"deathdomain"
+                        }],
                  "rotation":0,
                  "type":"madness_portal",
                  "visible":true,
@@ -1505,6 +1523,12 @@
                  "height":32,
                  "id":131,
                  "name":"desert",
+                 "properties":[
+                        {
+                         "name":"map",
+                         "type":"string",
+                         "value":"madness_desert"
+                        }],
                  "rotation":0,
                  "type":"madness_portal",
                  "visible":true,
@@ -1517,96 +1541,18 @@
                  "height":32,
                  "id":132,
                  "name":"meadow",
+                 "properties":[
+                        {
+                         "name":"map",
+                         "type":"string",
+                         "value":"earth3"
+                        }],
                  "rotation":0,
                  "type":"madness_portal",
                  "visible":true,
                  "width":16,
                  "x":436.666666666667,
                  "y":830.666666666667
-                }, 
-                {
-                 "gid":42,
-                 "height":16,
-                 "id":133,
-                 "name":"sewer_portal",
-                 "rotation":0,
-                 "type":"node",
-                 "visible":true,
-                 "width":16,
-                 "x":954,
-                 "y":912
-                }, 
-                {
-                 "gid":42,
-                 "height":16,
-                 "id":134,
-                 "name":"earth_portal",
-                 "rotation":0,
-                 "type":"node",
-                 "visible":true,
-                 "width":16,
-                 "x":680,
-                 "y":736
-                }, 
-                {
-                 "gid":42,
-                 "height":16,
-                 "id":135,
-                 "name":"meadow_portal",
-                 "rotation":0,
-                 "type":"node",
-                 "visible":true,
-                 "width":16,
-                 "x":437,
-                 "y":848
-                }, 
-                {
-                 "gid":42,
-                 "height":16,
-                 "id":136,
-                 "name":"deadworld_portal",
-                 "rotation":0,
-                 "type":"node",
-                 "visible":true,
-                 "width":16,
-                 "x":805,
-                 "y":560
-                }, 
-                {
-                 "gid":42,
-                 "height":16,
-                 "id":137,
-                 "name":"desert_portal",
-                 "rotation":0,
-                 "type":"node",
-                 "visible":true,
-                 "width":16,
-                 "x":1228,
-                 "y":368
-                }, 
-                {
-                 "gid":42,
-                 "height":16,
-                 "id":138,
-                 "name":"city_portal",
-                 "rotation":0,
-                 "type":"node",
-                 "visible":true,
-                 "width":16,
-                 "x":290,
-                 "y":368
-                }, 
-                {
-                 "gid":42,
-                 "height":16,
-                 "id":139,
-                 "name":"???_portal",
-                 "rotation":0,
-                 "type":"node",
-                 "visible":true,
-                 "width":16,
-                 "x":284,
-                 "y":848
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -737,6 +737,10 @@ state.overworld.update =!->
 
     for f in update_mod
         f?!
+
+    if game.world.filters then for filter in game.world.filters
+        filter.update!
+        filter.setResolution game.width, game.height
     
 state.load.render = state.load.load-render = \
 state.overworld.render = state.battle.render = state.title.render =!->
@@ -6182,19 +6186,27 @@ state.battle.create =!->
     bg = encounter.bg[access (getmapdata \bg), battle.encounter.terrain]
     bg = encounter.bg[access battle.encounter.bg] if battle.encounter.bg
 
-    battle.bg0 = new Phaser.Image game, 0 0 bg.0 |> battle.add-child
+    battle.bglayer = game.add.group battle, 'battle_bg'
+    battle.bglayer.filters = access getmapdata \battle_filters
+
+    battle.bg0 = new Phaser.Image game, 0 0 bg.0
+    |> battle.bglayer.add-child
     battle.bgoffset = bgoffset = x:(battle.bg0.width - WIDTH)/2 y:battle.bg0.height - HEIGHT
     battle.bg0.x -= bgoffset.x; battle.bg0.y -= bgoffset.y
     marginwidth = (game.width - WIDTH)/2
     #bg1=if typeof bg.1 is \number then \solid else bg.1
-    battle.bg1 = new Phaser.TileSprite game, -bgoffset.x, -bgoffset.y, 1, HEIGHT+bgoffset.y, bg.1 |> battle.add-child
+    battle.bg1 = new Phaser.TileSprite game, -bgoffset.x, -bgoffset.y, 1, HEIGHT+bgoffset.y, bg.1
+    |> battle.bglayer.add-child
     battle.bg1.anchor.set 1 0
     #battle.bg1.tint=bg.1 if typeof bg.1 is \number
-    battle.bg2 = new Phaser.TileSprite game, WIDTH+bgoffset.x, -bgoffset.y, 1, HEIGHT+bgoffset.y, bg.1 |> battle.add-child
+    battle.bg2 = new Phaser.TileSprite game, WIDTH+bgoffset.x, -bgoffset.y, 1, HEIGHT+bgoffset.y, bg.1
+    |> battle.bglayer.add-child
     #battle.bg2.tint=bg.1 if typeof bg.1 is \number
-    battle.bg3 = new Phaser.Image game, 0, -bgoffset.y, \solid |> battle.add-child
+    battle.bg3 = new Phaser.Image game, 0, -bgoffset.y, \solid
+    |> battle.bglayer.add-child
     battle.bg3.anchor.set 0 1; battle.bg3.tint = bg.2
-    battle.bg4 = new Phaser.Image game, 0 HEIGHT, \solid |> battle.add-child
+    battle.bg4 = new Phaser.Image game, 0 HEIGHT, \solid
+    |> battle.bglayer.add-child
     battle.bg4.tint = bg.3
     battle_update_frame!
     resize_callback battle, battle_update_frame
@@ -6614,6 +6626,10 @@ state.battle.update =!->
                 if battle.target is not hero and point_in_rect mouse.world, hero.worldTransform.tx, hero.worldTransform.ty, hero.w*WS, hero.h*WS
                     battle.target = hero
                     menusound.play 'blip'
+
+    if battle.bglayer.filters then for filter in battle.bglayer.filters
+        filter.update!
+        filter.setResolution game.width, game.height
 
     !function set_actor (actor)
         battle.actor = actor
@@ -7914,6 +7930,7 @@ holiday.turkey = holiday.month is 11
 holiday.christmas = holiday.month is 12
 
 mod_doodads = [];
+mod_initmap = [];
 
 !function map_objects
     flower_count=0
@@ -7926,6 +7943,9 @@ mod_doodads = [];
         object = x:o.x.|.0, y:o.y - TS.|.0, type:o.type, name:o.name, properties:o.properties||{}, width:o.width, height:o.height
 
         Object.assign object, (parseGID o.gid)
+
+        if object.properties instanceof Array then for property in object.properties
+            object.properties[property.name]=property.value;
 
         for func in mod_doodads
             if func? object
@@ -8052,8 +8072,7 @@ mod_doodads = [];
                 flower_count++
             else
                 delete! switches["flower_#{switches.map}_#{flower_count}"]
-                collides = !object.properties.foliage
-                create_tree object, object.properties.sheet, object.properties.frame, collides, \flower
+                create_tree object, object.properties.sheet, object.properties.frame, true, \flower, object.properties
         case \oil 
             if Date.now! - switches["oil_#{switches.map}_#{oil_count}"] < 43200000
                 create_tree object, \1x1, 14, true, \oil_empty
@@ -8221,6 +8240,9 @@ mod_doodads = [];
     #create_npcs!
     #npc_events!
 
+    for func in mod_initmap
+        func?!
+
     !function create_fringe (object, sheet, frame)
         tree = new Doodad(object.x, object.y+TS, sheet, null, false) |> fringe.add-child
         tree.x+=tree.width/2
@@ -8230,14 +8252,15 @@ mod_doodads = [];
         tree.frame = +frame
         return tree
 
-    !function create_tree (object, sheet, frame, collide, sap=false)
+    !function create_tree (object, sheet, frame, collide, sap=false, properties={})
         if not sheet?
             sheet=object.key
         if not frame?
             frame=object.frame
         #unless collide?
         #    collide=frame;frame=sheet;sheet=\1x2
-        tree = new Doodad object.x, object.y+TS, sheet, null, collide |> actors.add-child
+        tree = new Doodad object.x, object.y+TS, sheet, null, collide
+        if properties.carpet then carpet.add-child tree else actors.add-child tree
         tree.x+=tree.width/2
         tree.anchor.set 0.5 1.0
         tree.body?set-size TS, TS
@@ -13209,6 +13232,8 @@ for key of speakers
 
     for f in scenario_mod
         f?!
+
+    game.world.filters = access getmapdata \filters
 /*
 !function joki_guidance
     #Joki will remind you what you should be doing

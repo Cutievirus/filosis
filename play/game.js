@@ -1,4 +1,4 @@
-var pixel, game, pentagrams, WIDTH, HEIGHT, HWIDTH, HHEIGHT, RADIUS, TS, HTS, WS, HWS, BS, IS, FW, FW2, FH, HPI, textinput, saveman, errordiv, bootloader, state, init_mod, i$, ref$, len$, item, STARTMAP, version, version_number, switches, session, warpzones, unlocalized_zones, unlocalized_pentagrams, temp, switch_defaults, multiplesaves, create_title_background, solidscreen, cg, previous_time, delta, deltam, update_mod, game_ticks, game_update_logic, preloader, preload_mod, mod_scripts, scriptloader, gui, gui_mod, dialog, Window, CGWindow, DialogWindow, Text, FloatingText, TextEntry, Menu_Base, Number_Dialog, Menu, Portrait, Screen, musicmap, actors, carpet, triggers, fringe, updatelist, Actor, formes, p, f, costumes, c, k, filling, Player, player, party, players, llov, ebby, marb, Skill, animations, skills, key, properties, skillbook, DEGtoRAD, RADtoDEG, pluckroll, saveslug, save_options_mod, load_options_mod, gameOptions, nosave_switches, battle_encounter, battle, heroes, monsters, target_message, battle_mixin, Battler, StatusCard, Monster, Animation, Buff, buffs, nodes, doodads, Doodad, Treasure, Trigger, holiday, mod_doodads, devices, keyboard, input_mod, onDown_up, onDown_left, onDown_down, onDown_right, onDown_cancel, mouse, Item, items, crafting, recipe, recipebook, items_initial, pause_screen, shop_screen, refresh_shop, options_mod, pause_menu_mod, title_screen, costume_screen, excel_screen, Mob, Dust, mobs, dustclouds, palette, encounter, Audio, sound, music, menusound, voicesound, NPC, mal, herpes, bp, merch, nae, pox, leps, cure, zmapp, sars, rab, ammit, parvo, joki, aids, speakers, scenario, scenario_mod, old_phaser_parseTiledJSON, mapdefaults, zones, mapdata, backdrop, map, tiledata, override_getTile, renderregionoverride, Transition, split$ = ''.split;
+var pixel, game, pentagrams, WIDTH, HEIGHT, HWIDTH, HHEIGHT, RADIUS, TS, HTS, WS, HWS, BS, IS, FW, FW2, FH, HPI, textinput, saveman, errordiv, bootloader, state, init_mod, i$, ref$, len$, item, STARTMAP, version, version_number, switches, session, warpzones, unlocalized_zones, unlocalized_pentagrams, temp, switch_defaults, multiplesaves, create_title_background, solidscreen, cg, previous_time, delta, deltam, update_mod, game_ticks, game_update_logic, preloader, preload_mod, mod_scripts, scriptloader, gui, gui_mod, dialog, Window, CGWindow, DialogWindow, Text, FloatingText, TextEntry, Menu_Base, Number_Dialog, Menu, Portrait, Screen, musicmap, actors, carpet, triggers, fringe, updatelist, Actor, formes, p, f, costumes, c, k, filling, Player, player, party, players, llov, ebby, marb, Skill, animations, skills, key, properties, skillbook, DEGtoRAD, RADtoDEG, pluckroll, saveslug, save_options_mod, load_options_mod, gameOptions, nosave_switches, battle_encounter, battle, heroes, monsters, target_message, battle_mixin, Battler, StatusCard, Monster, Animation, Buff, buffs, nodes, doodads, Doodad, Treasure, Trigger, holiday, mod_doodads, mod_initmap, devices, keyboard, input_mod, onDown_up, onDown_left, onDown_down, onDown_right, onDown_cancel, mouse, Item, items, crafting, recipe, recipebook, items_initial, pause_screen, shop_screen, refresh_shop, options_mod, pause_menu_mod, title_screen, costume_screen, excel_screen, Mob, Dust, mobs, dustclouds, palette, encounter, Audio, sound, music, menusound, voicesound, NPC, mal, herpes, bp, merch, nae, pox, leps, cure, zmapp, sars, rab, ammit, parvo, joki, aids, speakers, scenario, scenario_mod, old_phaser_parseTiledJSON, mapdefaults, zones, mapdata, backdrop, map, tiledata, override_getTile, renderregionoverride, Transition, split$ = ''.split;
 WIDTH = 320;
 HEIGHT = 240;
 HWIDTH = WIDTH / 2;
@@ -765,7 +765,7 @@ function main_update(){
 }
 update_mod = [];
 state.overworld.update = function(){
-  var bounds, i$, ref$, len$, group, j$, ref1$, len1$, object, f;
+  var bounds, i$, ref$, len$, group, j$, ref1$, len1$, object, f, filter;
   if (switches.portal != null) {
     change_map(switches.portal);
     delete switches.portal;
@@ -816,6 +816,13 @@ state.overworld.update = function(){
     f = ref$[i$];
     if (typeof f == 'function') {
       f();
+    }
+  }
+  if (game.world.filters) {
+    for (i$ = 0, len$ = (ref$ = game.world.filters).length; i$ < len$; ++i$) {
+      filter = ref$[i$];
+      filter.update();
+      filter.setResolution(game.width, game.height);
     }
   }
 };
@@ -7815,7 +7822,9 @@ state.battle.create = function(){
   if (battle.encounter.bg) {
     bg = encounter.bg[access(battle.encounter.bg)];
   }
-  battle.bg0 = battle.addChild(
+  battle.bglayer = game.add.group(battle, 'battle_bg');
+  battle.bglayer.filters = access(getmapdata('battle_filters'));
+  battle.bg0 = battle.bglayer.addChild(
   new Phaser.Image(game, 0, 0, bg[0]));
   battle.bgoffset = bgoffset = {
     x: (battle.bg0.width - WIDTH) / 2,
@@ -7824,16 +7833,16 @@ state.battle.create = function(){
   battle.bg0.x -= bgoffset.x;
   battle.bg0.y -= bgoffset.y;
   marginwidth = (game.width - WIDTH) / 2;
-  battle.bg1 = battle.addChild(
+  battle.bg1 = battle.bglayer.addChild(
   new Phaser.TileSprite(game, -bgoffset.x, -bgoffset.y, 1, HEIGHT + bgoffset.y, bg[1]));
   battle.bg1.anchor.set(1, 0);
-  battle.bg2 = battle.addChild(
+  battle.bg2 = battle.bglayer.addChild(
   new Phaser.TileSprite(game, WIDTH + bgoffset.x, -bgoffset.y, 1, HEIGHT + bgoffset.y, bg[1]));
-  battle.bg3 = battle.addChild(
+  battle.bg3 = battle.bglayer.addChild(
   new Phaser.Image(game, 0, -bgoffset.y, 'solid'));
   battle.bg3.anchor.set(0, 1);
   battle.bg3.tint = bg[2];
-  battle.bg4 = battle.addChild(
+  battle.bg4 = battle.bglayer.addChild(
   new Phaser.Image(game, 0, HEIGHT, 'solid'));
   battle.bg4.tint = bg[3];
   battle_update_frame();
@@ -8376,7 +8385,7 @@ function check_battle_end(){
   }
 }
 state.battle.update = function(){
-  var ref$, mode, i$, len$, hero, monster, prevtarget;
+  var ref$, mode, i$, len$, hero, monster, prevtarget, filter;
   main_update();
   if ((ref$ = battle.mode) === 'wait' || ref$ === 'next') {
     mode = battle.mode;
@@ -8445,6 +8454,13 @@ state.battle.update = function(){
           menusound.play('blip');
         }
       }
+    }
+  }
+  if (battle.bglayer.filters) {
+    for (i$ = 0, len$ = (ref$ = battle.bglayer.filters).length; i$ < len$; ++i$) {
+      filter = ref$[i$];
+      filter.update();
+      filter.setResolution(game.width, game.height);
     }
   }
   function set_actor(actor){
@@ -10258,8 +10274,9 @@ holiday.halloween = holiday.month === 10;
 holiday.turkey = holiday.month === 11;
 holiday.christmas = holiday.month === 12;
 mod_doodads = [];
+mod_initmap = [];
 function map_objects(){
-  var flower_count, oil_count, treasure_count, mimic_count, goop_count, i$, ref$, len$, o, object, j$, ref1$, len1$, func, dood, check, trig, portal, key, collides, ref2$, name, rect;
+  var flower_count, oil_count, treasure_count, mimic_count, goop_count, i$, ref$, len$, o, object, j$, ref1$, len1$, property, func, dood, check, trig, portal, key, ref2$, name, rect;
   flower_count = 0;
   oil_count = 0;
   treasure_count = 0;
@@ -10277,6 +10294,12 @@ function map_objects(){
       height: o.height
     };
     Object.assign(object, parseGID(o.gid));
+    if (object.properties instanceof Array) {
+      for (j$ = 0, len1$ = (ref1$ = object.properties).length; j$ < len1$; ++j$) {
+        property = ref1$[j$];
+        object.properties[property.name] = property.value;
+      }
+    }
     for (j$ = 0, len1$ = (ref1$ = mod_doodads).length; j$ < len1$; ++j$) {
       func = ref1$[j$];
       if (typeof func == 'function' && func(object)) {
@@ -10408,8 +10431,7 @@ function map_objects(){
         flower_count++;
       } else {
         delete switches["flower_" + switches.map + "_" + flower_count];
-        collides = !object.properties.foliage;
-        create_tree(object, object.properties.sheet, object.properties.frame, collides, 'flower');
+        create_tree(object, object.properties.sheet, object.properties.frame, true, 'flower', object.properties);
       }
       break;
     case 'oil':
@@ -10567,6 +10589,12 @@ function map_objects(){
       initUpdate(dood);
     }
   }
+  for (i$ = 0, len$ = (ref$ = mod_initmap).length; i$ < len$; ++i$) {
+    func = ref$[i$];
+    if (typeof func == 'function') {
+      func();
+    }
+  }
   function create_fringe(object, sheet, frame){
     var tree;
     tree = fringe.addChild(
@@ -10577,17 +10605,22 @@ function map_objects(){
     tree.frame = +frame;
     return tree;
   }
-  function create_tree(object, sheet, frame, collide, sap){
+  function create_tree(object, sheet, frame, collide, sap, properties){
     var tree, ref$;
     sap == null && (sap = false);
+    properties == null && (properties = {});
     if (sheet == null) {
       sheet = object.key;
     }
     if (frame == null) {
       frame = object.frame;
     }
-    tree = actors.addChild(
-    new Doodad(object.x, object.y + TS, sheet, null, collide));
+    tree = new Doodad(object.x, object.y + TS, sheet, null, collide);
+    if (properties.carpet) {
+      carpet.addChild(tree);
+    } else {
+      actors.addChild(tree);
+    }
     tree.x += tree.width / 2;
     tree.anchor.set(0.5, 1.0);
     if ((ref$ = tree.body) != null) {
@@ -18922,6 +18955,7 @@ function npc_events(){
       f();
     }
   }
+  game.world.filters = access(getmapdata('filters'));
 }
 /*
 !function joki_guidance

@@ -91,6 +91,7 @@ holiday.turkey = holiday.month is 11
 holiday.christmas = holiday.month is 12
 
 mod_doodads = [];
+mod_initmap = [];
 
 !function map_objects
     flower_count=0
@@ -103,6 +104,9 @@ mod_doodads = [];
         object = x:o.x.|.0, y:o.y - TS.|.0, type:o.type, name:o.name, properties:o.properties||{}, width:o.width, height:o.height
 
         Object.assign object, (parseGID o.gid)
+
+        if object.properties instanceof Array then for property in object.properties
+            object.properties[property.name]=property.value;
 
         for func in mod_doodads
             if func? object
@@ -229,8 +233,7 @@ mod_doodads = [];
                 flower_count++
             else
                 delete! switches["flower_#{switches.map}_#{flower_count}"]
-                collides = !object.properties.foliage
-                create_tree object, object.properties.sheet, object.properties.frame, collides, \flower
+                create_tree object, object.properties.sheet, object.properties.frame, true, \flower, object.properties
         case \oil 
             if Date.now! - switches["oil_#{switches.map}_#{oil_count}"] < 43200000
                 create_tree object, \1x1, 14, true, \oil_empty
@@ -398,6 +401,9 @@ mod_doodads = [];
     #create_npcs!
     #npc_events!
 
+    for func in mod_initmap
+        func?!
+
     !function create_fringe (object, sheet, frame)
         tree = new Doodad(object.x, object.y+TS, sheet, null, false) |> fringe.add-child
         tree.x+=tree.width/2
@@ -407,14 +413,15 @@ mod_doodads = [];
         tree.frame = +frame
         return tree
 
-    !function create_tree (object, sheet, frame, collide, sap=false)
+    !function create_tree (object, sheet, frame, collide, sap=false, properties={})
         if not sheet?
             sheet=object.key
         if not frame?
             frame=object.frame
         #unless collide?
         #    collide=frame;frame=sheet;sheet=\1x2
-        tree = new Doodad object.x, object.y+TS, sheet, null, collide |> actors.add-child
+        tree = new Doodad object.x, object.y+TS, sheet, null, collide
+        if properties.carpet then carpet.add-child tree else actors.add-child tree
         tree.x+=tree.width/2
         tree.anchor.set 0.5 1.0
         tree.body?set-size TS, TS

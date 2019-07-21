@@ -1,5 +1,28 @@
 
+mod_initmap.push(function(){
+    if (!switches.beat_game){ return; }
+    if(switches.map in madness_mapinits){
+        madness_mapinits[switches.map]();
+    }
+});
+
+madness_mapinits={};
+
+madness_mapinits.earth2=function(){
+    madness_create_portal(nodes.chikun.x-3*TS, nodes.chikun.y+4*TS,"madness_void","earth");
+};
+madness_mapinits.earth3=function(){
+    madness_create_portal(nodes.cp.x+4*TS, nodes.cp.y - 8*TS,"madness_void","meadow");
+};
+madness_mapinits.tunneldeep=function(){
+    madness_create_portal(64,656,"madness_void","sewers");
+};
+madness_mapinits.deathdomain=function(){
+    madness_create_portal(752,146,"madness_void","deadworld");
+};
+
 scenario_mod.push(function(){
+    //game.world.filters = access(getmapdata('filters'));
     if (!switches.beat_game){ return; }
     session.madness_llov_dead = switches.llovsick1===4;
     session.madness_llov_died = session.madness_llov_dead || switches.revivalllov;
@@ -29,17 +52,9 @@ madness_scenarios.earth2=function(){
     map.tile_layer.layer.dirty=true;
 
     forNPC('chikun',madness_scenario_chikun);
-    madness_create_portal(nodes.chikun.x-3*TS, nodes.chikun.y+4*TS,"madness_void","earth");
 };
 madness_scenarios.earth3=function(){
     forNPC('draco',madness_scenario_draco);
-    madness_create_portal(nodes.cp.x+4*TS, nodes.cp.y - 8*TS,"madness_void","meadow");
-};
-madness_scenarios.tunneldeep=function(){
-    madness_create_portal(64,656,"madness_void","sewers");
-};
-madness_scenarios.deathdomain=function(){
-    madness_create_portal(256,146,"madness_void","deadworld");
 };
 
 madness_scenario_draco = function(draco){
@@ -99,14 +114,24 @@ mod_doodads.push(function(object){
     case 'madness_portal':
         madness_create_portal(object.x,object.y,object.properties.map,object.name);
         return true;
+    case 'madness_undersea_light':
+        dood = new Doodad(object.x+HTS, object.y+TS, 'madness_undersea_light', null, false);
+        fringe.addChild(dood);
+        dood.anchor.set(0.5,1.0);
+        initUpdate(dood);
+        madness_undersea_light_filter(dood);
+        dood.alpha=0.4;
+        return true;
     }
     return false;
 });
 
 function madness_create_portal(x,y,mapname,portalname){
-    nodes["madness_portal_"+portalname] = {x:x,y:+TS};
+    nodes["madness_portal_"+portalname] = {x:x,y:y+TS};
     // new Doodad object.x, object.y+TS, sheet, null, collide |> actors.add-child
-    var portal = new Doodad(x+HTS,y+TS,'madness_1x2_tiles',null,true);
+    var portal = new Doodad(x+HTS,y+TS,'madness_1x2',null,true);
+    portal.anchor.set(0.5,1);
+    portal.body.setSize(TS,TS);
     portal.frame=3;
     portal.interact=function(){
         warp_node(mapname,"madness_portal_"+portalname,'down');
